@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A304D3A0-D7EA-4258-A39C-D00C4DCFC4F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>hypster_tv_DAL</RootNamespace>
+    <AssemblyName>hypster_tv_DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="common\Email_Manager.cs" />
+    <Compile Include="common\ErrorManager.cs" />
+    <Compile Include="common\Image_Resize_Manager.cs" />
+    <Compile Include="common\Mobile_Device_Recognition.cs" />
+    <Compile Include="hypster_tv_MODEL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hypster_tv_MODEL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="management\artistManagement.cs" />
+    <Compile Include="management\charts\chartsManager.cs" />
+    <Compile Include="management\common\EncryptionManager.cs" />
+    <Compile Include="management\compatibility\CompatibilityManager.cs" />
+    <Compile Include="management\contactUsManagement.cs" />
+    <Compile Include="management\DeadLinksManagement.cs" />
+    <Compile Include="management\DynamicContent_Management.cs" />
+    <Compile Include="management\featuredContentManagement.cs" />
+    <Compile Include="management\FeaturedPlaylistManagement.cs" />
+    <Compile Include="management\festivals\FestivalManager.cs" />
+    <Compile Include="management\followersManagement.cs" />
+    <Compile Include="management\homeSlideshowManager.cs" />
+    <Compile Include="management\hypReports.cs" />
+    <Compile Include="management\listenHistoryManagement.cs" />
+    <Compile Include="management\manuals\manualManagement.cs" />
+    <Compile Include="management\member\memberMusicGenre.cs" />
+    <Compile Include="management\member\memberPhotoManagement.cs" />
+    <Compile Include="management\mixes\mixManagement.cs" />
+    <Compile Include="management\SitemapManagement.cs" />
+    <Compile Include="management\sysHypsterManagement.cs" />
+    <Compile Include="management\tag\TagManagement.cs" />
+    <Compile Include="management\TrackLoginManagement.cs" />
+    <Compile Include="objects\AolSeedVideo.cs" />
+    <Compile Include="objects\ArtistCategory.cs" />
+    <Compile Include="objects\CoverContest.cs" />
+    <Compile Include="objects\CoverContestVote.cs" />
+    <Compile Include="objects\Dead_Link.cs" />
+    <Compile Include="objects\DynamicContent.cs" />
+    <Compile Include="objects\FeaturedContent.cs" />
+    <Compile Include="objects\FeaturedPlaylist.cs" />
+    <Compile Include="objects\FeaturedPlaylist_Result.cs" />
+    <Compile Include="objects\ListenHistory.cs" />
+    <Compile Include="objects\MemberSongSkip.cs" />
+    <Compile Include="objects\mix\c_Mix.cs" />
+    <Compile Include="management\news\celebsManagement.cs" />
+    <Compile Include="management\news\newsManagement_Admin.cs" />
+    <Compile Include="management\playerManagement.cs" />
+    <Compile Include="management\playlist\playlistLikeManagement.cs" />
+    <Compile Include="management\playlist\playlistManagement.cs" />
+    <Compile Include="management\RadioStationManager.cs" />
+    <Compile Include="management\visualSearchManager.cs" />
+    <Compile Include="management\voteManagement.cs" />
+    <Compile Include="management\youtube_song\songsManagement.cs" />
+    <Compile Include="management\video\videoClipManager_Admin.cs" />
+    <Compile Include="management\member\memberManagement.cs" />
+    <Compile Include="management\news\newsManagement.cs" />
+    <Compile Include="management\video\videoClipManager.cs" />
+    <Compile Include="management\video\videoFeaturedManager.cs" />
+    <Compile Include="objects\charts\Chart.cs" />
+    <Compile Include="objects\festivals\Festival.cs" />
+    <Compile Include="objects\homeSlideshow.cs" />
+    <Compile Include="objects\manuals\Manual.cs" />
+    <Compile Include="objects\manuals\Manual_Slide.cs" />
+    <Compile Include="objects\MemberVote.cs" />
+    <Compile Include="objects\member\Member.cs" />
+    <Compile Include="objects\member\MemberMusicGenre.cs" />
+    <Compile Include="objects\member\MemberPublicPage.cs" />
+    <Compile Include="objects\member\MusicGenre.cs" />
+    <Compile Include="objects\mix\Mix_Mobile.cs" />
+    <Compile Include="objects\mix\Radio_Usage.cs" />
+    <Compile Include="objects\news\newsCeleb.cs" />
+    <Compile Include="objects\news\newsComment.cs" />
+    <Compile Include="objects\news\newsPost.cs" />
+    <Compile Include="objects\playlist\Playlist.cs" />
+    <Compile Include="objects\playlist\PlaylistData.cs" />
+    <Compile Include="objects\playlist\PlaylistData_Song.cs" />
+    <Compile Include="objects\playlist\PlaylistLikes.cs" />
+    <Compile Include="objects\RadioStation.cs" />
+    <Compile Include="objects\Player.cs" />
+    <Compile Include="objects\rest\Banner.cs" />
+    <Compile Include="objects\rest\BlockedTerm.cs" />
+    <Compile Include="objects\rest\SessionCrossover.cs" />
+    <Compile Include="objects\tag\Tag.cs" />
+    <Compile Include="objects\tag\Tag_News.cs" />
+    <Compile Include="objects\tag\Tag_Playlist.cs" />
+    <Compile Include="objects\TrackLogin.cs" />
+    <Compile Include="objects\TrackWebsite.cs" />
+    <Compile Include="objects\video\videoClip.cs" />
+    <Compile Include="objects\video\videoComment.cs" />
+    <Compile Include="objects\video\videoFeatured.cs" />
+    <Compile Include="objects\VisualSearch.cs" />
+    <Compile Include="objects\VoteForSong.cs" />
+    <Compile Include="objects\youtube_song\Song.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="hypster_tv_MODEL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>hypster_tv_MODEL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

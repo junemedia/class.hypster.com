@@ -1,0 +1,1217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hypster_tv_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="Hypster_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SessionCrossovers" EntityType="hypster_tv_Model.SessionCrossover" />
+    <EntitySet Name="videoFeatureds" EntityType="hypster_tv_Model.videoFeatured" />
+    <FunctionImport Name="sp_Members_getMemberByID" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_ValidateMember" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_username" Mode="In" Type="String" />
+      <Parameter Name="p_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_getMemberBySessionID" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_session_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_getNumberOfVideoClips" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_videoFeatured_getFeaturedVideos" ReturnType="Collection(hypster_tv_Model.videoFeaturedSlideshow)" />
+    <EntitySet Name="videoClips" EntityType="hypster_tv_Model.videoClip" />
+    <FunctionImport Name="sp_videoClips_getNewVideos" EntitySet="videoClips" ReturnType="Collection(hypster_tv_Model.videoClip)">
+      <Parameter Name="p_numOfVideos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_getTopRatedVideos" EntitySet="videoClips" ReturnType="Collection(hypster_tv_Model.videoClip)">
+      <Parameter Name="p_numOfVideos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="DeActivateds" EntityType="hypster_tv_Model.DeActivated" />
+    <FunctionImport Name="sp_videoClip_getVideoByGUID" EntitySet="videoClips" ReturnType="Collection(hypster_tv_Model.videoClip)">
+      <Parameter Name="p_videoClipGUID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_AddVideoView">
+      <Parameter Name="p_videoClip_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_ViewsNum" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="newsPosts" EntityType="hypster_tv_Model.newsPost" />
+    <FunctionImport Name="sp_newsPost_GetPostByID" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)">
+      <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_newsPost_GetPostByGUID" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)">
+      <Parameter Name="p_post_guid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoFeatured_getFeaturedVideoByID" ReturnType="Collection(hypster_tv_Model.videoFeaturedSlideshow)">
+      <Parameter Name="p_videoFeatured_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoFeatured_DeleteFeaturedVideo">
+      <Parameter Name="p_videoFeatured_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_getNewVideos_Admin" EntitySet="videoClips" ReturnType="Collection(hypster_tv_Model.videoClip)">
+      <Parameter Name="p_numOfVideos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_getTopRatedVideos_Admin" EntitySet="videoClips" ReturnType="Collection(hypster_tv_Model.videoClip)">
+      <Parameter Name="p_numOfVideos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_getNumberOfVideoClips_Admin" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_newsPost_GetLatestNews" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)">
+      <Parameter Name="p_numOfPosts" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="newsComments" EntityType="hypster_tv_Model.newsComment" />
+    <EntitySet Name="videoComments" EntityType="hypster_tv_Model.videoComment" />
+    <FunctionImport Name="sp_Members_getMemberByUserName" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_newsComment_GetPostComments" EntitySet="newsComments" ReturnType="Collection(hypster_tv_Model.newsComment)">
+      <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoComment_GetVideoComments" EntitySet="videoComments" ReturnType="Collection(hypster_tv_Model.videoComment)">
+      <Parameter Name="p_video_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="userContacts" EntityType="hypster_tv_Model.userContact" />
+    <FunctionImport Name="sp_Members_getMemberByEmail" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_updateMemberPassword">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_userContact_Get_UserContactUs_byID" EntitySet="userContacts" ReturnType="Collection(hypster_tv_Model.userContact)">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_userContact_Get_ActiveUserContactUs" EntitySet="userContacts" ReturnType="Collection(hypster_tv_Model.userContact)" />
+    <FunctionImport Name="sp_userContact_Deactivate_UserContactUs">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_GetMembersRandom" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_numOfMembers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Song_GetSongByID" EntitySet="Songs" ReturnType="Collection(hypster_tv_Model.Song)">
+      <Parameter Name="p_song_guid" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="PlaylistDatas" EntityType="hypster_tv_Model.PlaylistData" />
+    <FunctionImport Name="sp_Members_SetUserDefaultPlaylist">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Playlists" EntityType="hypster_tv_Model.Playlist" />
+    <FunctionImport Name="sp_Playlist_GetUserPlaylists" EntitySet="Playlists" ReturnType="Collection(hypster_tv_Model.Playlist)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Followers" EntityType="hypster_tv_Model.Follower" />
+    <FunctionImport Name="sp_Followers_GetNumberOfMembersIFollow" ReturnType="Collection(Int32)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_UpdateMemberProfileDetails">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_name" Mode="In" Type="String" />
+      <Parameter Name="p_AutoshareEnabled" Mode="In" Type="Boolean" />
+      <Parameter Name="p_birth" Mode="In" Type="DateTime" />
+      <Parameter Name="p_city" Mode="In" Type="String" />
+      <Parameter Name="p_country" Mode="In" Type="String" />
+      <Parameter Name="p_zipcode" Mode="In" Type="String" />
+      <Parameter Name="p_sex" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="sp_newsPost_EditPost">
+      <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_post_title" Mode="In" Type="String" />
+      <Parameter Name="p_post_content" Mode="In" Type="String" />
+      <Parameter Name="p_post_image" Mode="In" Type="String" />
+      <Parameter Name="p_post_status" Mode="In" Type="Int32" />
+      <Parameter Name="p_post_short_content" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Followers_GetMyFollowers" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Followers_GetMembersIFollow" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Photos" EntityType="hypster_tv_Model.Photo" />
+    <FunctionImport Name="sp_Playlist_Delete_Playlist">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_Edit_Playlist">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Photo_GetUserPhotos" EntitySet="Photos" ReturnType="Collection(hypster_tv_Model.Photo)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Photo_AddUserPhoto">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_caption" Mode="In" Type="String" />
+      <Parameter Name="p_new_id" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Songs_Get_MostPopularSong_Random" EntitySet="Songs" ReturnType="Collection(hypster_tv_Model.Song)" />
+    <EntitySet Name="Players" EntityType="hypster_tv_Model.Player" />
+    <FunctionImport Name="sp_Player_GetUserPlayersList" EntitySet="Players" ReturnType="Collection(hypster_tv_Model.Player)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Player_GetPlayerByID" EntitySet="Players" ReturnType="Collection(hypster_tv_Model.Player)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_player_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Player_EditPlayer">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_player_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_player_Name" Mode="In" Type="String" />
+      <Parameter Name="p_playlist_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_BAR_autostart" Mode="In" Type="Boolean" />
+      <Parameter Name="p_BAR_shufflePlayback" Mode="In" Type="Boolean" />
+      <Parameter Name="p_BAR_placementOfThePlayer" Mode="In" Type="String" />
+      <Parameter Name="p_BAR_showPlaylistByDefault" Mode="In" Type="Boolean" />
+      <Parameter Name="p_BAR_playerSkin" Mode="In" Type="String" />
+      <Parameter Name="p_CLASSIC_autostart" Mode="In" Type="Boolean" />
+      <Parameter Name="p_CLASSIC_shufflePlayback" Mode="In" Type="Boolean" />
+      <Parameter Name="p_CLASSIC_playerSkin" Mode="In" Type="String" />
+      <Parameter Name="p_RADIO_autostart" Mode="In" Type="Boolean" />
+      <Parameter Name="p_RADIO_Genre" Mode="In" Type="String" />
+      <Parameter Name="p_RADIO_Genre_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Player_DeletePlayer">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_player_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Followers_CheckIfAlreadyFollow" EntitySet="Followers" ReturnType="Collection(hypster_tv_Model.Follower)">
+      <Parameter Name="p_User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Follower_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Photo_DeleteUserPhoto">
+      <Parameter Name="p_photo_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_UpdateMemberProfilePicture">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_picture_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Members" EntityType="hypster_tv_Model.Member" />
+    <FunctionImport Name="sp_Members_UpdateMemberActivityData">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="p_LastActivityIp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Followers_Delete_MemberIFollow">
+      <Parameter Name="p_User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Member_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Followers_Delete_MyFollower">
+      <Parameter Name="p_User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Member_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetSongsForPlayList" ReturnType="Collection(hypster_tv_Model.PlaylistData_Song)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_EditPlaylistSongOrder">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_sortid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetSongsForPlayList_Random" ReturnType="Collection(hypster_tv_Model.PlaylistData_Song)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_DeleteSong">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_DeleteSongs">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_GetMembersWithSong" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_songid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Songs" EntityType="hypster_tv_Model.Song" />
+    <EntitySet Name="MusicGenres" EntityType="hypster_tv_Model.MusicGenre" />
+    <EntitySet Name="MemberMusicGenres" EntityType="hypster_tv_Model.MemberMusicGenre" />
+    <FunctionImport Name="sp_MusicGenre_GetMusicGenresList" EntitySet="MusicGenres" ReturnType="Collection(hypster_tv_Model.MusicGenre)" />
+    <FunctionImport Name="sp_memberMusicGenre_GetUserMusicGenres" EntitySet="MemberMusicGenres" ReturnType="Collection(hypster_tv_Model.MemberMusicGenre)">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_memberMusicGenre_DeleteAllUserMusicGenres">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="HypExceptions" EntityType="hypster_tv_Model.HypException" />
+    <FunctionImport Name="sp_MusicGenre_GetMusicGenre_byID" EntitySet="MusicGenres" ReturnType="Collection(hypster_tv_Model.MusicGenre)">
+      <Parameter Name="p_music_genre_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_AddPlaylistView">
+      <Parameter Name="p_playlist_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetMostViewedPlaylists" EntitySet="Playlists" ReturnType="Collection(hypster_tv_Model.Playlist)" />
+    <EntitySet Name="VisualSearches" EntityType="hypster_tv_Model.VisualSearch" />
+    <FunctionImport Name="sp_VisualSearch_getVisualSearchArtists" EntitySet="VisualSearches" ReturnType="Collection(hypster_tv_Model.VisualSearch)" />
+    <EntitySet Name="RadioStations" EntityType="hypster_tv_Model.RadioStation" />
+    <FunctionImport Name="sp_RadioStation_GetUserRadioStations" EntitySet="RadioStations" ReturnType="Collection(hypster_tv_Model.RadioStation)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RadioStation_DeleteUserRadioStation">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_station_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_getRandomVideos" EntitySet="videoClips" ReturnType="Collection(hypster_tv_Model.videoClip)">
+      <Parameter Name="p_numOfVideos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="songComments" EntityType="hypster_tv_Model.songComment" />
+    <FunctionImport Name="sp_Songs_Get_SongComments" EntitySet="songComments" ReturnType="Collection(hypster_tv_Model.songComment)">
+      <Parameter Name="p_song_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Song_GetSongByGUID" EntitySet="Songs" ReturnType="Collection(hypster_tv_Model.Song)">
+      <Parameter Name="p_song_guid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetPlayListDataByPlaylistID" ReturnType="Collection(hypster_tv_Model.PlaylistData_Song)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetPlayListDataByPlaylistID_Random" ReturnType="Collection(hypster_tv_Model.PlaylistData_Song)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_DeactivateMember">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_DeactivateCheck" ReturnType="Collection(hypster_tv_Model.Members_DeactivateCheck_Result)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_DeleteDeactivatedUser">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_IncrementPlaylistSongOrder">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="newsCelebs" EntityType="hypster_tv_Model.newsCeleb" />
+    <FunctionImport Name="sp_newsCeleb_GetLatestCelebs" EntitySet="newsCelebs" ReturnType="Collection(hypster_tv_Model.newsCeleb)">
+      <Parameter Name="p_numOfPosts" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_newsCelebs_GetCelebByID" EntitySet="newsCelebs" ReturnType="Collection(hypster_tv_Model.newsCeleb)">
+      <Parameter Name="p_celeb_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_newsCelebs_DeleteSeleb">
+      <Parameter Name="p_celeb_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="PlaylistLikes" EntityType="hypster_tv_Model.PlaylistLike" />
+    <FunctionImport Name="sp_Members_GetMembersWithGenre" EntitySet="Members" ReturnType="Collection(hypster_tv_Model.Member)">
+      <Parameter Name="p_genreid" Mode="In" Type="Int32" />
+      <Parameter Name="p_numOfMembers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_playlistLike_CheckPlaylistLike" EntitySet="PlaylistLikes" ReturnType="Collection(hypster_tv_Model.PlaylistLike)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_AddPlaylistLike">
+      <Parameter Name="p_playlist_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetUserPlaylistById" EntitySet="Playlists" ReturnType="Collection(hypster_tv_Model.Playlist)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MusicGenre_SaveMusicGenre">
+      <Parameter Name="p_Genre_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_GenreName" Mode="In" Type="String" />
+      <Parameter Name="p_User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Playlist_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Charts" EntityType="hypster_tv_Model.Chart" />
+    <FunctionImport Name="sp_Charts_GetAllCharts" EntitySet="Charts" ReturnType="Collection(hypster_tv_Model.Chart)" />
+    <FunctionImport Name="sp_Charts_SaveChart">
+      <Parameter Name="p_Chart_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Chart_Category_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Chart_Name" Mode="In" Type="String" />
+      <Parameter Name="p_Chart_Desc" Mode="In" Type="String" />
+      <Parameter Name="p_Chart_Date" Mode="In" Type="String" />
+      <Parameter Name="p_Chart_User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Chart_Playlist_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MusicGenre_DeleteGenre">
+      <Parameter Name="p_genre_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Charts_DeleteChart">
+      <Parameter Name="p_chart_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Festivals" EntityType="hypster_tv_Model.Festival" />
+    <FunctionImport Name="sp_Festivals_DeleteFestival">
+      <Parameter Name="p_Festival_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Festivals_GetAllFestivals" EntitySet="Festivals" ReturnType="Collection(hypster_tv_Model.Festival)" />
+    <FunctionImport Name="sp_Festivals_SaveFestival">
+      <Parameter Name="p_Festival_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Festival_Category_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Festival_Name" Mode="In" Type="String" />
+      <Parameter Name="p_Festival_Desc" Mode="In" Type="String" />
+      <Parameter Name="p_Festival_Date" Mode="In" Type="String" />
+      <Parameter Name="p_Festival_User_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Festival_Playlist_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetPlaylistsILike" EntitySet="Playlists" ReturnType="Collection(hypster_tv_Model.Playlist)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Charts_GetChartByGuid" EntitySet="Charts" ReturnType="Collection(hypster_tv_Model.Chart)">
+      <Parameter Name="p_chart_guid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Festivals_GetFestivalByGuid" EntitySet="Festivals" ReturnType="Collection(hypster_tv_Model.Festival)">
+      <Parameter Name="p_festival_guid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_videoClips_EditVideo">
+      <Parameter Name="p_videoClip_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Name" Mode="In" Type="String" />
+      <Parameter Name="p_Description" Mode="In" Type="String" />
+      <Parameter Name="p_Duration" Mode="In" Type="Int32" />
+      <Parameter Name="p_Status" Mode="In" Type="Int32" />
+      <Parameter Name="p_UploadedByName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Manuals" EntityType="hypster_tv_Model.Manual" />
+    <FunctionImport Name="sp_Manual_GetActiveManuals" EntitySet="Manuals" ReturnType="Collection(hypster_tv_Model.Manual)" />
+    <FunctionImport Name="sp_Manual_GetAllManuals" EntitySet="Manuals" ReturnType="Collection(hypster_tv_Model.Manual)" />
+    <FunctionImport Name="sp_Manual_GetManualByGuid" EntitySet="Manuals" ReturnType="Collection(hypster_tv_Model.Manual)">
+      <Parameter Name="p_Manual_Guid" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Manual_Slide" EntityType="hypster_tv_Model.Manual_Slide" />
+    <FunctionImport Name="sp_Manual_GetManualSlides" EntitySet="Manual_Slide" ReturnType="Collection(hypster_tv_Model.Manual_Slide)">
+      <Parameter Name="p_Manual_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Manual_GetManualByID" EntitySet="Manuals" ReturnType="Collection(hypster_tv_Model.Manual)">
+      <Parameter Name="p_Manual_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Manual_DeleteSlide">
+      <Parameter Name="p_Manual_Slide_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Manual_UpdateManual">
+      <Parameter Name="p_Manual_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Manual_Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Manual_UpdateSlide">
+      <Parameter Name="p_Manual_Slide_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Manual_Slide_Header" Mode="In" Type="String" />
+      <Parameter Name="p_Manual_Slide_SortOrder" Mode="In" Type="Int32" />
+      <Parameter Name="p_Manual_Slide_Active" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_newsPost_GetAllNews" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)" />
+    <EntitySet Name="homeSlideshows" EntityType="hypster_tv_Model.homeSlideshow" />
+    <FunctionImport Name="sp_homeSlideshow_DeleteHomeSlideshow">
+      <Parameter Name="p_homeSlideshow_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_homeSlideshow_getHomeSlideshow" EntitySet="homeSlideshows" ReturnType="Collection(hypster_tv_Model.homeSlideshow)" />
+    <FunctionImport Name="sp_homeSlideshow_homeSlideshowByID" EntitySet="homeSlideshows" ReturnType="Collection(hypster_tv_Model.homeSlideshow)">
+      <Parameter Name="p_homeSlideshow_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Compatibility_CompCheck_2" ReturnType="Collection(hypster_tv_Model.sp_Compatibility_CompCheck_Result)">
+      <Parameter Name="p_song_id1" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id2" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Compatibility_CompCheck_1" ReturnType="Collection(hypster_tv_Model.sp_Compatibility_CompCheck_Result)">
+      <Parameter Name="p_song_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Compatibility_CompCheck_3" ReturnType="Collection(hypster_tv_Model.sp_Compatibility_CompCheck_Result)">
+      <Parameter Name="p_song_id1" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id2" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id3" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Compatibility_CompCheck_4" ReturnType="Collection(hypster_tv_Model.sp_Compatibility_CompCheck_Result)">
+      <Parameter Name="p_song_id1" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id2" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id3" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id4" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Compatibility_CompCheck_5" ReturnType="Collection(hypster_tv_Model.sp_Compatibility_CompCheck_Result)">
+      <Parameter Name="p_song_id1" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id2" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id3" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id4" Mode="In" Type="Int32" />
+      <Parameter Name="p_song_id5" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_UpdateMemberProfileDetails2">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_name" Mode="In" Type="String" />
+      <Parameter Name="p_AutoshareEnabled" Mode="In" Type="Boolean" />
+      <Parameter Name="p_birth" Mode="In" Type="DateTime" />
+      <Parameter Name="p_city" Mode="In" Type="String" />
+      <Parameter Name="p_country" Mode="In" Type="String" />
+      <Parameter Name="p_zipcode" Mode="In" Type="String" />
+      <Parameter Name="p_sex" Mode="In" Type="Byte" />
+      <Parameter Name="p_user_interest" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="MemberPublicPages" EntityType="hypster_tv_Model.MemberPublicPage" />
+    <FunctionImport Name="sp_Members_GetMemberPublicPageByID" EntitySet="MemberPublicPages" ReturnType="Collection(hypster_tv_Model.MemberPublicPage)">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_EditMemberPublicPage">
+      <Parameter Name="p_PublicPage_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_showHeader" Mode="In" Type="Boolean" />
+      <Parameter Name="p_showDescription" Mode="In" Type="Boolean" />
+      <Parameter Name="p_autoplay" Mode="In" Type="Boolean" />
+      <Parameter Name="p_showLikeButtton" Mode="In" Type="Boolean" />
+      <Parameter Name="p_showInfoButton" Mode="In" Type="Boolean" />
+      <Parameter Name="p_showPhotosButton" Mode="In" Type="Boolean" />
+      <Parameter Name="p_header" Mode="In" Type="String" />
+      <Parameter Name="p_description" Mode="In" Type="String" />
+      <Parameter Name="p_HaFBackgroundColor" Mode="In" Type="String" />
+      <Parameter Name="p_BackgroundColor" Mode="In" Type="String" />
+      <Parameter Name="p_LeftSectionColor" Mode="In" Type="String" />
+      <Parameter Name="p_RightSectionColor" Mode="In" Type="String" />
+      <Parameter Name="p_ButtonsBackgroundColor" Mode="In" Type="String" />
+      <Parameter Name="p_SongBackgroundColor" Mode="In" Type="String" />
+      <Parameter Name="p_TextColor" Mode="In" Type="String" />
+      <Parameter Name="p_ButtonsColor" Mode="In" Type="String" />
+      <Parameter Name="p_Playlist_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_Playlist_Layout" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_homeSlideshow_getHomeSlideshowActive" EntitySet="homeSlideshows" ReturnType="Collection(hypster_tv_Model.homeSlideshow)" />
+    <FunctionImport Name="sp_homeSlideshow_DeactivateHomeSlideshow">
+      <Parameter Name="p_homeSlideshow_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_homeSlideshow_ActivateHomeSlideshow">
+      <Parameter Name="p_homeSlideshow_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VisualSearch_getVisualSearchArtistByName" EntitySet="VisualSearches" ReturnType="Collection(hypster_tv_Model.VisualSearch)">
+      <Parameter Name="p_artName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VisualSearch_getVisualSearchArtistsByGenreID" EntitySet="VisualSearches" ReturnType="Collection(hypster_tv_Model.VisualSearch)">
+      <Parameter Name="p_genre_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VisualSearch_DeleteArtist">
+      <Parameter Name="p_artist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VisualSearch_getVisualSearchArtistByID" EntitySet="VisualSearches" ReturnType="Collection(hypster_tv_Model.VisualSearch)">
+      <Parameter Name="p_artist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_UpdateMemberProfileDetails3">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_name" Mode="In" Type="String" />
+      <Parameter Name="p_AutoshareEnabled" Mode="In" Type="Boolean" />
+      <Parameter Name="p_birth" Mode="In" Type="DateTime" />
+      <Parameter Name="p_city" Mode="In" Type="String" />
+      <Parameter Name="p_country" Mode="In" Type="String" />
+      <Parameter Name="p_zipcode" Mode="In" Type="String" />
+      <Parameter Name="p_sex" Mode="In" Type="Byte" />
+      <Parameter Name="p_user_interest" Mode="In" Type="Int32" />
+      <Parameter Name="p_email_optout" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_VisualSearch_getVisualSearchArtistsByGenres" EntitySet="VisualSearches" ReturnType="Collection(hypster_tv_Model.VisualSearch)">
+      <Parameter Name="p_genre_id1" Mode="In" Type="Int32" />
+      <Parameter Name="p_genre_id2" Mode="In" Type="Int32" />
+      <Parameter Name="p_genre_id3" Mode="In" Type="Int32" />
+      <Parameter Name="p_genre_id4" Mode="In" Type="Int32" />
+      <Parameter Name="p_genre_id5" Mode="In" Type="Int32" />
+      <Parameter Name="p_genre_id6" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_GetMembersPublicPagesRandom" EntitySet="MemberPublicPages" ReturnType="Collection(hypster_tv_Model.MemberPublicPage)">
+      <Parameter Name="p_numOfMembers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_GetMembersPublicPagesRandomEx" ReturnType="Collection(hypster_tv_Model.sp_Members_GetMembersPublicPagesRandomEx_Result)">
+      <Parameter Name="p_numOfMembers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MusicGenre_GetMusicGenresListPopular" EntitySet="MusicGenres" ReturnType="Collection(hypster_tv_Model.MusicGenre)" />
+    <FunctionImport Name="sp_Followers_GetNumberOfMyFollowers" ReturnType="Collection(Int32)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_UpdateMemberTrackData">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MemberVote_VoteFor" ReturnType="Collection(Int32)">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_vote_for" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MemberVote_GetVotesNum" ReturnType="Collection(Int32)">
+      <Parameter Name="p_vote_for" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Playlist_GetMostLikedPlaylists" EntitySet="Playlists" ReturnType="Collection(hypster_tv_Model.Playlist)" />
+    <FunctionImport Name="sp_Playlist_GetNewPlaylists" EntitySet="Playlists" ReturnType="Collection(hypster_tv_Model.Playlist)" />
+    <EntitySet Name="CaptchaLogs" EntityType="hypster_tv_Model.CaptchaLog" />
+    <FunctionImport Name="sp_Members_ConfirmMember">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Mix_Mobile" EntityType="hypster_tv_Model.Mix_Mobile" />
+    <FunctionImport Name="sp_Mix_GetRandomMixes" EntitySet="Mix_Mobile" ReturnType="Collection(hypster_tv_Model.Mix_Mobile)">
+      <Parameter Name="p_limiter" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Mix_GetGenresAndCovers" ReturnType="Collection(hypster_tv_Model.Mix_GetGenresAndCovers)">
+      <Parameter Name="p_limiter" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Radio_Usage" EntityType="hypster_tv_Model.Radio_Usage" />
+    <EntitySet Name="VoteForSongs" EntityType="hypster_tv_Model.VoteForSong" />
+    <FunctionImport Name="sp_VoteForSong_GetActiveVoteForSong" EntitySet="VoteForSongs" ReturnType="Collection(hypster_tv_Model.VoteForSong)" />
+    <EntitySet Name="TrackLogins" EntityType="hypster_tv_Model.TrackLogin" />
+    <EntitySet Name="CoverContests" EntityType="hypster_tv_Model.CoverContest" />
+    <FunctionImport Name="sp_CoverContest_GetAllCoverContestSongs" EntitySet="CoverContests" ReturnType="Collection(hypster_tv_Model.CoverContest)" />
+    <EntitySet Name="CoverContestVotes" EntityType="hypster_tv_Model.CoverContestVote" />
+    <FunctionImport Name="sp_CoverContestVote_VoteForContest">
+      <Parameter Name="p_vote_for" Mode="In" Type="Int32" />
+      <Parameter Name="p_ip_adress" Mode="In" Type="String" />
+      <Parameter Name="p_date_time" Mode="In" Type="DateTime" />
+      <Parameter Name="p_new_id" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_GetMemberPublicPageByPlaylistID" EntitySet="MemberPublicPages" ReturnType="Collection(hypster_tv_Model.MemberPublicPage)">
+      <Parameter Name="p_member_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Members_GetMemberPublicPageByOnlyPlaylistID" EntitySet="MemberPublicPages" ReturnType="Collection(hypster_tv_Model.MemberPublicPage)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="FeaturedPlaylists" EntityType="hypster_tv_Model.FeaturedPlaylist" />
+    <FunctionImport Name="sp_FeaturedPlaylist_DeleteFeaturedPlaylists">
+      <Parameter Name="p_FeaturedPlaylist_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_FeaturedPlaylist_ReturnFeaturedPlaylists" EntitySet="FeaturedPlaylists" ReturnType="Collection(hypster_tv_Model.FeaturedPlaylist)" />
+    <FunctionImport Name="sp_Charts_GetMostPopularHypsterSongs" ReturnType="Collection(hypster_tv_Model.MostPopularHypsterSongs_Result)">
+      <Parameter Name="p_top_num" Mode="In" Type="Int32" />
+      <Parameter Name="p_cut_off_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="DynamicContents" EntityType="hypster_tv_Model.DynamicContent" />
+    <FunctionImport Name="sp_DynamicContent_GetDynamicPages" EntitySet="DynamicContents" ReturnType="Collection(hypster_tv_Model.DynamicContent)" />
+    <EntitySet Name="TrackWebsites" EntityType="hypster_tv_Model.TrackWebsite" />
+    <FunctionImport Name="sp_DynamicContent_DeleteDynamicPage">
+      <Parameter Name="p_dynCont_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_playlistLike_DeletePlaylistLike">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <AssociationSet Name="FK_pl_photos_pl_member" Association="hypster_tv_Model.FK_pl_photos_pl_member">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Photo" EntitySet="Photos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pl_playlists_pl_member" Association="hypster_tv_Model.FK_pl_playlists_pl_member">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Playlist" EntitySet="Playlists" />
+    </AssociationSet>
+    <EntitySet Name="Banners" EntityType="hypster_tv_Model.Banner" />
+    <EntitySet Name="BlockedTerms" EntityType="hypster_tv_Model.BlockedTerm" />
+    <EntitySet Name="Tags" EntityType="hypster_tv_Model.Tag" />
+    <EntitySet Name="Tag_Playlist" EntityType="hypster_tv_Model.Tag_Playlist" />
+    <FunctionImport Name="sp_Tag_AddNewTag">
+      <Parameter Name="p_tag_name" Mode="In" Type="String" />
+      <Parameter Name="p_tag_group_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_tag_genre_ID" Mode="In" Type="Int32" />
+      <Parameter Name="p_tag_click_Num" Mode="In" Type="Int32" />
+      <Parameter Name="p_new_id" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Tag_GetPlaylistTags" ReturnType="Collection(hypster_tv_Model.sp_Tag_GetPlaylistTags_Result)">
+      <Parameter Name="p_playlist_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Tag_DeletePlaylistTag">
+      <Parameter Name="p_plst_tag_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="SessionCrossover">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastSet" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="videoFeatured">
+    <Key>
+      <PropertyRef Name="videoFeatured_ID" />
+    </Key>
+    <Property Type="Int32" Name="videoFeatured_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="videoClip_ID" />
+    <Property Type="String" Name="ImageSrc" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" />
+  </EntityType>
+  <ComplexType Name="videoFeaturedSlideshow">
+    <Property Type="Int32" Name="videoFeatured_ID" Nullable="false" />
+    <Property Type="Int32" Name="videoClip_ID" Nullable="true" />
+    <Property Type="String" Name="ImageSrc" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="SortOrder" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Guid" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <EntityType Name="videoClip">
+    <Key>
+      <PropertyRef Name="videoClip_ID" />
+    </Key>
+    <Property Type="Int32" Name="videoClip_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="UpVotes" />
+    <Property Type="Int32" Name="DownVotes" />
+    <Property Type="Int32" Name="ViewsNum" />
+    <Property Type="Int32" Name="UploadedBy" />
+    <Property Type="String" Name="UploadedByName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="UploadDate" />
+    <Property Type="Int32" Name="Duration" />
+    <Property Type="String" Name="Guid" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Int16" Name="Status" />
+  </EntityType>
+  <EntityType Name="DeActivated">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="IsDeActivated" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="IsDeActivated" Nullable="false" />
+  </EntityType>
+  <EntityType Name="newsPost">
+    <Key>
+      <PropertyRef Name="post_id" />
+    </Key>
+    <Property Type="Int32" Name="post_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="post_author" />
+    <Property Type="DateTime" Name="post_date" />
+    <Property Type="String" Name="post_content" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="post_title" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="post_status" />
+    <Property Type="String" Name="post_guid" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="post_type" />
+    <Property Type="Int32" Name="comment_count" />
+    <Property Type="Int32" Name="post_voteUp" />
+    <Property Type="Int32" Name="post_voteDown" />
+    <Property Type="String" Name="post_image" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="post_short_content" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="newsComment">
+    <Key>
+      <PropertyRef Name="newsComment_ID" />
+    </Key>
+    <Property Type="Int32" Name="newsComment_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="newsPost_ID" />
+    <Property Type="Int32" Name="user_ID" />
+    <Property Type="Int32" Name="status" />
+    <Property Type="String" Name="comment" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ipAddress" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="postDate" />
+    <Property Type="String" Name="userName" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="videoComment">
+    <Key>
+      <PropertyRef Name="videoComment_ID" />
+    </Key>
+    <Property Type="Int32" Name="videoComment_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="videoClip_ID" />
+    <Property Type="Int32" Name="user_ID" />
+    <Property Type="Int32" Name="status" />
+    <Property Type="String" Name="comment" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ipAddress" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="postDate" />
+    <Property Type="String" Name="userName" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="userContact">
+    <Key>
+      <PropertyRef Name="contactID" />
+    </Key>
+    <Property Type="Int32" Name="contactID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="contactType" />
+    <Property Type="String" Name="contactText" MaxLength="2500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="contactEmail" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="contactSubject" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PlaylistData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="Int32" Name="songid" Nullable="false" />
+    <Property Type="Int16" Name="sortid" Nullable="false" />
+    <Property Type="Int32" Name="playlist_id" />
+  </EntityType>
+  <EntityType Name="Playlist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="create_time" Nullable="false" />
+    <Property Type="Int32" Name="update_time" Nullable="false" />
+    <Property Type="Boolean" Name="is_artist_playlist" Nullable="false" />
+    <Property Type="Int32" Name="ViewsNum" />
+    <Property Type="Int32" Name="Likes" />
+    <NavigationProperty Name="Member" Relationship="hypster_tv_Model.FK_pl_playlists_pl_member" FromRole="Playlist" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Follower">
+    <Key>
+      <PropertyRef Name="UsFol_ID" />
+    </Key>
+    <Property Type="Int32" Name="UsFol_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="User_ID" />
+    <Property Type="Int32" Name="Follower_ID" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="caption" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="is_artist" Nullable="false" />
+    <Property Type="Boolean" Name="hidden" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="hypster_tv_Model.FK_pl_photos_pl_member" FromRole="Photo" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="player_ID" />
+    </Key>
+    <Property Type="Int32" Name="player_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="player_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Player_Type" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="user_ID" />
+    <Property Type="Int32" Name="playlist_ID" />
+    <Property Type="Boolean" Name="BAR_autostart" />
+    <Property Type="Boolean" Name="BAR_shufflePlayback" />
+    <Property Type="String" Name="BAR_placementOfThePlayer" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="BAR_showPlaylistByDefault" />
+    <Property Type="String" Name="BAR_playerSkin" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="CLASSIC_autostart" />
+    <Property Type="Boolean" Name="CLASSIC_shufflePlayback" />
+    <Property Type="String" Name="CLASSIC_playerSkin" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="RADIO_autostart" />
+    <Property Type="String" Name="RADIO_Genre" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="RADIO_Genre_ID" />
+  </EntityType>
+  <ComplexType Name="PlaylistData_Song">
+    <Property Type="Int32" Name="playlist_track_id" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="String" Name="Artist" Nullable="true" MaxLength="164" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="164" />
+    <Property Type="String" Name="songurl" Nullable="true" MaxLength="512" />
+    <Property Type="Int32" Name="trackcount" Nullable="true" />
+    <Property Type="DateTime" Name="adddate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="fileid" Nullable="true" />
+    <Property Type="Int32" Name="artist_track_id" Nullable="true" />
+    <Property Type="Byte" Name="copyright" Nullable="true" />
+    <Property Type="String" Name="FullTitle" Nullable="true" MaxLength="331" />
+    <Property Type="String" Name="StrippedTitle" Nullable="true" MaxLength="331" />
+    <Property Type="String" Name="YoutubeId" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="YoutubeProcessed" Nullable="true" />
+    <Property Type="Int32" Name="like_count" Nullable="true" />
+    <Property Type="Int32" Name="UploaderId" Nullable="true" />
+    <Property Type="Int16" Name="sortid" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="name" MaxLength="41" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="country" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="city" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="sex" />
+    <Property Type="String" Name="zipcode" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="birth" />
+    <Property Type="String" Name="introduce" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="regdate" Nullable="false" />
+    <Property Type="Int16" Name="trackcount" Nullable="false" />
+    <Property Type="Byte" Name="israndomplay" Nullable="false" />
+    <Property Type="Int32" Name="active_playlist" Nullable="false" />
+    <Property Type="Int32" Name="profile_pic_id" Nullable="false" />
+    <Property Type="Byte" Name="is_new_artist" Nullable="false" />
+    <Property Type="Byte" Name="autoplay" Nullable="false" />
+    <Property Type="Byte" Name="email_confirmed" Nullable="false" />
+    <Property Type="Byte" Name="email_optout" Nullable="false" />
+    <Property Type="Int32" Name="widget_views" Nullable="false" />
+    <Property Type="String" Name="RegistrationIp" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastActivityDate" />
+    <Property Type="String" Name="LastActivityIp" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="CoregProcessed" Nullable="false" />
+    <Property Type="DateTime" Name="OptOutDate" />
+    <Property Type="Boolean" Name="IsSuspended" Nullable="false" />
+    <Property Type="Int32" Name="StatusId" />
+    <Property Type="Boolean" Name="AutoshareEnabled" Nullable="false" />
+    <Property Type="Byte" Name="ArtistLevel" />
+    <Property Type="Boolean" Name="IsOverEighteen" Nullable="false" />
+    <Property Type="Int32" Name="user_interest" />
+    <Property Type="Int32" Name="eCampD" />
+    <NavigationProperty Name="Photos" Relationship="hypster_tv_Model.FK_pl_photos_pl_member" FromRole="Member" ToRole="Photo" />
+    <NavigationProperty Name="Playlists" Relationship="hypster_tv_Model.FK_pl_playlists_pl_member" FromRole="Member" ToRole="Playlist" />
+  </EntityType>
+  <EntityType Name="Song">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Artist" MaxLength="164" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="164" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="songurl" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="trackcount" Nullable="false" />
+    <Property Type="DateTime" Name="adddate" Nullable="false" />
+    <Property Type="Int32" Name="fileid" />
+    <Property Type="Int32" Name="artist_track_id" />
+    <Property Type="Byte" Name="copyright" />
+    <Property Type="String" Name="FullTitle" MaxLength="331" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="StrippedTitle" MaxLength="331" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="YoutubeId" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="YoutubeProcessed" />
+    <Property Type="Int32" Name="like_count" />
+    <Property Type="Int32" Name="UploaderId" />
+    <Property Type="String" Name="Author" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="Rating" />
+    <Property Type="Byte" Name="Syndication" />
+  </EntityType>
+  <EntityType Name="MusicGenre">
+    <Key>
+      <PropertyRef Name="Genre_ID" />
+    </Key>
+    <Property Type="Int32" Name="Genre_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GenreName" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="User_ID" />
+    <Property Type="Int32" Name="Playlist_ID" />
+    <Property Type="Boolean" Name="popular" />
+  </EntityType>
+  <EntityType Name="MemberMusicGenre">
+    <Key>
+      <PropertyRef Name="MemberMusicGenre_ID" />
+    </Key>
+    <Property Type="Int32" Name="MemberMusicGenre_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Member_ID" />
+    <Property Type="Int32" Name="MusicGenre_ID" />
+  </EntityType>
+  <EntityType Name="HypException">
+    <Key>
+      <PropertyRef Name="Exception_ID" />
+    </Key>
+    <Property Type="Int32" Name="Exception_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="ExcDate" />
+    <Property Type="String" Name="ExcMethod" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ExcMessage" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ExcIP" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ExcUrl" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VisualSearch">
+    <Key>
+      <PropertyRef Name="VisualSearch_ID" />
+    </Key>
+    <Property Type="Int32" Name="VisualSearch_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Artist_Name" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Genre_ID" />
+    <Property Type="Int32" Name="ImWidth" />
+  </EntityType>
+  <EntityType Name="RadioStation">
+    <Key>
+      <PropertyRef Name="RadioStation_ID" />
+    </Key>
+    <Property Type="Int32" Name="RadioStation_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="user_ID" />
+    <Property Type="String" Name="RadioStationName" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RadioStationQuery" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="songComment">
+    <Key>
+      <PropertyRef Name="songComment_ID" />
+    </Key>
+    <Property Type="Int32" Name="songComment_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="song_ID" />
+    <Property Type="Int32" Name="user_ID" />
+    <Property Type="Int32" Name="status" />
+    <Property Type="String" Name="comment" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ipAddress" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="postDate" />
+    <Property Type="String" Name="userName" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="Members_DeactivateCheck_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="IsDeActivated" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="newsCeleb">
+    <Key>
+      <PropertyRef Name="celeb_id" />
+    </Key>
+    <Property Type="Int32" Name="celeb_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="celeb_name" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="celeb_url" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="celeb_image" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PlaylistLike">
+    <Key>
+      <PropertyRef Name="PlaylistLikesId" />
+    </Key>
+    <Property Type="Int32" Name="PlaylistLikesId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PlaylistId" Nullable="false" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="OwnerId" Nullable="false" />
+    <Property Type="Int32" Name="LikeValue" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Chart">
+    <Key>
+      <PropertyRef Name="Chart_ID" />
+    </Key>
+    <Property Type="Int32" Name="Chart_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Chart_Category_ID" />
+    <Property Type="String" Name="Chart_Name" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Chart_Desc" MaxLength="2500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Chart_Date" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Chart_User_ID" />
+    <Property Type="Int32" Name="Chart_Playlist_ID" />
+    <Property Type="String" Name="Chart_GUID" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Festival">
+    <Key>
+      <PropertyRef Name="Festival_ID" />
+    </Key>
+    <Property Type="Int32" Name="Festival_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Festival_Category_ID" />
+    <Property Type="String" Name="Festival_Name" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Festival_Desc" MaxLength="2500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Festival_Date" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Festival_User_ID" />
+    <Property Type="Int32" Name="Festival_Playlist_ID" />
+    <Property Type="String" Name="Festival_GUID" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Manual">
+    <Key>
+      <PropertyRef Name="Manual_ID" />
+    </Key>
+    <Property Type="Int32" Name="Manual_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Manual_Header" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Manual_Guid" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Manual_Date" />
+    <Property Type="Int32" Name="Manual_Active" />
+  </EntityType>
+  <EntityType Name="Manual_Slide">
+    <Key>
+      <PropertyRef Name="Manual_Slide_ID" />
+    </Key>
+    <Property Type="Int32" Name="Manual_Slide_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Manual_Slide_Manual_ID" />
+    <Property Type="String" Name="Manual_Slide_Header" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Manual_Slide_Image" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Manual_Slide_Date" />
+    <Property Type="Int32" Name="Manual_Slide_Active" />
+    <Property Type="Int32" Name="Manual_Slide_SortOrder" />
+  </EntityType>
+  <EntityType Name="homeSlideshow">
+    <Key>
+      <PropertyRef Name="homeSlideshow_ID" />
+    </Key>
+    <Property Type="Int32" Name="homeSlideshow_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="href" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ImageSrc" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" />
+    <Property Type="Boolean" Name="isActive" />
+  </EntityType>
+  <ComplexType Name="sp_Compatibility_CompCheck_Result">
+    <Property Type="Int32" Name="playlist_id" Nullable="true" />
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="Int32" Name="SongsMatching" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="MemberPublicPage">
+    <Key>
+      <PropertyRef Name="PublicPage_ID" />
+    </Key>
+    <Property Type="Int32" Name="PublicPage_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Member_ID" />
+    <Property Type="Boolean" Name="showHeader" />
+    <Property Type="Boolean" Name="showDescription" />
+    <Property Type="Boolean" Name="autoplay" />
+    <Property Type="Boolean" Name="showLikeButtton" />
+    <Property Type="Boolean" Name="showInfoButton" />
+    <Property Type="Boolean" Name="showPhotosButton" />
+    <Property Type="String" Name="header" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="HaFBackgroundColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BackgroundColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LeftSectionColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RightSectionColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ButtonsBackgroundColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SongBackgroundColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TextColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ButtonsColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Playlist_ID" />
+    <Property Type="Int32" Name="Playlist_Layout" />
+  </EntityType>
+  <ComplexType Name="sp_Members_GetMembersPublicPagesRandomEx_Result">
+    <Property Type="Int32" Name="PublicPage_ID" Nullable="false" />
+    <Property Type="Int32" Name="Member_ID" Nullable="true" />
+    <Property Type="Boolean" Name="showHeader" Nullable="true" />
+    <Property Type="Boolean" Name="showDescription" Nullable="true" />
+    <Property Type="Boolean" Name="autoplay" Nullable="true" />
+    <Property Type="Boolean" Name="showLikeButtton" Nullable="true" />
+    <Property Type="Boolean" Name="showInfoButton" Nullable="true" />
+    <Property Type="Boolean" Name="showPhotosButton" Nullable="true" />
+    <Property Type="String" Name="header" Nullable="true" MaxLength="450" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="HaFBackgroundColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BackgroundColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="LeftSectionColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="RightSectionColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ButtonsBackgroundColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SongBackgroundColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="TextColor" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ButtonsColor" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Playlist_ID" Nullable="true" />
+    <Property Type="Int32" Name="Playlist_Layout" Nullable="true" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="CaptchaLog">
+    <Key>
+      <PropertyRef Name="CaptchaLog_ID" />
+    </Key>
+    <Property Type="Int32" Name="CaptchaLog_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CaptchaIP" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CatpchaDate" />
+    <Property Type="String" Name="CaptchaFrase" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CaptchaResponse" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Mix_Mobile">
+    <Key>
+      <PropertyRef Name="Mix_Mobile_ID" />
+    </Key>
+    <Property Type="Int32" Name="Mix_Mobile_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Mix_ID" />
+    <Property Type="String" Name="Mix_Name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Mix_Genre_ID" />
+    <Property Type="String" Name="Mix_Cover" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Mix_Category" />
+  </EntityType>
+  <ComplexType Name="Mix_GetGenresAndCovers">
+    <Property Type="Int32" Name="Genre_ID" Nullable="false" />
+    <Property Type="String" Name="GenreName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mix_Cover" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <EntityType Name="Radio_Usage">
+    <Key>
+      <PropertyRef Name="Radio_Usage_ID" />
+    </Key>
+    <Property Type="Int32" Name="Radio_Usage_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Radio_Usage_Date" />
+    <Property Type="Int32" Name="PLAY_TOKEN" />
+    <Property Type="Int32" Name="TRACK_ID" />
+    <Property Type="Int32" Name="MIX_ID" />
+  </EntityType>
+  <EntityType Name="VoteForSong">
+    <Key>
+      <PropertyRef Name="VoteForSong_ID" />
+    </Key>
+    <Property Type="Int32" Name="VoteForSong_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Song1_ID" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Song1_Title" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Song2_ID" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Song2_Title" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TrackLogin">
+    <Key>
+      <PropertyRef Name="TrackLogin_ID" />
+    </Key>
+    <Property Type="Int32" Name="TrackLogin_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Login_Date" />
+    <Property Type="Int32" Name="User_id" />
+  </EntityType>
+  <EntityType Name="CoverContest">
+    <Key>
+      <PropertyRef Name="CoverContest_ID" />
+    </Key>
+    <Property Type="Int32" Name="CoverContest_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CoverContest_SongID" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CoverContest_Title" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CoverContest_DateAdded" />
+    <Property Type="Int32" Name="CoverContest_NumVotes" />
+  </EntityType>
+  <EntityType Name="CoverContestVote">
+    <Key>
+      <PropertyRef Name="CoverContestVote_ID" />
+    </Key>
+    <Property Type="Int32" Name="CoverContestVote_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CoverContestVote_IP" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CoverContestVote_DateAdded" />
+    <Property Type="Int32" Name="CoverContestVote_Cover_ID" />
+  </EntityType>
+  <EntityType Name="FeaturedPlaylist">
+    <Key>
+      <PropertyRef Name="FeaturedPlaylist_ID" />
+    </Key>
+    <Property Type="Int32" Name="FeaturedPlaylist_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="FeaturedPlaylist_PlaylistID" />
+    <Property Type="Int32" Name="FeaturedPlaylist_UserID" />
+    <Property Type="String" Name="FeaturedPlaylist_PlaylistName" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FeaturedPlaylist_CreateDate" />
+  </EntityType>
+  <ComplexType Name="MostPopularHypsterSongs_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="164" />
+    <Property Type="String" Name="YoutubeId" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SongsNum" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="DynamicContent">
+    <Key>
+      <PropertyRef Name="DynCont_ID" />
+    </Key>
+    <Property Type="Int32" Name="DynCont_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="DynCont_PageType" />
+    <Property Type="String" Name="DynCont_Href" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="DynCont_isNewWindow" />
+    <Property Type="String" Name="DynCont_BoxCont" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DynCont_ButtonText" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DynCont_Name" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="DynCont_isNameVisible" />
+  </EntityType>
+  <EntityType Name="TrackWebsite">
+    <Key>
+      <PropertyRef Name="TrackWebsite_ID" />
+    </Key>
+    <Property Type="Int32" Name="TrackWebsite_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TrackWebsite_Key" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="TrackWebsite_KeyID" />
+    <Property Type="String" Name="TrackWebsite_Val" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_pl_photos_pl_member">
+    <End Type="hypster_tv_Model.Member" Role="Member" Multiplicity="1" />
+    <End Type="hypster_tv_Model.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pl_playlists_pl_member">
+    <End Type="hypster_tv_Model.Member" Role="Member" Multiplicity="1" />
+    <End Type="hypster_tv_Model.Playlist" Role="Playlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Playlist">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Size" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CountryCode" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Enabled" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlockedTerm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ArtistTerm" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TitleTerm" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Tag_ID" />
+    </Key>
+    <Property Type="Int32" Name="Tag_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Tag_Name" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Tag_Group_ID" />
+    <Property Type="Int32" Name="Tag_Genre_ID" />
+    <Property Type="Int32" Name="Tag_Click_Num" />
+  </EntityType>
+  <EntityType Name="Tag_Playlist">
+    <Key>
+      <PropertyRef Name="Tag_Playlist_ID" />
+    </Key>
+    <Property Type="Int32" Name="Tag_Playlist_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Tag_ID" />
+    <Property Type="Int32" Name="Playlist_ID" />
+    <Property Type="Int32" Name="Tag_Click_Num" />
+  </EntityType>
+  <ComplexType Name="sp_Tag_GetPlaylistTags_Result">
+    <Property Type="Int32" Name="Tag_Playlist_ID" Nullable="false" />
+    <Property Type="Int32" Name="Tag_ID" Nullable="true" />
+    <Property Type="Int32" Name="Playlist_ID" Nullable="true" />
+    <Property Type="Int32" Name="Tag_Click_Num" Nullable="true" />
+    <Property Type="String" Name="Tag_Name" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>

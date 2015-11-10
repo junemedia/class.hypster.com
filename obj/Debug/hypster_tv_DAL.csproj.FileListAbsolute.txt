@@ -1,0 +1,12 @@
+C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\bin\Debug\hypster_tv_DAL.dll.config
+C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\bin\Debug\hypster_tv_DAL.dll
+C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\bin\Debug\hypster_tv_DAL.pdb
+C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\obj\Debug\hypster_tv_DAL.dll
+C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\obj\Debug\hypster_tv_DAL.pdb
+C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\obj\Debug\hypster_tv_DAL.csprojResolveAssemblyReference.cache
+C:\x_BARONS_MEDIA\Webs_MVC4_v2\hypster_tv\hypster_tv_DAL\bin\Debug\hypster_tv_DAL.dll.config
+C:\x_BARONS_MEDIA\Webs_MVC4_v2\hypster_tv\hypster_tv_DAL\bin\Debug\hypster_tv_DAL.dll
+C:\x_BARONS_MEDIA\Webs_MVC4_v2\hypster_tv\hypster_tv_DAL\bin\Debug\hypster_tv_DAL.pdb
+C:\x_BARONS_MEDIA\Webs_MVC4_v2\hypster_tv\hypster_tv_DAL\obj\Debug\hypster_tv_DAL.csprojResolveAssemblyReference.cache
+C:\x_BARONS_MEDIA\Webs_MVC4_v2\hypster_tv\hypster_tv_DAL\obj\Debug\hypster_tv_DAL.dll
+C:\x_BARONS_MEDIA\Webs_MVC4_v2\hypster_tv\hypster_tv_DAL\obj\Debug\hypster_tv_DAL.pdb

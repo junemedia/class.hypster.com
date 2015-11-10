@@ -1,0 +1,1147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hypster_tv_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="hypster_tv_ModelStoreContainer">
+    <EntitySet Name="Banners" EntityType="hypster_tv_Model.Store.Banners" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BlockedTerms" EntityType="hypster_tv_Model.Store.BlockedTerms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CaptchaLog" EntityType="hypster_tv_Model.Store.CaptchaLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Charts" EntityType="hypster_tv_Model.Store.Charts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoverContest" EntityType="hypster_tv_Model.Store.CoverContest" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoverContestVote" EntityType="hypster_tv_Model.Store.CoverContestVote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeActivated" EntityType="hypster_tv_Model.Store.DeActivated" store:Type="Tables" store:Schema="dbo" store:Name="DeActivated">
+      <DefiningQuery>SELECT 
+      [DeActivated].[UserId] AS [UserId], 
+      [DeActivated].[IsDeActivated] AS [IsDeActivated]
+      FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DynamicContent" EntityType="hypster_tv_Model.Store.DynamicContent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FeaturedPlaylists" EntityType="hypster_tv_Model.Store.FeaturedPlaylists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Festivals" EntityType="hypster_tv_Model.Store.Festivals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Followers" EntityType="hypster_tv_Model.Store.Followers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="homeSlideshow" EntityType="hypster_tv_Model.Store.homeSlideshow" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HypException" EntityType="hypster_tv_Model.Store.HypException" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Manual" EntityType="hypster_tv_Model.Store.Manual" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Manual_Slide" EntityType="hypster_tv_Model.Store.Manual_Slide" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberMusicGenre" EntityType="hypster_tv_Model.Store.MemberMusicGenre" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberPublicPage" EntityType="hypster_tv_Model.Store.MemberPublicPage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Members" EntityType="hypster_tv_Model.Store.Members" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Mix_Mobile" EntityType="hypster_tv_Model.Store.Mix_Mobile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MusicGenre" EntityType="hypster_tv_Model.Store.MusicGenre" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="newsCeleb" EntityType="hypster_tv_Model.Store.newsCeleb" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="newsComment" EntityType="hypster_tv_Model.Store.newsComment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="newsPost" EntityType="hypster_tv_Model.Store.newsPost" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Photos" EntityType="hypster_tv_Model.Store.Photos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Player" EntityType="hypster_tv_Model.Store.Player" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlaylistData" EntityType="hypster_tv_Model.Store.PlaylistData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlaylistLikes" EntityType="hypster_tv_Model.Store.PlaylistLikes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Playlists" EntityType="hypster_tv_Model.Store.Playlists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radio_Usage" EntityType="hypster_tv_Model.Store.Radio_Usage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RadioStation" EntityType="hypster_tv_Model.Store.RadioStation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SessionCrossover" EntityType="hypster_tv_Model.Store.SessionCrossover" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="songComment" EntityType="hypster_tv_Model.Store.songComment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Songs" EntityType="hypster_tv_Model.Store.Songs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="hypster_tv_Model.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag_Playlist" EntityType="hypster_tv_Model.Store.Tag_Playlist" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrackLogin" EntityType="hypster_tv_Model.Store.TrackLogin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrackWebsite" EntityType="hypster_tv_Model.Store.TrackWebsite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="userContacts" EntityType="hypster_tv_Model.Store.userContacts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="videoClips" EntityType="hypster_tv_Model.Store.videoClips" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="videoComment" EntityType="hypster_tv_Model.Store.videoComment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="videoFeatured" EntityType="hypster_tv_Model.Store.videoFeatured" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VisualSearch" EntityType="hypster_tv_Model.Store.VisualSearch" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VoteForSong" EntityType="hypster_tv_Model.Store.VoteForSong" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_pl_photos_pl_member" Association="hypster_tv_Model.Store.FK_pl_photos_pl_member">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Photos" EntitySet="Photos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pl_playlists_pl_member" Association="hypster_tv_Model.Store.FK_pl_playlists_pl_member">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Playlists" EntitySet="Playlists" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Banners">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Size" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="2048" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlockedTerms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ArtistTerm" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="TitleTerm" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="CaptchaLog">
+    <Key>
+      <PropertyRef Name="CaptchaLog_ID" />
+    </Key>
+    <Property Name="CaptchaLog_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CaptchaIP" Type="nvarchar" MaxLength="50" />
+    <Property Name="CatpchaDate" Type="datetime" />
+    <Property Name="CaptchaFrase" Type="nvarchar" MaxLength="100" />
+    <Property Name="CaptchaResponse" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Charts">
+    <Key>
+      <PropertyRef Name="Chart_ID" />
+    </Key>
+    <Property Name="Chart_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Chart_Category_ID" Type="int" />
+    <Property Name="Chart_Name" Type="nvarchar" MaxLength="350" />
+    <Property Name="Chart_Desc" Type="nvarchar" MaxLength="2500" />
+    <Property Name="Chart_Date" Type="nvarchar" MaxLength="150" />
+    <Property Name="Chart_User_ID" Type="int" />
+    <Property Name="Chart_Playlist_ID" Type="int" />
+    <Property Name="Chart_GUID" Type="nvarchar" MaxLength="350" />
+  </EntityType>
+  <EntityType Name="CoverContest">
+    <Key>
+      <PropertyRef Name="CoverContest_ID" />
+    </Key>
+    <Property Name="CoverContest_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CoverContest_SongID" Type="nvarchar" MaxLength="20" />
+    <Property Name="CoverContest_Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="CoverContest_DateAdded" Type="datetime" />
+    <Property Name="CoverContest_NumVotes" Type="int" />
+  </EntityType>
+  <EntityType Name="CoverContestVote">
+    <Key>
+      <PropertyRef Name="CoverContestVote_ID" />
+    </Key>
+    <Property Name="CoverContestVote_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CoverContestVote_IP" Type="nvarchar" MaxLength="20" />
+    <Property Name="CoverContestVote_DateAdded" Type="datetime" />
+    <Property Name="CoverContestVote_Cover_ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'HypsterNew.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="DeActivated">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="IsDeActivated" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsDeActivated" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DynamicContent">
+    <Key>
+      <PropertyRef Name="DynCont_ID" />
+    </Key>
+    <Property Name="DynCont_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DynCont_PageType" Type="int" />
+    <Property Name="DynCont_Href" Type="nvarchar" MaxLength="350" />
+    <Property Name="DynCont_isNewWindow" Type="bit" />
+    <Property Name="DynCont_BoxCont" Type="nvarchar(max)" />
+    <Property Name="DynCont_ButtonText" Type="nvarchar" MaxLength="50" />
+    <Property Name="DynCont_Name" Type="nvarchar" MaxLength="350" />
+    <Property Name="DynCont_isNameVisible" Type="bit" />
+  </EntityType>
+  <EntityType Name="FeaturedPlaylists">
+    <Key>
+      <PropertyRef Name="FeaturedPlaylist_ID" />
+    </Key>
+    <Property Name="FeaturedPlaylist_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FeaturedPlaylist_PlaylistID" Type="int" />
+    <Property Name="FeaturedPlaylist_UserID" Type="int" />
+    <Property Name="FeaturedPlaylist_PlaylistName" Type="nvarchar" MaxLength="120" />
+    <Property Name="FeaturedPlaylist_CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Festivals">
+    <Key>
+      <PropertyRef Name="Festival_ID" />
+    </Key>
+    <Property Name="Festival_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Festival_Category_ID" Type="int" />
+    <Property Name="Festival_Name" Type="nvarchar" MaxLength="350" />
+    <Property Name="Festival_Desc" Type="nvarchar" MaxLength="2500" />
+    <Property Name="Festival_Date" Type="nvarchar" MaxLength="150" />
+    <Property Name="Festival_User_ID" Type="int" />
+    <Property Name="Festival_Playlist_ID" Type="int" />
+    <Property Name="Festival_GUID" Type="nvarchar" MaxLength="350" />
+  </EntityType>
+  <EntityType Name="Followers">
+    <Key>
+      <PropertyRef Name="UsFol_ID" />
+    </Key>
+    <Property Name="UsFol_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="Follower_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="homeSlideshow">
+    <Key>
+      <PropertyRef Name="homeSlideshow_ID" />
+    </Key>
+    <Property Name="homeSlideshow_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="href" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImageSrc" Type="nvarchar" MaxLength="50" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="HypException">
+    <Key>
+      <PropertyRef Name="Exception_ID" />
+    </Key>
+    <Property Name="Exception_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ExcDate" Type="datetime" />
+    <Property Name="ExcIP" Type="nvarchar" MaxLength="25" />
+    <Property Name="ExcUrl" Type="nvarchar" MaxLength="150" />
+    <Property Name="ExcMethod" Type="nvarchar" MaxLength="150" />
+    <Property Name="ExcMessage" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="Manual">
+    <Key>
+      <PropertyRef Name="Manual_ID" />
+    </Key>
+    <Property Name="Manual_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Manual_Header" Type="nvarchar" MaxLength="400" />
+    <Property Name="Manual_Guid" Type="nvarchar" MaxLength="500" />
+    <Property Name="Manual_Date" Type="datetime" />
+    <Property Name="Manual_Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Manual_Slide">
+    <Key>
+      <PropertyRef Name="Manual_Slide_ID" />
+    </Key>
+    <Property Name="Manual_Slide_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Manual_Slide_Manual_ID" Type="int" />
+    <Property Name="Manual_Slide_Header" Type="varchar" MaxLength="1500" />
+    <Property Name="Manual_Slide_Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Manual_Slide_Date" Type="datetime" />
+    <Property Name="Manual_Slide_Active" Type="int" />
+    <Property Name="Manual_Slide_SortOrder" Type="int" />
+  </EntityType>
+  <EntityType Name="MemberMusicGenre">
+    <Key>
+      <PropertyRef Name="MemberMusicGenre_ID" />
+    </Key>
+    <Property Name="MemberMusicGenre_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Member_ID" Type="int" />
+    <Property Name="MusicGenre_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="MemberPublicPage">
+    <Key>
+      <PropertyRef Name="PublicPage_ID" />
+    </Key>
+    <Property Name="PublicPage_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Member_ID" Type="int" />
+    <Property Name="showHeader" Type="bit" />
+    <Property Name="showDescription" Type="bit" />
+    <Property Name="autoplay" Type="bit" />
+    <Property Name="showLikeButtton" Type="bit" />
+    <Property Name="showInfoButton" Type="bit" />
+    <Property Name="showPhotosButton" Type="bit" />
+    <Property Name="header" Type="nvarchar" MaxLength="450" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="HaFBackgroundColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="BackgroundColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="LeftSectionColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="RightSectionColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="ButtonsBackgroundColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="SongBackgroundColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="TextColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="ButtonsColor" Type="nvarchar" MaxLength="10" />
+    <Property Name="Playlist_ID" Type="int" />
+    <Property Name="Playlist_Layout" Type="int" />
+  </EntityType>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" MaxLength="41" />
+    <Property Name="country" Type="nvarchar" MaxLength="30" />
+    <Property Name="city" Type="nvarchar" MaxLength="30" />
+    <Property Name="sex" Type="tinyint" />
+    <Property Name="zipcode" Type="varchar" MaxLength="10" />
+    <Property Name="birth" Type="date" />
+    <Property Name="introduce" Type="nvarchar(max)" />
+    <Property Name="regdate" Type="datetime" Nullable="false" />
+    <Property Name="trackcount" Type="smallint" Nullable="false" />
+    <Property Name="israndomplay" Type="tinyint" Nullable="false" />
+    <Property Name="active_playlist" Type="int" Nullable="false" />
+    <Property Name="profile_pic_id" Type="int" Nullable="false" />
+    <Property Name="is_new_artist" Type="tinyint" Nullable="false" />
+    <Property Name="autoplay" Type="tinyint" Nullable="false" />
+    <Property Name="email_confirmed" Type="tinyint" Nullable="false" />
+    <Property Name="email_optout" Type="tinyint" Nullable="false" />
+    <Property Name="widget_views" Type="int" Nullable="false" />
+    <Property Name="RegistrationIp" Type="varchar" MaxLength="18" />
+    <Property Name="LastActivityDate" Type="datetime" />
+    <Property Name="LastActivityIp" Type="varchar" MaxLength="18" />
+    <Property Name="CoregProcessed" Type="bit" Nullable="false" />
+    <Property Name="OptOutDate" Type="datetime" />
+    <Property Name="IsSuspended" Type="bit" Nullable="false" />
+    <Property Name="StatusId" Type="int" />
+    <Property Name="AutoshareEnabled" Type="bit" Nullable="false" />
+    <Property Name="ArtistLevel" Type="tinyint" />
+    <Property Name="IsOverEighteen" Type="bit" Nullable="false" />
+    <Property Name="user_interest" Type="int" />
+    <Property Name="eCampD" Type="int" />
+  </EntityType>
+  <EntityType Name="Mix_Mobile">
+    <Key>
+      <PropertyRef Name="Mix_Mobile_ID" />
+    </Key>
+    <Property Name="Mix_Mobile_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mix_ID" Type="int" />
+    <Property Name="Mix_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mix_Genre_ID" Type="int" />
+    <Property Name="Mix_Cover" Type="nvarchar" MaxLength="250" />
+    <Property Name="Mix_Category" Type="int" />
+  </EntityType>
+  <EntityType Name="MusicGenre">
+    <Key>
+      <PropertyRef Name="Genre_ID" />
+    </Key>
+    <Property Name="Genre_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GenreName" Type="nvarchar" MaxLength="100" />
+    <Property Name="User_ID" Type="int" />
+    <Property Name="Playlist_ID" Type="int" />
+    <Property Name="popular" Type="bit" />
+  </EntityType>
+  <EntityType Name="newsCeleb">
+    <Key>
+      <PropertyRef Name="celeb_id" />
+    </Key>
+    <Property Name="celeb_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="celeb_name" Type="nvarchar" MaxLength="150" />
+    <Property Name="celeb_url" Type="nvarchar" MaxLength="1000" />
+    <Property Name="celeb_image" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="newsComment">
+    <Key>
+      <PropertyRef Name="newsComment_ID" />
+    </Key>
+    <Property Name="newsComment_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="newsPost_ID" Type="int" />
+    <Property Name="user_ID" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="comment" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ipAddress" Type="nvarchar" MaxLength="20" />
+    <Property Name="postDate" Type="datetime" />
+    <Property Name="userName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="newsPost">
+    <Key>
+      <PropertyRef Name="post_id" />
+    </Key>
+    <Property Name="post_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="post_author" Type="int" />
+    <Property Name="post_date" Type="datetime" />
+    <Property Name="post_content" Type="nvarchar(max)" />
+    <Property Name="post_title" Type="nvarchar" MaxLength="400" />
+    <Property Name="post_status" Type="int" />
+    <Property Name="post_guid" Type="nvarchar" MaxLength="400" />
+    <Property Name="post_type" Type="int" />
+    <Property Name="comment_count" Type="int" />
+    <Property Name="post_voteUp" Type="int" />
+    <Property Name="post_voteDown" Type="int" />
+    <Property Name="post_image" Type="nvarchar" MaxLength="400" />
+    <Property Name="post_short_content" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="Photos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="caption" Type="nvarchar(max)" />
+    <Property Name="is_artist" Type="bit" Nullable="false" />
+    <Property Name="hidden" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="player_ID" />
+    </Key>
+    <Property Name="player_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="player_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Player_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_ID" Type="int" />
+    <Property Name="playlist_ID" Type="int" />
+    <Property Name="BAR_autostart" Type="bit" />
+    <Property Name="BAR_shufflePlayback" Type="bit" />
+    <Property Name="BAR_placementOfThePlayer" Type="nvarchar" MaxLength="10" />
+    <Property Name="BAR_showPlaylistByDefault" Type="bit" />
+    <Property Name="BAR_playerSkin" Type="nvarchar" MaxLength="30" />
+    <Property Name="CLASSIC_autostart" Type="bit" />
+    <Property Name="CLASSIC_shufflePlayback" Type="bit" />
+    <Property Name="CLASSIC_playerSkin" Type="nvarchar" MaxLength="30" />
+    <Property Name="RADIO_autostart" Type="bit" />
+    <Property Name="RADIO_Genre" Type="nvarchar" MaxLength="50" />
+    <Property Name="RADIO_Genre_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="PlaylistData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="songid" Type="int" Nullable="false" />
+    <Property Name="sortid" Type="smallint" Nullable="false" />
+    <Property Name="playlist_id" Type="int" />
+  </EntityType>
+  <EntityType Name="PlaylistLikes">
+    <Key>
+      <PropertyRef Name="PlaylistLikesId" />
+    </Key>
+    <Property Name="PlaylistLikesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PlaylistId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="OwnerId" Type="int" Nullable="false" />
+    <Property Name="LikeValue" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Playlists">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="create_time" Type="int" Nullable="false" />
+    <Property Name="update_time" Type="int" Nullable="false" />
+    <Property Name="is_artist_playlist" Type="bit" Nullable="false" />
+    <Property Name="ViewsNum" Type="int" />
+    <Property Name="Likes" Type="int" />
+  </EntityType>
+  <EntityType Name="Radio_Usage">
+    <Key>
+      <PropertyRef Name="Radio_Usage_ID" />
+    </Key>
+    <Property Name="Radio_Usage_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Radio_Usage_Date" Type="datetime" />
+    <Property Name="PLAY_TOKEN" Type="int" />
+    <Property Name="TRACK_ID" Type="int" />
+    <Property Name="MIX_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="RadioStation">
+    <Key>
+      <PropertyRef Name="RadioStation_ID" />
+    </Key>
+    <Property Name="RadioStation_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_ID" Type="int" />
+    <Property Name="RadioStationName" Type="nvarchar" MaxLength="250" />
+    <Property Name="RadioStationQuery" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="SessionCrossover">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="SessionId" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastSet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="songComment">
+    <Key>
+      <PropertyRef Name="songComment_ID" />
+    </Key>
+    <Property Name="songComment_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="song_ID" Type="int" />
+    <Property Name="user_ID" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="comment" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ipAddress" Type="nvarchar" MaxLength="20" />
+    <Property Name="postDate" Type="datetime" />
+    <Property Name="userName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Songs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Artist" Type="nvarchar" MaxLength="164" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="164" />
+    <Property Name="songurl" Type="varchar" MaxLength="512" />
+    <Property Name="trackcount" Type="int" Nullable="false" />
+    <Property Name="adddate" Type="datetime" Nullable="false" />
+    <Property Name="fileid" Type="int" />
+    <Property Name="artist_track_id" Type="int" />
+    <Property Name="copyright" Type="tinyint" />
+    <Property Name="FullTitle" Type="nvarchar" MaxLength="331" StoreGeneratedPattern="Computed" />
+    <Property Name="StrippedTitle" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+    <Property Name="YoutubeId" Type="varchar" MaxLength="50" />
+    <Property Name="YoutubeProcessed" Type="bit" />
+    <Property Name="like_count" Type="int" />
+    <Property Name="UploaderId" Type="int" />
+    <Property Name="Author" Type="nvarchar" MaxLength="100" />
+    <Property Name="Rating" Type="float" />
+    <Property Name="Syndication" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Tag_ID" />
+    </Key>
+    <Property Name="Tag_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Tag_Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Tag_Group_ID" Type="int" />
+    <Property Name="Tag_Genre_ID" Type="int" />
+    <Property Name="Tag_Click_Num" Type="int" />
+  </EntityType>
+  <EntityType Name="Tag_Playlist">
+    <Key>
+      <PropertyRef Name="Tag_Playlist_ID" />
+    </Key>
+    <Property Name="Tag_Playlist_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Tag_ID" Type="int" />
+    <Property Name="Playlist_ID" Type="int" />
+    <Property Name="Tag_Click_Num" Type="int" />
+  </EntityType>
+  <EntityType Name="TrackLogin">
+    <Key>
+      <PropertyRef Name="TrackLogin_ID" />
+    </Key>
+    <Property Name="TrackLogin_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Login_Date" Type="datetime" />
+    <Property Name="User_id" Type="int" />
+  </EntityType>
+  <EntityType Name="TrackWebsite">
+    <Key>
+      <PropertyRef Name="TrackWebsite_ID" />
+    </Key>
+    <Property Name="TrackWebsite_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TrackWebsite_Key" Type="nvarchar" MaxLength="30" />
+    <Property Name="TrackWebsite_KeyID" Type="int" />
+    <Property Name="TrackWebsite_Val" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="userContacts">
+    <Key>
+      <PropertyRef Name="contactID" />
+    </Key>
+    <Property Name="contactID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="contactType" Type="int" />
+    <Property Name="contactSubject" Type="nvarchar" MaxLength="250" />
+    <Property Name="contactText" Type="nvarchar" MaxLength="2500" />
+    <Property Name="contactEmail" Type="nvarchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="videoClips">
+    <Key>
+      <PropertyRef Name="videoClip_ID" />
+    </Key>
+    <Property Name="videoClip_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="UpVotes" Type="int" />
+    <Property Name="DownVotes" Type="int" />
+    <Property Name="ViewsNum" Type="int" />
+    <Property Name="UploadedBy" Type="int" />
+    <Property Name="UploadedByName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UploadDate" Type="datetime" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="30" />
+    <Property Name="Status" Type="smallint" />
+  </EntityType>
+  <EntityType Name="videoComment">
+    <Key>
+      <PropertyRef Name="videoComment_ID" />
+    </Key>
+    <Property Name="videoComment_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="videoClip_ID" Type="int" />
+    <Property Name="user_ID" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="comment" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ipAddress" Type="nvarchar" MaxLength="20" />
+    <Property Name="postDate" Type="datetime" />
+    <Property Name="userName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="videoFeatured">
+    <Key>
+      <PropertyRef Name="videoFeatured_ID" />
+    </Key>
+    <Property Name="videoFeatured_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="videoClip_ID" Type="int" />
+    <Property Name="ImageSrc" Type="nvarchar" MaxLength="50" />
+    <Property Name="SortOrder" Type="int" />
+  </EntityType>
+  <EntityType Name="VisualSearch">
+    <Key>
+      <PropertyRef Name="VisualSearch_ID" />
+    </Key>
+    <Property Name="VisualSearch_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Artist_Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Genre_ID" Type="int" />
+    <Property Name="ImWidth" Type="int" />
+  </EntityType>
+  <EntityType Name="VoteForSong">
+    <Key>
+      <PropertyRef Name="VoteForSong_ID" />
+    </Key>
+    <Property Name="VoteForSong_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Song1_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="Song1_Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Song2_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="Song2_Title" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_pl_photos_pl_member">
+    <End Role="Members" Type="hypster_tv_Model.Store.Members" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Photos" Type="hypster_tv_Model.Store.Photos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Photos">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pl_playlists_pl_member">
+    <End Role="Members" Type="hypster_tv_Model.Store.Members" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Playlists" Type="hypster_tv_Model.Store.Playlists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Playlists">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_Charts_DeleteChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_chart_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Charts_GetAllCharts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Charts_GetChartByGuid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_chart_guid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Charts_GetMostPopularHypsterSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_top_num" Type="int" Mode="In" />
+    <Parameter Name="p_cut_off_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Charts_SaveChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Chart_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Chart_Category_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Chart_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Chart_Desc" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Chart_Date" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Chart_User_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Chart_Playlist_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Compatibility_CompCheck_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Compatibility_CompCheck_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_id1" Type="int" Mode="In" />
+    <Parameter Name="p_song_id2" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Compatibility_CompCheck_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_id1" Type="int" Mode="In" />
+    <Parameter Name="p_song_id2" Type="int" Mode="In" />
+    <Parameter Name="p_song_id3" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Compatibility_CompCheck_4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_id1" Type="int" Mode="In" />
+    <Parameter Name="p_song_id2" Type="int" Mode="In" />
+    <Parameter Name="p_song_id3" Type="int" Mode="In" />
+    <Parameter Name="p_song_id4" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Compatibility_CompCheck_5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_id1" Type="int" Mode="In" />
+    <Parameter Name="p_song_id2" Type="int" Mode="In" />
+    <Parameter Name="p_song_id3" Type="int" Mode="In" />
+    <Parameter Name="p_song_id4" Type="int" Mode="In" />
+    <Parameter Name="p_song_id5" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CoverContest_GetAllCoverContestSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CoverContestVote_VoteForContest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_vote_for" Type="int" Mode="In" />
+    <Parameter Name="p_ip_adress" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_date_time" Type="datetime" Mode="In" />
+    <Parameter Name="p_new_id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_DynamicContent_DeleteDynamicPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_dynCont_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DynamicContent_GetDynamicPages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_FeaturedPlaylist_DeleteFeaturedPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_FeaturedPlaylist_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_FeaturedPlaylist_ReturnFeaturedPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Festivals_DeleteFestival" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Festival_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Festivals_GetAllFestivals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Festivals_GetFestivalByGuid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_festival_guid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Festivals_SaveFestival" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Festival_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Festival_Category_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Festival_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Festival_Desc" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Festival_Date" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Festival_User_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Festival_Playlist_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_CheckIfAlreadyFollow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_User_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Follower_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_Delete_MemberIFollow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_User_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Member_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_Delete_MyFollower" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_User_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Member_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_GetMembersIFollow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_GetMyFollowers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_GetNumberOfMembersIFollow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Followers_GetNumberOfMyFollowers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_homeSlideshow_ActivateHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_homeSlideshow_DeactivateHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_homeSlideshow_DeleteHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_homeSlideshow_getHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_homeSlideshow_getHomeSlideshowActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_homeSlideshow_homeSlideshowByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Manual_DeleteSlide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Manual_Slide_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Manual_GetActiveManuals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Manual_GetAllManuals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Manual_GetManualByGuid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Manual_Guid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Manual_GetManualByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Manual_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Manual_GetManualSlides" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Manual_ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Manual_UpdateManual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Manual_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Manual_Active" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Manual_UpdateSlide" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Manual_Slide_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Manual_Slide_Header" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Manual_Slide_SortOrder" Type="int" Mode="In" />
+    <Parameter Name="p_Manual_Slide_Active" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_memberMusicGenre_DeleteAllUserMusicGenres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_memberMusicGenre_GetUserMusicGenres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_ConfirmMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_DeactivateCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_DeactivateMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_DeleteDeactivatedUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_EditMemberPublicPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_PublicPage_ID" Type="int" Mode="In" />
+    <Parameter Name="p_showHeader" Type="bit" Mode="In" />
+    <Parameter Name="p_showDescription" Type="bit" Mode="In" />
+    <Parameter Name="p_autoplay" Type="bit" Mode="In" />
+    <Parameter Name="p_showLikeButtton" Type="bit" Mode="In" />
+    <Parameter Name="p_showInfoButton" Type="bit" Mode="In" />
+    <Parameter Name="p_showPhotosButton" Type="bit" Mode="In" />
+    <Parameter Name="p_header" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_description" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_HaFBackgroundColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_BackgroundColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_LeftSectionColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_RightSectionColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_ButtonsBackgroundColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_SongBackgroundColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_TextColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_ButtonsColor" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Playlist_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Playlist_Layout" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_getMemberByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_getMemberByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_getMemberBySessionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_session_id" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_getMemberByUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_username" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMemberPublicPageByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMemberPublicPageByOnlyPlaylistID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMemberPublicPageByPlaylistID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMembersPublicPagesRandom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfMembers" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMembersPublicPagesRandomEx" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfMembers" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMembersRandom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfMembers" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMembersWithGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_genreid" Type="int" Mode="In" />
+    <Parameter Name="p_numOfMembers" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_GetMembersWithSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_songid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_SetUserDefaultPlaylist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberActivityData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+    <Parameter Name="p_LastActivityDate" Type="datetime" Mode="In" />
+    <Parameter Name="p_LastActivityIp" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_updateMemberPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberProfileDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_AutoshareEnabled" Type="bit" Mode="In" />
+    <Parameter Name="p_birth" Type="date" Mode="In" />
+    <Parameter Name="p_city" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_country" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_zipcode" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_sex" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberProfileDetails2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_AutoshareEnabled" Type="bit" Mode="In" />
+    <Parameter Name="p_birth" Type="date" Mode="In" />
+    <Parameter Name="p_city" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_country" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_zipcode" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_sex" Type="tinyint" Mode="In" />
+    <Parameter Name="p_user_interest" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberProfileDetails3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_AutoshareEnabled" Type="bit" Mode="In" />
+    <Parameter Name="p_birth" Type="date" Mode="In" />
+    <Parameter Name="p_city" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_country" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_zipcode" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_sex" Type="tinyint" Mode="In" />
+    <Parameter Name="p_user_interest" Type="int" Mode="In" />
+    <Parameter Name="p_email_optout" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberProfilePicture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_picture_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberTrackData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_member_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_ValidateMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_username" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberVote_GetVotesNum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_vote_for" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MemberVote_VoteFor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_vote_for" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Mix_GetGenresAndCovers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_limiter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Mix_GetRandomMixes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_limiter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MusicGenre_DeleteGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_genre_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MusicGenre_GetMusicGenre_byID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_music_genre_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MusicGenre_GetMusicGenresList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_MusicGenre_GetMusicGenresListPopular" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_MusicGenre_SaveMusicGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Genre_ID" Type="int" Mode="In" />
+    <Parameter Name="p_GenreName" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_User_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Playlist_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsCeleb_GetLatestCelebs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsCelebs_DeleteSeleb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_celeb_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsCelebs_GetCelebByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_celeb_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsComment_GetPostComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsPost_EditPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_id" Type="int" Mode="In" />
+    <Parameter Name="p_post_title" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_post_content" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_post_image" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_post_status" Type="int" Mode="In" />
+    <Parameter Name="p_post_short_content" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_newsPost_GetAllNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_newsPost_GetLatestNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsPost_GetPostByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_guid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_newsPost_GetPostByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Photo_AddUserPhoto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_caption" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p_new_id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_Photo_DeleteUserPhoto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_photo_id" Type="int" Mode="In" />
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Photo_GetUserPhotos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Player_DeletePlayer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_player_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Player_EditPlayer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_player_ID" Type="int" Mode="In" />
+    <Parameter Name="p_player_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_playlist_ID" Type="int" Mode="In" />
+    <Parameter Name="p_BAR_autostart" Type="bit" Mode="In" />
+    <Parameter Name="p_BAR_shufflePlayback" Type="bit" Mode="In" />
+    <Parameter Name="p_BAR_placementOfThePlayer" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_BAR_showPlaylistByDefault" Type="bit" Mode="In" />
+    <Parameter Name="p_BAR_playerSkin" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_CLASSIC_autostart" Type="bit" Mode="In" />
+    <Parameter Name="p_CLASSIC_shufflePlayback" Type="bit" Mode="In" />
+    <Parameter Name="p_CLASSIC_playerSkin" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_RADIO_autostart" Type="bit" Mode="In" />
+    <Parameter Name="p_RADIO_Genre" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_RADIO_Genre_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Player_GetPlayerByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_player_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Player_GetUserPlayersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_AddPlaylistLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_AddPlaylistView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_Delete_Playlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_DeleteSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_song_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_DeleteSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_Edit_Playlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+    <Parameter Name="p_name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_EditPlaylistSongOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_song_id" Type="int" Mode="In" />
+    <Parameter Name="p_sortid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetMostLikedPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Playlist_GetMostViewedPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Playlist_GetNewPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Playlist_GetPlayListDataByPlaylistID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetPlayListDataByPlaylistID_Random" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetPlaylistsILike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetSongsForPlayList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetSongsForPlayList_Random" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetUserPlaylistById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_GetUserPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Playlist_IncrementPlaylistSongOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_playlistLike_CheckPlaylistLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_playlistLike_DeletePlaylistLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_RadioStation_DeleteUserRadioStation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+    <Parameter Name="p_station_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_RadioStation_GetUserRadioStations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Song_GetSongByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_guid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Song_GetSongByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_guid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Songs_Get_MostPopularSong_Random" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Songs_Get_SongComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_song_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Tag_AddNewTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_tag_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_tag_group_ID" Type="int" Mode="In" />
+    <Parameter Name="p_tag_genre_ID" Type="int" Mode="In" />
+    <Parameter Name="p_tag_click_Num" Type="int" Mode="In" />
+    <Parameter Name="p_new_id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_Tag_DeletePlaylistTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_plst_tag_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Tag_GetPlaylistTags" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_playlist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_userContact_Deactivate_UserContactUs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_userContact_Get_ActiveUserContactUs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_userContact_Get_UserContactUs_byID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClip_getVideoByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_videoClipGUID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_AddVideoView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_videoClip_ID" Type="int" Mode="In" />
+    <Parameter Name="p_ViewsNum" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_EditVideo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_videoClip_ID" Type="int" Mode="In" />
+    <Parameter Name="p_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Duration" Type="int" Mode="In" />
+    <Parameter Name="p_Status" Type="int" Mode="In" />
+    <Parameter Name="p_UploadedByName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_getNewVideos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_getNewVideos_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_getNumberOfVideoClips" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_videoClips_getNumberOfVideoClips_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_videoClips_getRandomVideos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_getTopRatedVideos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoClips_getTopRatedVideos_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoComment_GetVideoComments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_video_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoFeatured_DeleteFeaturedVideo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_videoFeatured_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoFeatured_getFeaturedVideoByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_videoFeatured_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_videoFeatured_getFeaturedVideos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_VisualSearch_DeleteArtist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_artist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VisualSearch_getVisualSearchArtistByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_artist_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VisualSearch_getVisualSearchArtistByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_artName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_VisualSearch_getVisualSearchArtists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_VisualSearch_getVisualSearchArtistsByGenreID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_genre_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VisualSearch_getVisualSearchArtistsByGenres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_genre_id1" Type="int" Mode="In" />
+    <Parameter Name="p_genre_id2" Type="int" Mode="In" />
+    <Parameter Name="p_genre_id3" Type="int" Mode="In" />
+    <Parameter Name="p_genre_id4" Type="int" Mode="In" />
+    <Parameter Name="p_genre_id5" Type="int" Mode="In" />
+    <Parameter Name="p_genre_id6" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_VoteForSong_GetActiveVoteForSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="baronsme_hypstertv_wordpressModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="baronsme_hypstertv_wordpressModelStoreContainer">
+    <EntitySet Name="wp_posts" EntityType="baronsme_hypstertv_wordpressModel.Store.wp_posts" store:Type="Tables" Schema="baronsme_hypstertv_wordpress" />
+  </EntityContainer>
+  <EntityType Name="wp_posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="ubigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="post_author" Type="ubigint" Nullable="false" />
+    <Property Name="post_date" Type="datetime" Nullable="false" />
+    <Property Name="post_date_gmt" Type="datetime" Nullable="false" />
+    <Property Name="post_content" Type="longtext" Nullable="false" />
+    <Property Name="post_title" Type="text" Nullable="false" />
+    <Property Name="post_excerpt" Type="text" Nullable="false" />
+    <Property Name="post_status" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="comment_status" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ping_status" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="post_password" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="post_name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="to_ping" Type="text" Nullable="false" />
+    <Property Name="pinged" Type="text" Nullable="false" />
+    <Property Name="post_modified" Type="datetime" Nullable="false" />
+    <Property Name="post_modified_gmt" Type="datetime" Nullable="false" />
+    <Property Name="post_content_filtered" Type="text" Nullable="false" />
+    <Property Name="post_parent" Type="ubigint" Nullable="false" />
+    <Property Name="guid" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="menu_order" Type="int" Nullable="false" />
+    <Property Name="post_type" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="post_mime_type" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="comment_count" Type="bigint" Nullable="false" />
+  </EntityType>
+</Schema>

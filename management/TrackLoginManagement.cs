@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace hypster_tv_DAL
+{
+    public class TrackLoginManagement
+    {
+        //----------------------------------------------------------------------------------------------------------
+        public Hypster_Entities hyDB = new Hypster_Entities();
+        //----------------------------------------------------------------------------------------------------------
+
+
+        public TrackLoginManagement()
+        {
+        }
+
+
+
+    }
+}
