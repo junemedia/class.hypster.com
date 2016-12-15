@@ -218,10 +218,10 @@ namespace hypster_tv_DAL
             hyDB.sp_Members_UpdateMemberProfileDetails(id, name, AutoshareEnabled, birth, city, country, zipcode, sex);
         }
 
-        public void UpdateMemberProfileDetails(string user_name, int id, string name, bool AutoshareEnabled, DateTime birth, string city, string country, string zipcode, byte sex, int user_interest)
+        public void UpdateMemberProfileDetailsNameEmailAdminLevel(string user_name, int id, string name, string email, int adminLevel)
         {   
             CleanMemberFromCache(user_name);
-            hyDB.sp_Members_UpdateMemberProfileDetails2(id, name, AutoshareEnabled, birth, city, country, zipcode, sex, user_interest);
+            hyDB.sp_Members_UpdateMemberProfileDetails2(id, name, email, adminLevel);
         }
 
         public void UpdateMemberProfileDetails(string user_name, int id, string name, bool AutoshareEnabled, DateTime birth, string city, string country, string zipcode, byte sex, int user_interest, int email_optout)
@@ -250,6 +250,13 @@ namespace hypster_tv_DAL
         }
         //----------------------------------------------------------------------------------------------------------
 
+
+        //----------------------------------------------------------------------------------------------------------
+        public void UpdateMemberData(int user_id, string update_stream)
+        {
+            hyDB.sp_Members_UpdateMemberData(user_id, update_stream);
+        }
+        //----------------------------------------------------------------------------------------------------------
 
         #endregion
         //----------------------------------------------------------------------------------------------------------

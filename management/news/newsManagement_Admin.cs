@@ -95,6 +95,27 @@ namespace hypster_tv_DAL
             hyDB.sp_newsPost_SetPostAdID(p_post.post_id, p_post.ad_id);
         }
 
+        //----------------------------------------------------------------------------------------------------------
+        public List<sp_ScheduledPost_GetScheduleByID_Result> GetPlaylistById_Result(int post_id)
+        {
+            List<sp_ScheduledPost_GetScheduleByID_Result> sPost = new List<sp_ScheduledPost_GetScheduleByID_Result>();
+            sPost = hyDB.sp_ScheduledPost_GetScheduleByID(post_id).ToList();
+            return sPost;
+        }
 
+        public ScheduledPost GetSchedulePostByID(int post_id)
+        {
+            ScheduledPost scheduledPost = new ScheduledPost();
+            scheduledPost.id = GetPlaylistById_Result(post_id)[0].id;
+            scheduledPost.post_id = GetPlaylistById_Result(post_id)[0].post_id;
+            scheduledPost.scheduled_date = GetPlaylistById_Result(post_id)[0].scheduled_date;
+            scheduledPost.activated = GetPlaylistById_Result(post_id)[0].activated;
+            return scheduledPost;
+        }
+
+        public void EditSPost(ScheduledPost spost)
+        {
+            hyDB.sp_ScheduledPost_EditSPost(spost.scheduled_date, spost.activated, spost.post_id);
+        }
     }
 }

@@ -509,7 +509,14 @@ namespace hypster_tv_DAL
 
 
 
+        public List<sp_Playlist_GetPlaylistById_Admin_Result> GetPlaylistById(int playlist_id)
+        {
+            List<sp_Playlist_GetPlaylistById_Admin_Result> playlist = new List<sp_Playlist_GetPlaylistById_Admin_Result>();
 
+            playlist = hyDB.sp_Playlist_GetPlaylistById_Admin(playlist_id).ToList();
+
+            return playlist;
+        }
 
 
         //----------------------------------------------------------------------------------------------------------

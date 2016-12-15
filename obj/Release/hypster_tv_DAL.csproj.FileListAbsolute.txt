@@ -1,6 +1,6 @@
-C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\obj\Release\ResolveAssemblyReference.cache
-C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\bin\Release\hypster_tv_DAL.dll.config
-C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\bin\Release\hypster_tv_DAL.dll
-C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\bin\Release\hypster_tv_DAL.pdb
-C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\obj\Release\hypster_tv_DAL.dll
-C:\x_BARONS_MEDIA\Webs_MVC4\hypster_tv\hypster_tv_DAL\obj\Release\hypster_tv_DAL.pdb
+C:\Users\richard\Desktop\projects\class.hypster.com\bin\Release\hypster_tv_DAL.dll.config
+C:\Users\richard\Desktop\projects\class.hypster.com\bin\Release\hypster_tv_DAL.dll
+C:\Users\richard\Desktop\projects\class.hypster.com\bin\Release\hypster_tv_DAL.pdb
+C:\Users\richard\Desktop\projects\class.hypster.com\obj\Release\hypster_tv_DAL.dll
+C:\Users\richard\Desktop\projects\class.hypster.com\obj\Release\hypster_tv_DAL.pdb
+C:\Users\richard\Desktop\projects\class.hypster.com\obj\Release\hypster_tv_DAL.csprojResolveAssemblyReference.cache

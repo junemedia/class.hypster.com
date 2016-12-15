@@ -70,6 +70,8 @@
     <EntitySetMapping Name="newsPosts">
       <EntityTypeMapping TypeName="hypster_tv_Model.newsPost">
         <MappingFragment StoreEntitySet="newsPost">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="MusicPlayer" ColumnName="MusicPlayer" />
           <ScalarProperty Name="post_short_content" ColumnName="post_short_content" />
           <ScalarProperty Name="post_image" ColumnName="post_image" />
           <ScalarProperty Name="post_voteDown" ColumnName="post_voteDown" />
@@ -170,6 +172,9 @@
     <EntitySetMapping Name="Playlists">
       <EntityTypeMapping TypeName="hypster_tv_Model.Playlist">
         <MappingFragment StoreEntitySet="Playlists">
+          <ScalarProperty Name="Shares" ColumnName="Shares" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="Likes" ColumnName="Likes" />
           <ScalarProperty Name="ViewsNum" ColumnName="ViewsNum" />
           <ScalarProperty Name="is_artist_playlist" ColumnName="is_artist_playlist" />
@@ -193,9 +198,7 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_Followers_GetNumberOfMembersIFollow" FunctionName="hypster_tv_Model.Store.sp_Followers_GetNumberOfMembersIFollow" />
     <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberProfileDetails" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberProfileDetails" />
-    <FunctionImportMapping FunctionImportName="sp_newsPost_EditPost" FunctionName="hypster_tv_Model.Store.sp_newsPost_EditPost" />
     <FunctionImportMapping FunctionImportName="sp_Followers_GetMyFollowers" FunctionName="hypster_tv_Model.Store.sp_Followers_GetMyFollowers" />
-    <FunctionImportMapping FunctionImportName="sp_Followers_GetMembersIFollow" FunctionName="hypster_tv_Model.Store.sp_Followers_GetMembersIFollow" />
     <EntitySetMapping Name="Photos">
       <EntityTypeMapping TypeName="hypster_tv_Model.Photo">
         <MappingFragment StoreEntitySet="Photos">
@@ -241,45 +244,6 @@
     <FunctionImportMapping FunctionImportName="sp_Followers_CheckIfAlreadyFollow" FunctionName="hypster_tv_Model.Store.sp_Followers_CheckIfAlreadyFollow" />
     <FunctionImportMapping FunctionImportName="sp_Photo_DeleteUserPhoto" FunctionName="hypster_tv_Model.Store.sp_Photo_DeleteUserPhoto" />
     <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberProfilePicture" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberProfilePicture" />
-    <EntitySetMapping Name="Members">
-      <EntityTypeMapping TypeName="hypster_tv_Model.Member">
-        <MappingFragment StoreEntitySet="Members">
-          <ScalarProperty Name="eCampD" ColumnName="eCampD" />
-          <ScalarProperty Name="user_interest" ColumnName="user_interest" />
-          <ScalarProperty Name="IsOverEighteen" ColumnName="IsOverEighteen" />
-          <ScalarProperty Name="ArtistLevel" ColumnName="ArtistLevel" />
-          <ScalarProperty Name="AutoshareEnabled" ColumnName="AutoshareEnabled" />
-          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-          <ScalarProperty Name="IsSuspended" ColumnName="IsSuspended" />
-          <ScalarProperty Name="OptOutDate" ColumnName="OptOutDate" />
-          <ScalarProperty Name="CoregProcessed" ColumnName="CoregProcessed" />
-          <ScalarProperty Name="LastActivityIp" ColumnName="LastActivityIp" />
-          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-          <ScalarProperty Name="RegistrationIp" ColumnName="RegistrationIp" />
-          <ScalarProperty Name="widget_views" ColumnName="widget_views" />
-          <ScalarProperty Name="email_optout" ColumnName="email_optout" />
-          <ScalarProperty Name="email_confirmed" ColumnName="email_confirmed" />
-          <ScalarProperty Name="autoplay" ColumnName="autoplay" />
-          <ScalarProperty Name="is_new_artist" ColumnName="is_new_artist" />
-          <ScalarProperty Name="profile_pic_id" ColumnName="profile_pic_id" />
-          <ScalarProperty Name="active_playlist" ColumnName="active_playlist" />
-          <ScalarProperty Name="israndomplay" ColumnName="israndomplay" />
-          <ScalarProperty Name="trackcount" ColumnName="trackcount" />
-          <ScalarProperty Name="regdate" ColumnName="regdate" />
-          <ScalarProperty Name="introduce" ColumnName="introduce" />
-          <ScalarProperty Name="birth" ColumnName="birth" />
-          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
-          <ScalarProperty Name="sex" ColumnName="sex" />
-          <ScalarProperty Name="city" ColumnName="city" />
-          <ScalarProperty Name="country" ColumnName="country" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberActivityData" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberActivityData" />
     <FunctionImportMapping FunctionImportName="sp_Followers_Delete_MemberIFollow" FunctionName="hypster_tv_Model.Store.sp_Followers_Delete_MemberIFollow" />
     <FunctionImportMapping FunctionImportName="sp_Followers_Delete_MyFollower" FunctionName="hypster_tv_Model.Store.sp_Followers_Delete_MyFollower" />
@@ -596,6 +560,7 @@
     <EntitySetMapping Name="homeSlideshows">
       <EntityTypeMapping TypeName="hypster_tv_Model.homeSlideshow">
         <MappingFragment StoreEntitySet="homeSlideshow">
+          <ScalarProperty Name="isFeatured" ColumnName="isFeatured" />
           <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
@@ -819,6 +784,7 @@
     <EntitySetMapping Name="FeaturedPlaylists">
       <EntityTypeMapping TypeName="hypster_tv_Model.FeaturedPlaylist">
         <MappingFragment StoreEntitySet="FeaturedPlaylists">
+          <ScalarProperty Name="FeaturedPlaylist_Guid" ColumnName="FeaturedPlaylist_Guid" />
           <ScalarProperty Name="FeaturedPlaylist_CreateDate" ColumnName="FeaturedPlaylist_CreateDate" />
           <ScalarProperty Name="FeaturedPlaylist_PlaylistName" ColumnName="FeaturedPlaylist_PlaylistName" />
           <ScalarProperty Name="FeaturedPlaylist_UserID" ColumnName="FeaturedPlaylist_UserID" />
@@ -828,7 +794,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_FeaturedPlaylist_DeleteFeaturedPlaylists" FunctionName="hypster_tv_Model.Store.sp_FeaturedPlaylist_DeleteFeaturedPlaylists" />
-    <FunctionImportMapping FunctionImportName="sp_FeaturedPlaylist_ReturnFeaturedPlaylists" FunctionName="hypster_tv_Model.Store.sp_FeaturedPlaylist_ReturnFeaturedPlaylists" />
     <FunctionImportMapping FunctionImportName="sp_Charts_GetMostPopularHypsterSongs" FunctionName="hypster_tv_Model.Store.sp_Charts_GetMostPopularHypsterSongs">
       <ResultMapping>
         <ComplexTypeMapping TypeName="hypster_tv_Model.MostPopularHypsterSongs_Result">
@@ -857,6 +822,7 @@
     <EntitySetMapping Name="TrackWebsites">
       <EntityTypeMapping TypeName="hypster_tv_Model.TrackWebsite">
         <MappingFragment StoreEntitySet="TrackWebsite">
+          <ScalarProperty Name="TrackDate" ColumnName="TrackDate" />
           <ScalarProperty Name="TrackWebsite_Val" ColumnName="TrackWebsite_Val" />
           <ScalarProperty Name="TrackWebsite_KeyID" ColumnName="TrackWebsite_KeyID" />
           <ScalarProperty Name="TrackWebsite_Key" ColumnName="TrackWebsite_Key" />
@@ -920,5 +886,285 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_Tag_DeletePlaylistTag" FunctionName="hypster_tv_Model.Store.sp_Tag_DeletePlaylistTag" />
+    <FunctionImportMapping FunctionImportName="sp_sysHypster_AddNewInstall" FunctionName="hypster_tv_Model.Store.sp_sysHypster_AddNewInstall" />
+    <FunctionImportMapping FunctionImportName="sp_sysHypster_AddNewUninstall" FunctionName="hypster_tv_Model.Store.sp_sysHypster_AddNewUninstall" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_GetPopularTags" FunctionName="hypster_tv_Model.Store.sp_Tag_GetPopularTags" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_GetTagByName" FunctionName="hypster_tv_Model.Store.sp_Tag_GetTagByName" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_GetPlaylistsByTagId" FunctionName="hypster_tv_Model.Store.sp_Tag_GetPlaylistsByTagId" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_IncrementPopularTag" FunctionName="hypster_tv_Model.Store.sp_Tag_IncrementPopularTag" />
+    <EntitySetMapping Name="Tag_News">
+      <EntityTypeMapping TypeName="hypster_tv_Model.Tag_News">
+        <MappingFragment StoreEntitySet="Tag_News">
+          <ScalarProperty Name="Tag_Click_Num" ColumnName="Tag_Click_Num" />
+          <ScalarProperty Name="Article_ID" ColumnName="Article_ID" />
+          <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
+          <ScalarProperty Name="Tag_News_ID" ColumnName="Tag_News_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Tag_GetNewsTags" FunctionName="hypster_tv_Model.Store.sp_Tag_GetNewsTags">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_Tag_GetNewsTags_Result">
+          <ScalarProperty Name="Tag_News_ID" ColumnName="Tag_News_ID" />
+          <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
+          <ScalarProperty Name="Article_ID" ColumnName="Article_ID" />
+          <ScalarProperty Name="Tag_Click_Num" ColumnName="Tag_Click_Num" />
+          <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Tag_DeleteNewsTag" FunctionName="hypster_tv_Model.Store.sp_Tag_DeleteNewsTag" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_GetNewsByTagId" FunctionName="hypster_tv_Model.Store.sp_Tag_GetNewsByTagId" />
+    <EntitySetMapping Name="FeaturedContents">
+      <EntityTypeMapping TypeName="hypster_tv_Model.FeaturedContent">
+        <MappingFragment StoreEntitySet="FeaturedContent">
+          <ScalarProperty Name="fc_href_mobile" ColumnName="fc_href_mobile" />
+          <ScalarProperty Name="fc_active" ColumnName="fc_active" />
+          <ScalarProperty Name="fc_type" ColumnName="fc_type" />
+          <ScalarProperty Name="fc_image" ColumnName="fc_image" />
+          <ScalarProperty Name="fc_name" ColumnName="fc_name" />
+          <ScalarProperty Name="fc_href" ColumnName="fc_href" />
+          <ScalarProperty Name="fc_ID" ColumnName="fc_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_FeaturedContent_ReturnFeaturedContent" FunctionName="hypster_tv_Model.Store.sp_FeaturedContent_ReturnFeaturedContent" />
+    <FunctionImportMapping FunctionImportName="sp_FeaturedContent_delete_fc" FunctionName="hypster_tv_Model.Store.sp_FeaturedContent_delete_fc" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_getFeaturedSlideshowActive" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_getFeaturedSlideshowActive" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_DeleteFeaturedSlideshow" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_DeleteFeaturedSlideshow" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_AddFeaturedSlideshow" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_AddFeaturedSlideshow" />
+    <FunctionImportMapping FunctionImportName="sp_FeaturedPlaylist_ReturnFeaturedPlaylists" FunctionName="hypster_tv_Model.Store.sp_FeaturedPlaylist_ReturnFeaturedPlaylists">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.FeaturedPlaylist_Result">
+          <ScalarProperty Name="FeaturedPlaylist_ID" ColumnName="FeaturedPlaylist_ID" />
+          <ScalarProperty Name="FeaturedPlaylist_PlaylistID" ColumnName="FeaturedPlaylist_PlaylistID" />
+          <ScalarProperty Name="FeaturedPlaylist_UserID" ColumnName="FeaturedPlaylist_UserID" />
+          <ScalarProperty Name="FeaturedPlaylist_PlaylistName" ColumnName="FeaturedPlaylist_PlaylistName" />
+          <ScalarProperty Name="FeaturedPlaylist_CreateDate" ColumnName="FeaturedPlaylist_CreateDate" />
+          <ScalarProperty Name="FeaturedPlaylist_Guid" ColumnName="FeaturedPlaylist_Guid" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="ViewsNum" ColumnName="ViewsNum" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Compatibility_CompCheck_1_Ex" FunctionName="hypster_tv_Model.Store.sp_Compatibility_CompCheck_1_Ex">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_Compatibility_CompCheck_Result_Ex">
+          <ScalarProperty Name="playlist_id" ColumnName="playlist_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="SongsMatching" ColumnName="SongsMatching" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ViewsNum" ColumnName="ViewsNum" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="hypster_tv_Model.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="adminLevel" ColumnName="adminLevel" />
+          <ScalarProperty Name="eCampD" ColumnName="eCampD" />
+          <ScalarProperty Name="user_interest" ColumnName="user_interest" />
+          <ScalarProperty Name="IsOverEighteen" ColumnName="IsOverEighteen" />
+          <ScalarProperty Name="ArtistLevel" ColumnName="ArtistLevel" />
+          <ScalarProperty Name="AutoshareEnabled" ColumnName="AutoshareEnabled" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="IsSuspended" ColumnName="IsSuspended" />
+          <ScalarProperty Name="OptOutDate" ColumnName="OptOutDate" />
+          <ScalarProperty Name="CoregProcessed" ColumnName="CoregProcessed" />
+          <ScalarProperty Name="LastActivityIp" ColumnName="LastActivityIp" />
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="RegistrationIp" ColumnName="RegistrationIp" />
+          <ScalarProperty Name="widget_views" ColumnName="widget_views" />
+          <ScalarProperty Name="email_optout" ColumnName="email_optout" />
+          <ScalarProperty Name="email_confirmed" ColumnName="email_confirmed" />
+          <ScalarProperty Name="autoplay" ColumnName="autoplay" />
+          <ScalarProperty Name="is_new_artist" ColumnName="is_new_artist" />
+          <ScalarProperty Name="profile_pic_id" ColumnName="profile_pic_id" />
+          <ScalarProperty Name="active_playlist" ColumnName="active_playlist" />
+          <ScalarProperty Name="israndomplay" ColumnName="israndomplay" />
+          <ScalarProperty Name="trackcount" ColumnName="trackcount" />
+          <ScalarProperty Name="regdate" ColumnName="regdate" />
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="birth" ColumnName="birth" />
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Followers_GetMembersIFollow" FunctionName="hypster_tv_Model.Store.sp_Followers_GetMembersIFollow" />
+    <EntitySetMapping Name="Dead_Link">
+      <EntityTypeMapping TypeName="hypster_tv_Model.Dead_Link">
+        <MappingFragment StoreEntitySet="Dead_Link">
+          <ScalarProperty Name="DL_ErrorNum" ColumnName="DL_ErrorNum" />
+          <ScalarProperty Name="DL_Song_ID" ColumnName="DL_Song_ID" />
+          <ScalarProperty Name="DL_Song_Guid" ColumnName="DL_Song_Guid" />
+          <ScalarProperty Name="DL_Member_ID" ColumnName="DL_Member_ID" />
+          <ScalarProperty Name="Dead_Link_ID" ColumnName="Dead_Link_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeadLink_SubmitDeadLink" FunctionName="hypster_tv_Model.Store.sp_DeadLink_SubmitDeadLink" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_GetSongsForPlayListDeadLinks" FunctionName="hypster_tv_Model.Store.sp_Playlist_GetSongsForPlayListDeadLinks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_Playlist_GetSongsDeadLinks_Result">
+          <ScalarProperty Name="playlist_track_id" ColumnName="playlist_track_id" />
+          <ScalarProperty Name="sortid" ColumnName="sortid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Artist" ColumnName="Artist" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="songurl" ColumnName="songurl" />
+          <ScalarProperty Name="trackcount" ColumnName="trackcount" />
+          <ScalarProperty Name="adddate" ColumnName="adddate" />
+          <ScalarProperty Name="fileid" ColumnName="fileid" />
+          <ScalarProperty Name="artist_track_id" ColumnName="artist_track_id" />
+          <ScalarProperty Name="copyright" ColumnName="copyright" />
+          <ScalarProperty Name="FullTitle" ColumnName="FullTitle" />
+          <ScalarProperty Name="StrippedTitle" ColumnName="StrippedTitle" />
+          <ScalarProperty Name="YoutubeId" ColumnName="YoutubeId" />
+          <ScalarProperty Name="YoutubeProcessed" ColumnName="YoutubeProcessed" />
+          <ScalarProperty Name="like_count" ColumnName="like_count" />
+          <ScalarProperty Name="UploaderId" ColumnName="UploaderId" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Syndication" ColumnName="Syndication" />
+          <ScalarProperty Name="Dead_Link_ID" ColumnName="Dead_Link_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Members_updateMemberUsername" FunctionName="hypster_tv_Model.Store.sp_Members_updateMemberUsername" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_UpdatePlaylistDesc" FunctionName="hypster_tv_Model.Store.sp_Playlist_UpdatePlaylistDesc" />
+    <FunctionImportMapping FunctionImportName="sp_FeaturedPlaylist_FeaturedPlaylistByGuid" FunctionName="hypster_tv_Model.Store.sp_FeaturedPlaylist_FeaturedPlaylistByGuid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.FeaturedPlaylist_Result">
+          <ScalarProperty Name="FeaturedPlaylist_ID" ColumnName="FeaturedPlaylist_ID" />
+          <ScalarProperty Name="FeaturedPlaylist_PlaylistID" ColumnName="FeaturedPlaylist_PlaylistID" />
+          <ScalarProperty Name="FeaturedPlaylist_UserID" ColumnName="FeaturedPlaylist_UserID" />
+          <ScalarProperty Name="FeaturedPlaylist_PlaylistName" ColumnName="FeaturedPlaylist_PlaylistName" />
+          <ScalarProperty Name="FeaturedPlaylist_CreateDate" ColumnName="FeaturedPlaylist_CreateDate" />
+          <ScalarProperty Name="FeaturedPlaylist_Guid" ColumnName="FeaturedPlaylist_Guid" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="ViewsNum" ColumnName="ViewsNum" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Charts_GetTopCharts" FunctionName="hypster_tv_Model.Store.sp_Charts_GetTopCharts" />
+    <FunctionImportMapping FunctionImportName="sp_Festivals_GetTopFestivals" FunctionName="hypster_tv_Model.Store.sp_Festivals_GetTopFestivals" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_GetMostLikedPlaylistsAdmin" FunctionName="hypster_tv_Model.Store.sp_Playlist_GetMostLikedPlaylistsAdmin" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_GetMostViewedPlaylistsAdmin" FunctionName="hypster_tv_Model.Store.sp_Playlist_GetMostViewedPlaylistsAdmin" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_GetWithDescPlaylists" FunctionName="hypster_tv_Model.Store.sp_Playlist_GetWithDescPlaylists" />
+    <EntitySetMapping Name="ArtistCategories">
+      <EntityTypeMapping TypeName="hypster_tv_Model.ArtistCategory">
+        <MappingFragment StoreEntitySet="ArtistCategories">
+          <ScalarProperty Name="isConfirmed" ColumnName="isConfirmed" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_artist_GetAllArtists" FunctionName="hypster_tv_Model.Store.sp_artist_GetAllArtists" />
+    <FunctionImportMapping FunctionImportName="sp_artist_GetArtistByName" FunctionName="hypster_tv_Model.Store.sp_artist_GetArtistByName" />
+    <EntitySetMapping Name="MemberSongSkips">
+      <EntityTypeMapping TypeName="hypster_tv_Model.MemberSongSkip">
+        <MappingFragment StoreEntitySet="MemberSongSkip">
+          <ScalarProperty Name="SongSkip_Date" ColumnName="SongSkip_Date" />
+          <ScalarProperty Name="SongSkip_SongGuid" ColumnName="SongSkip_SongGuid" />
+          <ScalarProperty Name="SongSkip_SongID" ColumnName="SongSkip_SongID" />
+          <ScalarProperty Name="SongSkip_UserID" ColumnName="SongSkip_UserID" />
+          <ScalarProperty Name="SongSkip_ID" ColumnName="SongSkip_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_artist_GetTopNotConfirmedArtists" FunctionName="hypster_tv_Model.Store.sp_artist_GetTopNotConfirmedArtists" />
+    <FunctionImportMapping FunctionImportName="sp_artist_ConfirmArtist" FunctionName="hypster_tv_Model.Store.sp_artist_ConfirmArtist" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_UpdatePlaylistShares" FunctionName="hypster_tv_Model.Store.sp_Playlist_UpdatePlaylistShares" />
+    <FunctionImportMapping FunctionImportName="sp_artist_SearchForArtist" FunctionName="hypster_tv_Model.Store.sp_artist_SearchForArtist" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_GetPopularNewsTags" FunctionName="hypster_tv_Model.Store.sp_Tag_GetPopularNewsTags">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_Tag_GetPopularNewsTags_Result">
+          <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
+          <ScalarProperty Name="Tags_Num" ColumnName="Tags_Num" />
+          <ScalarProperty Name="TagTBL" ColumnName="TagTBL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Members_GetNewMembersRegistrations" FunctionName="hypster_tv_Model.Store.sp_Members_GetNewMembersRegistrations" />
+    <FunctionImportMapping FunctionImportName="sp_sysHypster_GetSplashID" FunctionName="hypster_tv_Model.Store.sp_sysHypster_GetSplashID" />
+    <FunctionImportMapping FunctionImportName="sp_sysHypster_SetSplashID" FunctionName="hypster_tv_Model.Store.sp_sysHypster_SetSplashID" />
+    <FunctionImportMapping FunctionImportName="sp_Tag_SearchTags" FunctionName="hypster_tv_Model.Store.sp_Tag_SearchTags" />
+    <FunctionImportMapping FunctionImportName="sp_newsPost_GetRelatedNews" FunctionName="hypster_tv_Model.Store.sp_newsPost_GetRelatedNews" />
+    <FunctionImportMapping FunctionImportName="sp_newsPost_EditPost" FunctionName="hypster_tv_Model.Store.sp_newsPost_EditPost" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_MoveSlideUp" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_MoveSlideUp" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_MoveSlideDown" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_MoveSlideDown" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_IncAllSlides" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_IncAllSlides" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_UpdateSortOrder" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_UpdateSortOrder" />
+    <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberEmailConfirmed" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberEmailConfirmed" />
+    <EntitySetMapping Name="ListenHistories">
+      <EntityTypeMapping TypeName="hypster_tv_Model.ListenHistory">
+        <MappingFragment StoreEntitySet="ListenHistory">
+          <ScalarProperty Name="ListenHistory_Date" ColumnName="ListenHistory_Date" />
+          <ScalarProperty Name="ListenHistory_Title" ColumnName="ListenHistory_Title" />
+          <ScalarProperty Name="ListenHistory_URL" ColumnName="ListenHistory_URL" />
+          <ScalarProperty Name="ListenHistory_UserID" ColumnName="ListenHistory_UserID" />
+          <ScalarProperty Name="ListenHistory_GUID" ColumnName="ListenHistory_GUID" />
+          <ScalarProperty Name="ListenHistory_ID" ColumnName="ListenHistory_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ListenHistory_GetLatestListenHistoryUser" FunctionName="hypster_tv_Model.Store.sp_ListenHistory_GetLatestListenHistoryUser" />
+    <FunctionImportMapping FunctionImportName="sp_ListenHistory_GetListenHistoryUser" FunctionName="hypster_tv_Model.Store.sp_ListenHistory_GetListenHistoryUser" />
+    <FunctionImportMapping FunctionImportName="sp_Songs_Get_MarkDeadLink" FunctionName="hypster_tv_Model.Store.sp_Songs_Get_MarkDeadLink" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_SearchPlaylistByDesc" FunctionName="hypster_tv_Model.Store.sp_Playlist_SearchPlaylistByDesc" />
+    <FunctionImportMapping FunctionImportName="sp_newsPost_SetPostAdID" FunctionName="hypster_tv_Model.Store.sp_newsPost_SetPostAdID" />
+    <EntitySetMapping Name="Sitemap_Content">
+      <EntityTypeMapping TypeName="hypster_tv_Model.Sitemap_Content">
+        <MappingFragment StoreEntitySet="Sitemap_Content">
+          <ScalarProperty Name="Sitemap_Updated" ColumnName="Sitemap_Updated" />
+          <ScalarProperty Name="Sitemap_URL" ColumnName="Sitemap_URL" />
+          <ScalarProperty Name="Sitemap_ID" ColumnName="Sitemap_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SitemapManagement_GetSitemapContent" FunctionName="hypster_tv_Model.Store.sp_SitemapManagement_GetSitemapContent" />
+    <FunctionImportMapping FunctionImportName="sp_SitemapManagement_UpdateDateChanged" FunctionName="hypster_tv_Model.Store.sp_SitemapManagement_UpdateDateChanged" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_GetPlaylistById_Admin" FunctionName="hypster_tv_Model.Store.sp_Playlist_GetPlaylistById_Admin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_Playlist_GetPlaylistById_Admin_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_artist_playlist" ColumnName="is_artist_playlist" />
+          <ScalarProperty Name="ViewsNum" ColumnName="ViewsNum" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Shares" ColumnName="Shares" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ScheduledPost_GetScheduleByID" FunctionName="hypster_tv_Model.Store.sp_ScheduledPost_GetScheduleByID" />
+    <EntitySetMapping Name="ScheduledPost">
+      <EntityTypeMapping TypeName="hypster_tv_Model.ScheduledPost">
+        <MappingFragment StoreEntitySet="ScheduledPost">
+          <ScalarProperty Name="activated" ColumnName="activated" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="scheduled_date" ColumnName="scheduled_date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ScheduledPost_EditSPost" FunctionName="hypster_tv_Model.Store.sp_ScheduledPost_EditSPost" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_UpdateHomeSlideshow" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_UpdateHomeSlideshow" />
+    <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberData" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberData" />
   </EntityContainerMapping>
 </Mapping>

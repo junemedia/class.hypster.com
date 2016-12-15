@@ -139,6 +139,7 @@
     <Compile Include="objects\VoteForSong.cs" />
     <Compile Include="objects\youtube_song\Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="objects\ScheduledPost.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -151,6 +152,7 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

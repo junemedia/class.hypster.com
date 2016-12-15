@@ -963,6 +963,7 @@
     <EntitySetMapping Name="Members">
       <EntityTypeMapping TypeName="hypster_tv_Model.Member">
         <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="adminLevel" ColumnName="adminLevel" />
           <ScalarProperty Name="eCampD" ColumnName="eCampD" />
           <ScalarProperty Name="user_interest" ColumnName="user_interest" />
           <ScalarProperty Name="IsOverEighteen" ColumnName="IsOverEighteen" />
@@ -1134,5 +1135,34 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_SitemapManagement_GetSitemapContent" FunctionName="hypster_tv_Model.Store.sp_SitemapManagement_GetSitemapContent" />
     <FunctionImportMapping FunctionImportName="sp_SitemapManagement_UpdateDateChanged" FunctionName="hypster_tv_Model.Store.sp_SitemapManagement_UpdateDateChanged" />
+    <FunctionImportMapping FunctionImportName="sp_Playlist_GetPlaylistById_Admin" FunctionName="hypster_tv_Model.Store.sp_Playlist_GetPlaylistById_Admin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_Playlist_GetPlaylistById_Admin_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_artist_playlist" ColumnName="is_artist_playlist" />
+          <ScalarProperty Name="ViewsNum" ColumnName="ViewsNum" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Shares" ColumnName="Shares" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ScheduledPost_GetScheduleByID" FunctionName="hypster_tv_Model.Store.sp_ScheduledPost_GetScheduleByID" />
+    <EntitySetMapping Name="ScheduledPost">
+      <EntityTypeMapping TypeName="hypster_tv_Model.ScheduledPost">
+        <MappingFragment StoreEntitySet="ScheduledPost">
+          <ScalarProperty Name="activated" ColumnName="activated" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="scheduled_date" ColumnName="scheduled_date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ScheduledPost_EditSPost" FunctionName="hypster_tv_Model.Store.sp_ScheduledPost_EditSPost" />
   </EntityContainerMapping>
 </Mapping>

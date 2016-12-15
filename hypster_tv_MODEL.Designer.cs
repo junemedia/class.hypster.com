@@ -872,6 +872,22 @@ namespace hypster_tv_DAL
             }
         }
         private ObjectSet<Sitemap_Content> _Sitemap_Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ScheduledPost> ScheduledPost
+        {
+            get
+            {
+                if ((_ScheduledPost == null))
+                {
+                    _ScheduledPost = base.CreateObjectSet<ScheduledPost>("ScheduledPost");
+                }
+                return _ScheduledPost;
+            }
+        }
+        private ObjectSet<ScheduledPost> _ScheduledPost;
 
         #endregion
 
@@ -1275,6 +1291,14 @@ namespace hypster_tv_DAL
         public void AddToSitemap_Content(Sitemap_Content sitemap_Content)
         {
             base.AddObject("Sitemap_Content", sitemap_Content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ScheduledPost EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToScheduledPost(ScheduledPost scheduledPost)
+        {
+            base.AddObject("ScheduledPost", scheduledPost);
         }
 
         #endregion
@@ -5088,14 +5112,9 @@ namespace hypster_tv_DAL
         /// </summary>
         /// <param name="p_id">No Metadata Documentation available.</param>
         /// <param name="p_name">No Metadata Documentation available.</param>
-        /// <param name="p_AutoshareEnabled">No Metadata Documentation available.</param>
-        /// <param name="p_birth">No Metadata Documentation available.</param>
-        /// <param name="p_city">No Metadata Documentation available.</param>
-        /// <param name="p_country">No Metadata Documentation available.</param>
-        /// <param name="p_zipcode">No Metadata Documentation available.</param>
-        /// <param name="p_sex">No Metadata Documentation available.</param>
-        /// <param name="p_user_interest">No Metadata Documentation available.</param>
-        public int sp_Members_UpdateMemberProfileDetails2(Nullable<global::System.Int32> p_id, global::System.String p_name, Nullable<global::System.Boolean> p_AutoshareEnabled, Nullable<global::System.DateTime> p_birth, global::System.String p_city, global::System.String p_country, global::System.String p_zipcode, Nullable<global::System.Byte> p_sex, Nullable<global::System.Int32> p_user_interest)
+        /// <param name="p_email">No Metadata Documentation available.</param>
+        /// <param name="p_adminLevel">No Metadata Documentation available.</param>
+        public int sp_Members_UpdateMemberProfileDetails2(Nullable<global::System.Int32> p_id, global::System.String p_name, global::System.String p_email, Nullable<global::System.Int32> p_adminLevel)
         {
             ObjectParameter p_idParameter;
             if (p_id.HasValue)
@@ -5117,77 +5136,27 @@ namespace hypster_tv_DAL
                 p_nameParameter = new ObjectParameter("p_name", typeof(global::System.String));
             }
     
-            ObjectParameter p_AutoshareEnabledParameter;
-            if (p_AutoshareEnabled.HasValue)
+            ObjectParameter p_emailParameter;
+            if (p_email != null)
             {
-                p_AutoshareEnabledParameter = new ObjectParameter("p_AutoshareEnabled", p_AutoshareEnabled);
+                p_emailParameter = new ObjectParameter("p_email", p_email);
             }
             else
             {
-                p_AutoshareEnabledParameter = new ObjectParameter("p_AutoshareEnabled", typeof(global::System.Boolean));
+                p_emailParameter = new ObjectParameter("p_email", typeof(global::System.String));
             }
     
-            ObjectParameter p_birthParameter;
-            if (p_birth.HasValue)
+            ObjectParameter p_adminLevelParameter;
+            if (p_adminLevel.HasValue)
             {
-                p_birthParameter = new ObjectParameter("p_birth", p_birth);
+                p_adminLevelParameter = new ObjectParameter("p_adminLevel", p_adminLevel);
             }
             else
             {
-                p_birthParameter = new ObjectParameter("p_birth", typeof(global::System.DateTime));
+                p_adminLevelParameter = new ObjectParameter("p_adminLevel", typeof(global::System.Int32));
             }
     
-            ObjectParameter p_cityParameter;
-            if (p_city != null)
-            {
-                p_cityParameter = new ObjectParameter("p_city", p_city);
-            }
-            else
-            {
-                p_cityParameter = new ObjectParameter("p_city", typeof(global::System.String));
-            }
-    
-            ObjectParameter p_countryParameter;
-            if (p_country != null)
-            {
-                p_countryParameter = new ObjectParameter("p_country", p_country);
-            }
-            else
-            {
-                p_countryParameter = new ObjectParameter("p_country", typeof(global::System.String));
-            }
-    
-            ObjectParameter p_zipcodeParameter;
-            if (p_zipcode != null)
-            {
-                p_zipcodeParameter = new ObjectParameter("p_zipcode", p_zipcode);
-            }
-            else
-            {
-                p_zipcodeParameter = new ObjectParameter("p_zipcode", typeof(global::System.String));
-            }
-    
-            ObjectParameter p_sexParameter;
-            if (p_sex.HasValue)
-            {
-                p_sexParameter = new ObjectParameter("p_sex", p_sex);
-            }
-            else
-            {
-                p_sexParameter = new ObjectParameter("p_sex", typeof(global::System.Byte));
-            }
-    
-            ObjectParameter p_user_interestParameter;
-            if (p_user_interest.HasValue)
-            {
-                p_user_interestParameter = new ObjectParameter("p_user_interest", p_user_interest);
-            }
-            else
-            {
-                p_user_interestParameter = new ObjectParameter("p_user_interest", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction("sp_Members_UpdateMemberProfileDetails2", p_idParameter, p_nameParameter, p_AutoshareEnabledParameter, p_birthParameter, p_cityParameter, p_countryParameter, p_zipcodeParameter, p_sexParameter, p_user_interestParameter);
+            return base.ExecuteFunction("sp_Members_UpdateMemberProfileDetails2", p_idParameter, p_nameParameter, p_emailParameter, p_adminLevelParameter);
         }
     
         /// <summary>
@@ -7918,6 +7887,156 @@ namespace hypster_tv_DAL
             }
     
             return base.ExecuteFunction("sp_SitemapManagement_UpdateDateChanged", p_Sitemap_UpdatedParameter, p_Sitemap_IDParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_playlist_id">No Metadata Documentation available.</param>
+        public ObjectResult<sp_Playlist_GetPlaylistById_Admin_Result> sp_Playlist_GetPlaylistById_Admin(Nullable<global::System.Int32> p_playlist_id)
+        {
+            ObjectParameter p_playlist_idParameter;
+            if (p_playlist_id.HasValue)
+            {
+                p_playlist_idParameter = new ObjectParameter("p_playlist_id", p_playlist_id);
+            }
+            else
+            {
+                p_playlist_idParameter = new ObjectParameter("p_playlist_id", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_Playlist_GetPlaylistById_Admin_Result>("sp_Playlist_GetPlaylistById_Admin", p_playlist_idParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_post_id">No Metadata Documentation available.</param>
+        public ObjectResult<sp_ScheduledPost_GetScheduleByID_Result> sp_ScheduledPost_GetScheduleByID(Nullable<global::System.Int32> p_post_id)
+        {
+            ObjectParameter p_post_idParameter;
+            if (p_post_id.HasValue)
+            {
+                p_post_idParameter = new ObjectParameter("p_post_id", p_post_id);
+            }
+            else
+            {
+                p_post_idParameter = new ObjectParameter("p_post_id", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<sp_ScheduledPost_GetScheduleByID_Result>("sp_ScheduledPost_GetScheduleByID", p_post_idParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="scheduled_date">No Metadata Documentation available.</param>
+        /// <param name="activated">No Metadata Documentation available.</param>
+        /// <param name="p_post_id">No Metadata Documentation available.</param>
+        public int sp_ScheduledPost_EditSPost(Nullable<global::System.DateTime> scheduled_date, Nullable<global::System.Int32> activated, Nullable<global::System.Int32> p_post_id)
+        {
+            ObjectParameter scheduled_dateParameter;
+            if (scheduled_date.HasValue)
+            {
+                scheduled_dateParameter = new ObjectParameter("scheduled_date", scheduled_date);
+            }
+            else
+            {
+                scheduled_dateParameter = new ObjectParameter("scheduled_date", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter activatedParameter;
+            if (activated.HasValue)
+            {
+                activatedParameter = new ObjectParameter("activated", activated);
+            }
+            else
+            {
+                activatedParameter = new ObjectParameter("activated", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter p_post_idParameter;
+            if (p_post_id.HasValue)
+            {
+                p_post_idParameter = new ObjectParameter("p_post_id", p_post_id);
+            }
+            else
+            {
+                p_post_idParameter = new ObjectParameter("p_post_id", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_ScheduledPost_EditSPost", scheduled_dateParameter, activatedParameter, p_post_idParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_homeSlideshow_ID">No Metadata Documentation available.</param>
+        /// <param name="href">No Metadata Documentation available.</param>
+        /// <param name="imageSrc">No Metadata Documentation available.</param>
+        public int sp_homeSlideshow_UpdateHomeSlideshow(Nullable<global::System.Int32> p_homeSlideshow_ID, global::System.String href, global::System.String imageSrc)
+        {
+            ObjectParameter p_homeSlideshow_IDParameter;
+            if (p_homeSlideshow_ID.HasValue)
+            {
+                p_homeSlideshow_IDParameter = new ObjectParameter("p_homeSlideshow_ID", p_homeSlideshow_ID);
+            }
+            else
+            {
+                p_homeSlideshow_IDParameter = new ObjectParameter("p_homeSlideshow_ID", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter hrefParameter;
+            if (href != null)
+            {
+                hrefParameter = new ObjectParameter("href", href);
+            }
+            else
+            {
+                hrefParameter = new ObjectParameter("href", typeof(global::System.String));
+            }
+    
+            ObjectParameter imageSrcParameter;
+            if (imageSrc != null)
+            {
+                imageSrcParameter = new ObjectParameter("ImageSrc", imageSrc);
+            }
+            else
+            {
+                imageSrcParameter = new ObjectParameter("ImageSrc", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_homeSlideshow_UpdateHomeSlideshow", p_homeSlideshow_IDParameter, hrefParameter, imageSrcParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_id">No Metadata Documentation available.</param>
+        /// <param name="p_update_stream">No Metadata Documentation available.</param>
+        public int sp_Members_UpdateMemberData(Nullable<global::System.Int32> p_id, global::System.String p_update_stream)
+        {
+            ObjectParameter p_idParameter;
+            if (p_id.HasValue)
+            {
+                p_idParameter = new ObjectParameter("p_id", p_id);
+            }
+            else
+            {
+                p_idParameter = new ObjectParameter("p_id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter p_update_streamParameter;
+            if (p_update_stream != null)
+            {
+                p_update_streamParameter = new ObjectParameter("p_update_stream", p_update_stream);
+            }
+            else
+            {
+                p_update_streamParameter = new ObjectParameter("p_update_stream", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("sp_Members_UpdateMemberData", p_idParameter, p_update_streamParameter);
         }
 
         #endregion
@@ -11133,7 +11252,8 @@ namespace hypster_tv_DAL
         /// <param name="isSuspended">Initial value of the IsSuspended property.</param>
         /// <param name="autoshareEnabled">Initial value of the AutoshareEnabled property.</param>
         /// <param name="isOverEighteen">Initial value of the IsOverEighteen property.</param>
-        public static Member CreateMember(global::System.Int32 id, global::System.String username, global::System.String password, global::System.String email, global::System.DateTime regdate, global::System.Int16 trackcount, global::System.Byte israndomplay, global::System.Int32 active_playlist, global::System.Int32 profile_pic_id, global::System.Byte is_new_artist, global::System.Byte autoplay, global::System.Byte email_confirmed, global::System.Byte email_optout, global::System.Int32 widget_views, global::System.Boolean coregProcessed, global::System.Boolean isSuspended, global::System.Boolean autoshareEnabled, global::System.Boolean isOverEighteen)
+        /// <param name="adminLevel">Initial value of the adminLevel property.</param>
+        public static Member CreateMember(global::System.Int32 id, global::System.String username, global::System.String password, global::System.String email, global::System.DateTime regdate, global::System.Int16 trackcount, global::System.Byte israndomplay, global::System.Int32 active_playlist, global::System.Int32 profile_pic_id, global::System.Byte is_new_artist, global::System.Byte autoplay, global::System.Byte email_confirmed, global::System.Byte email_optout, global::System.Int32 widget_views, global::System.Boolean coregProcessed, global::System.Boolean isSuspended, global::System.Boolean autoshareEnabled, global::System.Boolean isOverEighteen, global::System.Int32 adminLevel)
         {
             Member member = new Member();
             member.id = id;
@@ -11154,6 +11274,7 @@ namespace hypster_tv_DAL
             member.IsSuspended = isSuspended;
             member.AutoshareEnabled = autoshareEnabled;
             member.IsOverEighteen = isOverEighteen;
+            member.adminLevel = adminLevel;
             return member;
         }
 
@@ -11955,6 +12076,30 @@ namespace hypster_tv_DAL
         private Nullable<global::System.Int32> _eCampD;
         partial void OneCampDChanging(Nullable<global::System.Int32> value);
         partial void OneCampDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 adminLevel
+        {
+            get
+            {
+                return _adminLevel;
+            }
+            set
+            {
+                OnadminLevelChanging(value);
+                ReportPropertyChanging("adminLevel");
+                _adminLevel = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("adminLevel");
+                OnadminLevelChanged();
+            }
+        }
+        private global::System.Int32 _adminLevel;
+        partial void OnadminLevelChanging(global::System.Int32 value);
+        partial void OnadminLevelChanged();
 
         #endregion
 
@@ -15420,6 +15565,135 @@ namespace hypster_tv_DAL
         private global::System.String _RadioStationQuery;
         partial void OnRadioStationQueryChanging(global::System.String value);
         partial void OnRadioStationQueryChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="hypster_tv_Model", Name="ScheduledPost")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ScheduledPost : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ScheduledPost object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static ScheduledPost CreateScheduledPost(global::System.Int32 id)
+        {
+            ScheduledPost scheduledPost = new ScheduledPost();
+            scheduledPost.id = id;
+            return scheduledPost;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> scheduled_date
+        {
+            get
+            {
+                return _scheduled_date;
+            }
+            set
+            {
+                Onscheduled_dateChanging(value);
+                ReportPropertyChanging("scheduled_date");
+                _scheduled_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("scheduled_date");
+                Onscheduled_dateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _scheduled_date;
+        partial void Onscheduled_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onscheduled_dateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_id
+        {
+            get
+            {
+                return _post_id;
+            }
+            set
+            {
+                Onpost_idChanging(value);
+                ReportPropertyChanging("post_id");
+                _post_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_id");
+                Onpost_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_id;
+        partial void Onpost_idChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> activated
+        {
+            get
+            {
+                return _activated;
+            }
+            set
+            {
+                OnactivatedChanging(value);
+                ReportPropertyChanging("activated");
+                _activated = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("activated");
+                OnactivatedChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _activated;
+        partial void OnactivatedChanging(Nullable<global::System.Int32> value);
+        partial void OnactivatedChanged();
 
         #endregion
 
@@ -19920,6 +20194,309 @@ namespace hypster_tv_DAL
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="hypster_tv_Model", Name="sp_Playlist_GetPlaylistById_Admin_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_Playlist_GetPlaylistById_Admin_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_Playlist_GetPlaylistById_Admin_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="userid">Initial value of the userid property.</param>
+        /// <param name="name">Initial value of the name property.</param>
+        /// <param name="create_time">Initial value of the create_time property.</param>
+        /// <param name="update_time">Initial value of the update_time property.</param>
+        /// <param name="is_artist_playlist">Initial value of the is_artist_playlist property.</param>
+        public static sp_Playlist_GetPlaylistById_Admin_Result Createsp_Playlist_GetPlaylistById_Admin_Result(global::System.Int32 id, global::System.Int32 userid, global::System.String name, global::System.Int32 create_time, global::System.Int32 update_time, global::System.Boolean is_artist_playlist)
+        {
+            sp_Playlist_GetPlaylistById_Admin_Result sp_Playlist_GetPlaylistById_Admin_Result = new sp_Playlist_GetPlaylistById_Admin_Result();
+            sp_Playlist_GetPlaylistById_Admin_Result.id = id;
+            sp_Playlist_GetPlaylistById_Admin_Result.userid = userid;
+            sp_Playlist_GetPlaylistById_Admin_Result.name = name;
+            sp_Playlist_GetPlaylistById_Admin_Result.create_time = create_time;
+            sp_Playlist_GetPlaylistById_Admin_Result.update_time = update_time;
+            sp_Playlist_GetPlaylistById_Admin_Result.is_artist_playlist = is_artist_playlist;
+            return sp_Playlist_GetPlaylistById_Admin_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 userid
+        {
+            get
+            {
+                return _userid;
+            }
+            set
+            {
+                OnuseridChanging(value);
+                ReportPropertyChanging("userid");
+                _userid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("userid");
+                OnuseridChanged();
+            }
+        }
+        private global::System.Int32 _userid;
+        partial void OnuseridChanging(global::System.Int32 value);
+        partial void OnuseridChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 create_time
+        {
+            get
+            {
+                return _create_time;
+            }
+            set
+            {
+                Oncreate_timeChanging(value);
+                ReportPropertyChanging("create_time");
+                _create_time = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("create_time");
+                Oncreate_timeChanged();
+            }
+        }
+        private global::System.Int32 _create_time;
+        partial void Oncreate_timeChanging(global::System.Int32 value);
+        partial void Oncreate_timeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 update_time
+        {
+            get
+            {
+                return _update_time;
+            }
+            set
+            {
+                Onupdate_timeChanging(value);
+                ReportPropertyChanging("update_time");
+                _update_time = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("update_time");
+                Onupdate_timeChanged();
+            }
+        }
+        private global::System.Int32 _update_time;
+        partial void Onupdate_timeChanging(global::System.Int32 value);
+        partial void Onupdate_timeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean is_artist_playlist
+        {
+            get
+            {
+                return _is_artist_playlist;
+            }
+            set
+            {
+                Onis_artist_playlistChanging(value);
+                ReportPropertyChanging("is_artist_playlist");
+                _is_artist_playlist = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("is_artist_playlist");
+                Onis_artist_playlistChanged();
+            }
+        }
+        private global::System.Boolean _is_artist_playlist;
+        partial void Onis_artist_playlistChanging(global::System.Boolean value);
+        partial void Onis_artist_playlistChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ViewsNum
+        {
+            get
+            {
+                return _ViewsNum;
+            }
+            set
+            {
+                OnViewsNumChanging(value);
+                ReportPropertyChanging("ViewsNum");
+                _ViewsNum = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ViewsNum");
+                OnViewsNumChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ViewsNum;
+        partial void OnViewsNumChanging(Nullable<global::System.Int32> value);
+        partial void OnViewsNumChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Likes
+        {
+            get
+            {
+                return _Likes;
+            }
+            set
+            {
+                OnLikesChanging(value);
+                ReportPropertyChanging("Likes");
+                _Likes = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Likes");
+                OnLikesChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Likes;
+        partial void OnLikesChanging(Nullable<global::System.Int32> value);
+        partial void OnLikesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                OnusernameChanging(value);
+                ReportPropertyChanging("username");
+                _username = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("username");
+                OnusernameChanged();
+            }
+        }
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                OndescriptionChanging(value);
+                ReportPropertyChanging("description");
+                _description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("description");
+                OndescriptionChanged();
+            }
+        }
+        private global::System.String _description;
+        partial void OndescriptionChanging(global::System.String value);
+        partial void OndescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Shares
+        {
+            get
+            {
+                return _Shares;
+            }
+            set
+            {
+                OnSharesChanging(value);
+                ReportPropertyChanging("Shares");
+                _Shares = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Shares");
+                OnSharesChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Shares;
+        partial void OnSharesChanging(Nullable<global::System.Int32> value);
+        partial void OnSharesChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="hypster_tv_Model", Name="sp_Playlist_GetSongsDeadLinks_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -20447,6 +21024,131 @@ namespace hypster_tv_DAL
         private Nullable<global::System.Int32> _Dead_Link_ID;
         partial void OnDead_Link_IDChanging(Nullable<global::System.Int32> value);
         partial void OnDead_Link_IDChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="hypster_tv_Model", Name="sp_ScheduledPost_GetScheduleByID_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_ScheduledPost_GetScheduleByID_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_ScheduledPost_GetScheduleByID_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static sp_ScheduledPost_GetScheduleByID_Result Createsp_ScheduledPost_GetScheduleByID_Result(global::System.Int32 id)
+        {
+            sp_ScheduledPost_GetScheduleByID_Result sp_ScheduledPost_GetScheduleByID_Result = new sp_ScheduledPost_GetScheduleByID_Result();
+            sp_ScheduledPost_GetScheduleByID_Result.id = id;
+            return sp_ScheduledPost_GetScheduleByID_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> scheduled_date
+        {
+            get
+            {
+                return _scheduled_date;
+            }
+            set
+            {
+                Onscheduled_dateChanging(value);
+                ReportPropertyChanging("scheduled_date");
+                _scheduled_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("scheduled_date");
+                Onscheduled_dateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _scheduled_date;
+        partial void Onscheduled_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onscheduled_dateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_id
+        {
+            get
+            {
+                return _post_id;
+            }
+            set
+            {
+                Onpost_idChanging(value);
+                ReportPropertyChanging("post_id");
+                _post_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_id");
+                Onpost_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_id;
+        partial void Onpost_idChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> activated
+        {
+            get
+            {
+                return _activated;
+            }
+            set
+            {
+                OnactivatedChanging(value);
+                ReportPropertyChanging("activated");
+                _activated = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("activated");
+                OnactivatedChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _activated;
+        partial void OnactivatedChanging(Nullable<global::System.Int32> value);
+        partial void OnactivatedChanged();
 
         #endregion
 
