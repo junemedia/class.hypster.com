@@ -117,5 +117,24 @@ namespace hypster_tv_DAL
         {
             hyDB.sp_ScheduledPost_EditSPost(spost.scheduled_date, spost.activated, spost.post_id);
         }
+
+        public void DeletePostAttribute(int post_id, string attribute)
+        {
+            hyDB.sp_postNewsletter_DeletePostAttribute(post_id, attribute);
+        }
+
+        public List<sp_postNewsletter_GetPostAttributes_Result> GetPostAttributes_Result(int post_id)
+        {
+            List<sp_postNewsletter_GetPostAttributes_Result> newsletters = new List<sp_postNewsletter_GetPostAttributes_Result>();
+            newsletters = hyDB.sp_postNewsletter_GetPostAttributes(post_id).ToList();
+            return newsletters;
+        }
+
+        public List<sp_postNewsletter_GetPostsByAttribute_Result> GetPostsByAttribute(int exclude_id, string query)
+        {
+            List<sp_postNewsletter_GetPostsByAttribute_Result> newsletters = new List<sp_postNewsletter_GetPostsByAttribute_Result>();
+            newsletters = hyDB.sp_postNewsletter_GetPostsByAttribute(exclude_id, query).ToList();
+            return newsletters;
+        }
     }
 }

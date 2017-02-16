@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="hypster_tv_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ArtistAZ">
+          <Key>
+            <PropertyRef Name="ArtistAZ_ID" />
+          </Key>
+          <Property Name="ArtistAZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArtistAZ_Name" Type="nvarchar" MaxLength="80" />
+        </EntityType>
         <EntityType Name="ArtistCategories">
           <Key>
             <PropertyRef Name="Id" />
@@ -276,6 +283,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Property Name="user_interest" Type="int" />
           <Property Name="eCampD" Type="int" />
           <Property Name="adminLevel" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="255" />
+          <Property Name="last_name" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="char" MaxLength="2" />
         </EntityType>
         <EntityType Name="MemberSongSkip">
           <Key>
@@ -416,6 +427,14 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Property Name="username" Type="nvarchar" MaxLength="20" />
           <Property Name="description" Type="nvarchar" MaxLength="100" />
           <Property Name="Shares" Type="int" />
+        </EntityType>
+        <EntityType Name="postNewsletter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="post_id" Type="int" />
+          <Property Name="attribute" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Radio_Usage">
           <Key>
@@ -662,6 +681,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
         <Function Name="sp_artist_SearchForArtist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_ss" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_artistaz_GetArtistsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Charts_DeleteChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_chart_id" Type="int" Mode="In" />
         </Function>
@@ -983,6 +1003,14 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Parameter Name="p_user_interest" Type="int" Mode="In" />
           <Parameter Name="p_email_optout" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_Members_UpdateMemberProfileDetails4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_id" Type="int" Mode="In" />
+          <Parameter Name="p_firstname" Type="varchar" Mode="In" />
+          <Parameter Name="p_lastname" Type="varchar" Mode="In" />
+          <Parameter Name="p_address" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_state" Type="char" Mode="In" />
+          <Parameter Name="p_intro" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="sp_Members_UpdateMemberProfilePicture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_user_id" Type="int" Mode="In" />
           <Parameter Name="p_picture_id" Type="int" Mode="In" />
@@ -1193,6 +1221,17 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Parameter Name="p_playlist_id" Type="int" Mode="In" />
           <Parameter Name="p_user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_postNewsletter_DeletePostAttribute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_post_id" Type="int" Mode="In" />
+          <Parameter Name="p_attribute" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_postNewsletter_GetPostAttributes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_post_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_postNewsletter_GetPostsByAttribute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_post_id" Type="int" Mode="In" />
+          <Parameter Name="p_attribute" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_RadioStation_DeleteUserRadioStation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_user_id" Type="int" Mode="In" />
           <Parameter Name="p_station_id" Type="int" Mode="In" />
@@ -1340,6 +1379,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
         </Function>
         <Function Name="sp_VoteForSong_GetActiveVoteForSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="hypster_tv_ModelStoreContainer">
+          <EntitySet Name="ArtistAZ" EntityType="Self.ArtistAZ" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArtistCategories" EntityType="Self.ArtistCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlockedTerms" EntityType="Self.BlockedTerms" Schema="dbo" store:Type="Tables" />
@@ -1372,6 +1412,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <EntitySet Name="PlaylistData" EntityType="Self.PlaylistData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistLikes" EntityType="Self.PlaylistLikes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Playlists" EntityType="Self.Playlists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="postNewsletter" EntityType="Self.postNewsletter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Radio_Usage" EntityType="Self.Radio_Usage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RadioStation" EntityType="Self.RadioStation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScheduledPost" EntityType="Self.ScheduledPost" Schema="dbo" store:Type="Tables" />
@@ -2165,6 +2206,28 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
             <Parameter Name="p_id" Mode="In" Type="Int32" />
             <Parameter Name="p_update_stream" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_Members_UpdateMemberProfileDetails4">
+            <Parameter Name="p_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_firstname" Mode="In" Type="String" />
+            <Parameter Name="p_lastname" Mode="In" Type="String" />
+            <Parameter Name="p_address" Mode="In" Type="String" />
+            <Parameter Name="p_state" Mode="In" Type="String" />
+            <Parameter Name="p_intro" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ArtistAZs" EntityType="hypster_tv_Model.ArtistAZ" />
+          <FunctionImport Name="sp_artistaz_GetArtistsList" ReturnType="Collection(hypster_tv_Model.sp_artistaz_GetArtistsList_Result)" />
+          <EntitySet Name="postNewsletters" EntityType="hypster_tv_Model.postNewsletter" />
+          <FunctionImport Name="sp_postNewsletter_DeletePostAttribute">
+            <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_attribute" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_postNewsletter_GetPostAttributes" ReturnType="Collection(hypster_tv_Model.sp_postNewsletter_GetPostAttributes_Result)">
+          <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_postNewsletter_GetPostsByAttribute" ReturnType="Collection(hypster_tv_Model.sp_postNewsletter_GetPostsByAttribute_Result)">
+            <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_attribute" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="SessionCrossover">
           <Key>
@@ -2802,6 +2865,10 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <NavigationProperty Name="Photos" Relationship="hypster_tv_Model.FK_pl_photos_pl_member" FromRole="Member" ToRole="Photo" />
           <NavigationProperty Name="Playlists" Relationship="hypster_tv_Model.FK_pl_playlists_pl_member" FromRole="Member" ToRole="Playlist" />
           <Property Name="adminLevel" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
         </EntityType>
         <Association Name="FK_pl_photos_pl_member">
           <End Type="hypster_tv_Model.Member" Role="Member" Multiplicity="1" />
@@ -2963,6 +3030,47 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <Property Name="post_id" Type="Int32" />
           <Property Name="activated" Type="Int32" />
         </EntityType>
+        <EntityType Name="ArtistAZ">
+          <Key>
+            <PropertyRef Name="ArtistAZ_ID" />
+          </Key>
+          <Property Name="ArtistAZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArtistAZ_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_artistaz_GetArtistsList_Result">
+          <Property Type="Int32" Name="ArtistAZ_ID" Nullable="false" />
+          <Property Type="String" Name="ArtistAZ_Name" Nullable="true" MaxLength="80" />
+        </ComplexType>
+        <EntityType Name="postNewsletter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="post_id" Type="Int32" />
+          <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="sp_postNewsletter_GetPostAttributes_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="post_id" Nullable="true" />
+          <Property Type="String" Name="attribute" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_postNewsletter_GetPostsByAttribute_Result">
+          <Property Type="Int32" Name="post_id" Nullable="false" />
+          <Property Type="Int32" Name="post_author" Nullable="true" />
+          <Property Type="DateTime" Name="post_date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="post_content" Nullable="true" />
+          <Property Type="String" Name="post_title" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="post_status" Nullable="true" />
+          <Property Type="String" Name="post_guid" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="post_type" Nullable="true" />
+          <Property Type="Int32" Name="comment_count" Nullable="true" />
+          <Property Type="Int32" Name="post_voteUp" Nullable="true" />
+          <Property Type="Int32" Name="post_voteDown" Nullable="true" />
+          <Property Type="String" Name="post_image" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="post_short_content" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="MusicPlayer" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="ad_id" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3927,6 +4035,10 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <EntitySetMapping Name="Members">
             <EntityTypeMapping TypeName="hypster_tv_Model.Member">
               <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="adminLevel" ColumnName="adminLevel" />
                 <ScalarProperty Name="eCampD" ColumnName="eCampD" />
                 <ScalarProperty Name="user_interest" ColumnName="user_interest" />
@@ -4130,6 +4242,68 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_ScheduledPost_EditSPost" FunctionName="hypster_tv_Model.Store.sp_ScheduledPost_EditSPost" />
           <FunctionImportMapping FunctionImportName="sp_homeSlideshow_UpdateHomeSlideshow" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_UpdateHomeSlideshow" />
           <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberData" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberData" />
+          <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberProfileDetails4" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberProfileDetails4" />
+          <EntitySetMapping Name="ArtistAZs">
+            <EntityTypeMapping TypeName="hypster_tv_Model.ArtistAZ">
+              <MappingFragment StoreEntitySet="ArtistAZ">
+                <ScalarProperty Name="ArtistAZ_Name" ColumnName="ArtistAZ_Name" />
+                <ScalarProperty Name="ArtistAZ_ID" ColumnName="ArtistAZ_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="hypster_tv_Model.ArtistAZ">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="hypster_tv_Model.Store.sp_artistaz_GetArtistsList" />
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_artistaz_GetArtistsList" FunctionName="hypster_tv_Model.Store.sp_artistaz_GetArtistsList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hypster_tv_Model.sp_artistaz_GetArtistsList_Result">
+                <ScalarProperty Name="ArtistAZ_ID" ColumnName="ArtistAZ_ID" />
+                <ScalarProperty Name="ArtistAZ_Name" ColumnName="ArtistAZ_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="postNewsletters">
+            <EntityTypeMapping TypeName="hypster_tv_Model.postNewsletter">
+              <MappingFragment StoreEntitySet="postNewsletter">
+                <ScalarProperty Name="attribute" ColumnName="attribute" />
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_postNewsletter_DeletePostAttribute" FunctionName="hypster_tv_Model.Store.sp_postNewsletter_DeletePostAttribute" />
+          <FunctionImportMapping FunctionImportName="sp_postNewsletter_GetPostAttributes" FunctionName="hypster_tv_Model.Store.sp_postNewsletter_GetPostAttributes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hypster_tv_Model.sp_postNewsletter_GetPostAttributes_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="attribute" ColumnName="attribute" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_postNewsletter_GetPostsByAttribute" FunctionName="hypster_tv_Model.Store.sp_postNewsletter_GetPostsByAttribute">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hypster_tv_Model.sp_postNewsletter_GetPostsByAttribute_Result">
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="post_author" ColumnName="post_author" />
+                <ScalarProperty Name="post_date" ColumnName="post_date" />
+                <ScalarProperty Name="post_content" ColumnName="post_content" />
+                <ScalarProperty Name="post_title" ColumnName="post_title" />
+                <ScalarProperty Name="post_status" ColumnName="post_status" />
+                <ScalarProperty Name="post_guid" ColumnName="post_guid" />
+                <ScalarProperty Name="post_type" ColumnName="post_type" />
+                <ScalarProperty Name="comment_count" ColumnName="comment_count" />
+                <ScalarProperty Name="post_voteUp" ColumnName="post_voteUp" />
+                <ScalarProperty Name="post_voteDown" ColumnName="post_voteDown" />
+                <ScalarProperty Name="post_image" ColumnName="post_image" />
+                <ScalarProperty Name="post_short_content" ColumnName="post_short_content" />
+                <ScalarProperty Name="MusicPlayer" ColumnName="MusicPlayer" />
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4162,7 +4336,7 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
         <EntityTypeShape EntityType="hypster_tv_Model.userContact" Width="1.5" PointX="3.875" PointY="8.875" Height="1.9802864583333335" />
         <EntityTypeShape EntityType="hypster_tv_Model.PlaylistData" Width="1.5" PointX="6.25" PointY="8.875" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="hypster_tv_Model.Playlist" Width="1.5" PointX="9.875" PointY="0.5" Height="2.3648893229166665" />
-        <EntityTypeShape EntityType="hypster_tv_Model.Follower" Width="1.5" PointX="8.625" PointY="8.875" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="hypster_tv_Model.Follower" Width="1.5" PointX="8.75" PointY="9.5" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="hypster_tv_Model.Photo" Width="1.5" PointX="3.375" PointY="11.75" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="hypster_tv_Model.Player" Width="2.125" PointX="5.875" PointY="11.75" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="hypster_tv_Model.Song" Width="1.5" PointX="9.875" PointY="4.125" Height="4.4802050781250031" />
@@ -4222,6 +4396,8 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
         <EntityTypeShape EntityType="hypster_tv_Model.ListenHistory" Width="1.5" PointX="3.375" PointY="19.75" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="hypster_tv_Model.Sitemap_Content" Width="1.5" PointX="5.375" PointY="19.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="hypster_tv_Model.ScheduledPost" Width="1.5" PointX="19.375" PointY="6.75" />
+        <EntityTypeShape EntityType="hypster_tv_Model.ArtistAZ" Width="1.5" PointX="19.375" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hypster_tv_Model.postNewsletter" Width="1.5" PointX="19.375" PointY="12.75" />
         </Diagram>
     </Diagrams>
   </Designer>

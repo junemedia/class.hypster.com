@@ -76,7 +76,27 @@ namespace hypster_tv_DAL
             return artists_list;
         }
 
+        public List<sp_artistaz_GetArtistsList_Result> GetArtistsAZList_Result()        
+        {
+            List<sp_artistaz_GetArtistsList_Result> artists = new List<sp_artistaz_GetArtistsList_Result>();
 
+            artists = hyDB.sp_artistaz_GetArtistsList().ToList();
 
+            return artists;
+        }
+
+        public List<ArtistAZ> GetArtistsAZList()
+        {
+            int artist_result = GetArtistsAZList_Result().Count;
+            List<ArtistAZ> artists = new List<ArtistAZ>();
+            for (int i = 0; i < artist_result; i++)
+            {
+                ArtistAZ artist = new ArtistAZ();
+                artist.ArtistAZ_ID = GetArtistsAZList_Result()[i].ArtistAZ_ID;
+                artist.ArtistAZ_Name = GetArtistsAZList_Result()[i].ArtistAZ_Name;
+                artists.Add(artist);
+            }
+            return artists;
+        }
     }
 }

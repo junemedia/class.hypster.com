@@ -230,6 +230,12 @@ namespace hypster_tv_DAL
             hyDB.sp_Members_UpdateMemberProfileDetails3(id, name, AutoshareEnabled, birth, city, country, zipcode, sex, user_interest, email_optout);
         }
 
+        public void UpdateMemberProfileDetails(string user_name, int id, string firstname, string lastname, string address, string state, string introduce)
+        {
+            CleanMemberFromCache(user_name);
+            hyDB.sp_Members_UpdateMemberProfileDetails4(id, firstname, lastname, address, state, introduce);
+        }
+
 
         public void UpdateMemberEmailConfirmed(string user_name, int id, int email_confirmed)
         {
