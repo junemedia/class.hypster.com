@@ -157,6 +157,13 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Property Name="User_ID" Type="int" />
           <Property Name="Follower_ID" Type="int" />
         </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="homeSlideshow">
           <Key>
             <PropertyRef Name="homeSlideshow_ID" />
@@ -427,6 +434,14 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Property Name="username" Type="nvarchar" MaxLength="20" />
           <Property Name="description" Type="nvarchar" MaxLength="100" />
           <Property Name="Shares" Type="int" />
+        </EntityType>
+        <EntityType Name="Post_Genre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="post_id" Type="int" />
+          <Property Name="genre_id" Type="int" />
         </EntityType>
         <EntityType Name="postNewsletter">
           <Key>
@@ -803,6 +818,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
         </Function>
         <Function Name="sp_Followers_GetNumberOfMyFollowers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Genre_GetAllGenres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Genre_GetGenreIdByLabel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_label" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_homeSlideshow_ActivateHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
@@ -1221,6 +1240,13 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <Parameter Name="p_playlist_id" Type="int" Mode="In" />
           <Parameter Name="p_user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_Post_Genre_DeletePostGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+          <Parameter Name="genre_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Post_Genre_GetAsociatGenreIds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_postNewsletter_DeletePostAttribute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_post_id" Type="int" Mode="In" />
           <Parameter Name="p_attribute" Type="varchar" Mode="In" />
@@ -1393,6 +1419,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <EntitySet Name="FeaturedPlaylists" EntityType="Self.FeaturedPlaylists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Festivals" EntityType="Self.Festivals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Followers" EntityType="Self.Followers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="homeSlideshow" EntityType="Self.homeSlideshow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HypException" EntityType="Self.HypException" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListenHistory" EntityType="Self.ListenHistory" Schema="dbo" store:Type="Tables" />
@@ -1412,6 +1439,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
           <EntitySet Name="PlaylistData" EntityType="Self.PlaylistData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistLikes" EntityType="Self.PlaylistLikes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Playlists" EntityType="Self.Playlists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post_Genre" EntityType="Self.Post_Genre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="postNewsletter" EntityType="Self.postNewsletter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Radio_Usage" EntityType="Self.Radio_Usage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RadioStation" EntityType="Self.RadioStation" Schema="dbo" store:Type="Tables" />
@@ -2227,6 +2255,19 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <FunctionImport Name="sp_postNewsletter_GetPostsByAttribute" ReturnType="Collection(hypster_tv_Model.sp_postNewsletter_GetPostsByAttribute_Result)">
             <Parameter Name="p_post_id" Mode="In" Type="Int32" />
             <Parameter Name="p_attribute" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Genres" EntityType="hypster_tv_Model.Genre" />
+          <EntitySet Name="Post_Genre" EntityType="hypster_tv_Model.Post_Genre" />
+          <FunctionImport Name="sp_Genre_GetAllGenres" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Post_Genre_DeletePostGenre">
+            <Parameter Name="post_id" Mode="In" Type="Int32" />
+            <Parameter Name="genre_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Genre_GetGenreIdByLabel" ReturnType="Collection(Int32)">
+          <Parameter Name="p_label" Mode="In" Type="String" />
+            </FunctionImport>
+          <FunctionImport Name="sp_Post_Genre_GetAsociatGenreIds" ReturnType="Collection(Int32)">
+            <Parameter Name="post_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="SessionCrossover">
@@ -3071,6 +3112,21 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <Property Type="String" Name="MusicPlayer" Nullable="true" MaxLength="400" />
           <Property Type="String" Name="ad_id" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Post_Genre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="post_id" Type="Int32" />
+          <Property Name="genre_id" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4304,6 +4360,27 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="hypster_tv_Model.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post_Genre">
+            <EntityTypeMapping TypeName="hypster_tv_Model.Post_Genre">
+              <MappingFragment StoreEntitySet="Post_Genre">
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Genre_GetAllGenres" FunctionName="hypster_tv_Model.Store.sp_Genre_GetAllGenres" />
+          <FunctionImportMapping FunctionImportName="sp_Post_Genre_DeletePostGenre" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_DeletePostGenre" />
+          <FunctionImportMapping FunctionImportName="sp_Genre_GetGenreIdByLabel" FunctionName="hypster_tv_Model.Store.sp_Genre_GetGenreIdByLabel" />
+          <FunctionImportMapping FunctionImportName="sp_Post_Genre_GetAsociatGenreIds" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_GetAsociatGenreIds" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4398,6 +4475,8 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
         <EntityTypeShape EntityType="hypster_tv_Model.ScheduledPost" Width="1.5" PointX="19.375" PointY="6.75" />
         <EntityTypeShape EntityType="hypster_tv_Model.ArtistAZ" Width="1.5" PointX="19.375" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="hypster_tv_Model.postNewsletter" Width="1.5" PointX="19.375" PointY="12.75" />
+        <EntityTypeShape EntityType="hypster_tv_Model.Genre" Width="1.5" PointX="19.375" PointY="15.75" />
+        <EntityTypeShape EntityType="hypster_tv_Model.Post_Genre" Width="1.5" PointX="19.375" PointY="18.75" />
         </Diagram>
     </Diagrams>
   </Designer>

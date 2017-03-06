@@ -752,6 +752,41 @@
       <Parameter Name="p_id" Mode="In" Type="Int32" />
       <Parameter Name="p_update_stream" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_Members_UpdateMemberProfileDetails4">
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_firstname" Mode="In" Type="String" />
+      <Parameter Name="p_lastname" Mode="In" Type="String" />
+      <Parameter Name="p_address" Mode="In" Type="String" />
+      <Parameter Name="p_state" Mode="In" Type="String" />
+      <Parameter Name="p_intro" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="ArtistAZs" EntityType="hypster_tv_Model.ArtistAZ" />
+    <FunctionImport Name="sp_artistaz_GetArtistsList" ReturnType="Collection(hypster_tv_Model.sp_artistaz_GetArtistsList_Result)" />
+    <EntitySet Name="postNewsletters" EntityType="hypster_tv_Model.postNewsletter" />
+    <FunctionImport Name="sp_postNewsletter_DeletePostAttribute">
+      <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_attribute" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_postNewsletter_GetPostAttributes" ReturnType="Collection(hypster_tv_Model.sp_postNewsletter_GetPostAttributes_Result)">
+      <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_postNewsletter_GetPostsByAttribute" ReturnType="Collection(hypster_tv_Model.sp_postNewsletter_GetPostsByAttribute_Result)">
+      <Parameter Name="p_post_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_attribute" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Genres" EntityType="hypster_tv_Model.Genre" />
+    <EntitySet Name="Post_Genre" EntityType="hypster_tv_Model.Post_Genre" />
+    <FunctionImport Name="sp_Genre_GetAllGenres" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_Post_Genre_DeletePostGenre">
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+      <Parameter Name="genre_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Genre_GetGenreIdByLabel" ReturnType="Collection(Int32)">
+      <Parameter Name="p_label" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Post_Genre_GetAsociatGenreIds" ReturnType="Collection(Int32)">
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="SessionCrossover">
     <Key>
@@ -1389,6 +1424,10 @@
     <NavigationProperty Name="Photos" Relationship="hypster_tv_Model.FK_pl_photos_pl_member" FromRole="Member" ToRole="Photo" />
     <NavigationProperty Name="Playlists" Relationship="hypster_tv_Model.FK_pl_playlists_pl_member" FromRole="Member" ToRole="Playlist" />
     <Property Name="adminLevel" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
   </EntityType>
   <Association Name="FK_pl_photos_pl_member">
     <End Type="hypster_tv_Model.Member" Role="Member" Multiplicity="1" />
@@ -1549,5 +1588,61 @@
     <Property Name="scheduled_date" Type="DateTime" Precision="3" />
     <Property Name="post_id" Type="Int32" />
     <Property Name="activated" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ArtistAZ">
+    <Key>
+      <PropertyRef Name="ArtistAZ_ID" />
+    </Key>
+    <Property Name="ArtistAZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArtistAZ_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="sp_artistaz_GetArtistsList_Result">
+    <Property Type="Int32" Name="ArtistAZ_ID" Nullable="false" />
+    <Property Type="String" Name="ArtistAZ_Name" Nullable="true" MaxLength="80" />
+  </ComplexType>
+  <EntityType Name="postNewsletter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="post_id" Type="Int32" />
+    <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_postNewsletter_GetPostAttributes_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="post_id" Nullable="true" />
+    <Property Type="String" Name="attribute" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_postNewsletter_GetPostsByAttribute_Result">
+    <Property Type="Int32" Name="post_id" Nullable="false" />
+    <Property Type="Int32" Name="post_author" Nullable="true" />
+    <Property Type="DateTime" Name="post_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="post_content" Nullable="true" />
+    <Property Type="String" Name="post_title" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="post_status" Nullable="true" />
+    <Property Type="String" Name="post_guid" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="post_type" Nullable="true" />
+    <Property Type="Int32" Name="comment_count" Nullable="true" />
+    <Property Type="Int32" Name="post_voteUp" Nullable="true" />
+    <Property Type="Int32" Name="post_voteDown" Nullable="true" />
+    <Property Type="String" Name="post_image" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="post_short_content" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="MusicPlayer" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="ad_id" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Post_Genre">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="post_id" Type="Int32" />
+    <Property Name="genre_id" Type="Int32" />
   </EntityType>
 </Schema>

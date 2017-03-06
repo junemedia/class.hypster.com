@@ -920,6 +920,38 @@ namespace hypster_tv_DAL
             }
         }
         private ObjectSet<postNewsletter> _postNewsletters;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Genre> Genres
+        {
+            get
+            {
+                if ((_Genres == null))
+                {
+                    _Genres = base.CreateObjectSet<Genre>("Genres");
+                }
+                return _Genres;
+            }
+        }
+        private ObjectSet<Genre> _Genres;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Post_Genre> Post_Genre
+        {
+            get
+            {
+                if ((_Post_Genre == null))
+                {
+                    _Post_Genre = base.CreateObjectSet<Post_Genre>("Post_Genre");
+                }
+                return _Post_Genre;
+            }
+        }
+        private ObjectSet<Post_Genre> _Post_Genre;
 
         #endregion
 
@@ -1347,6 +1379,22 @@ namespace hypster_tv_DAL
         public void AddTopostNewsletters(postNewsletter postNewsletter)
         {
             base.AddObject("postNewsletters", postNewsletter);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Genres EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGenres(Genre genre)
+        {
+            base.AddObject("Genres", genre);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Post_Genre EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPost_Genre(Post_Genre post_Genre)
+        {
+            base.AddObject("Post_Genre", post_Genre);
         }
 
         #endregion
@@ -8247,6 +8295,82 @@ namespace hypster_tv_DAL
     
             return base.ExecuteFunction<sp_postNewsletter_GetPostsByAttribute_Result>("sp_postNewsletter_GetPostsByAttribute", p_post_idParameter, p_attributeParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<global::System.String> sp_Genre_GetAllGenres()
+        {
+            return base.ExecuteFunction<global::System.String>("sp_Genre_GetAllGenres");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="post_id">No Metadata Documentation available.</param>
+        /// <param name="genre_id">No Metadata Documentation available.</param>
+        public int sp_Post_Genre_DeletePostGenre(Nullable<global::System.Int32> post_id, Nullable<global::System.Int32> genre_id)
+        {
+            ObjectParameter post_idParameter;
+            if (post_id.HasValue)
+            {
+                post_idParameter = new ObjectParameter("post_id", post_id);
+            }
+            else
+            {
+                post_idParameter = new ObjectParameter("post_id", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter genre_idParameter;
+            if (genre_id.HasValue)
+            {
+                genre_idParameter = new ObjectParameter("genre_id", genre_id);
+            }
+            else
+            {
+                genre_idParameter = new ObjectParameter("genre_id", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_Post_Genre_DeletePostGenre", post_idParameter, genre_idParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_label">No Metadata Documentation available.</param>
+        public ObjectResult<Nullable<global::System.Int32>> sp_Genre_GetGenreIdByLabel(global::System.String p_label)
+        {
+            ObjectParameter p_labelParameter;
+            if (p_label != null)
+            {
+                p_labelParameter = new ObjectParameter("p_label", p_label);
+            }
+            else
+            {
+                p_labelParameter = new ObjectParameter("p_label", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int32>>("sp_Genre_GetGenreIdByLabel", p_labelParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="post_id">No Metadata Documentation available.</param>
+        public ObjectResult<Nullable<global::System.Int32>> sp_Post_Genre_GetAsociatGenreIds(Nullable<global::System.Int32> post_id)
+        {
+            ObjectParameter post_idParameter;
+            if (post_id.HasValue)
+            {
+                post_idParameter = new ObjectParameter("post_id", post_id);
+            }
+            else
+            {
+                post_idParameter = new ObjectParameter("post_id", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int32>>("sp_Post_Genre_GetAsociatGenreIds", post_idParameter);
+        }
 
         #endregion
 
@@ -10620,6 +10744,87 @@ namespace hypster_tv_DAL
         private Nullable<global::System.Int32> _Follower_ID;
         partial void OnFollower_IDChanging(Nullable<global::System.Int32> value);
         partial void OnFollower_IDChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="hypster_tv_Model", Name="Genre")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Genre : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Genre object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static Genre CreateGenre(global::System.Int32 id)
+        {
+            Genre genre = new Genre();
+            genre.id = id;
+            return genre;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Label
+        {
+            get
+            {
+                return _Label;
+            }
+            set
+            {
+                OnLabelChanging(value);
+                ReportPropertyChanging("Label");
+                _Label = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Label");
+                OnLabelChanged();
+            }
+        }
+        private global::System.String _Label;
+        partial void OnLabelChanging(global::System.String value);
+        partial void OnLabelChanged();
 
         #endregion
 
@@ -15669,6 +15874,111 @@ namespace hypster_tv_DAL
         private global::System.Int32 _LikeValue;
         partial void OnLikeValueChanging(global::System.Int32 value);
         partial void OnLikeValueChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="hypster_tv_Model", Name="Post_Genre")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Post_Genre : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Post_Genre object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static Post_Genre CreatePost_Genre(global::System.Int32 id)
+        {
+            Post_Genre post_Genre = new Post_Genre();
+            post_Genre.id = id;
+            return post_Genre;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_id
+        {
+            get
+            {
+                return _post_id;
+            }
+            set
+            {
+                Onpost_idChanging(value);
+                ReportPropertyChanging("post_id");
+                _post_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_id");
+                Onpost_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_id;
+        partial void Onpost_idChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> genre_id
+        {
+            get
+            {
+                return _genre_id;
+            }
+            set
+            {
+                Ongenre_idChanging(value);
+                ReportPropertyChanging("genre_id");
+                _genre_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("genre_id");
+                Ongenre_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _genre_id;
+        partial void Ongenre_idChanging(Nullable<global::System.Int32> value);
+        partial void Ongenre_idChanged();
 
         #endregion
 

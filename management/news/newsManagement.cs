@@ -207,6 +207,24 @@ namespace hypster_tv_DAL
         //--------------------------------------------------------------------------------------------------------------
 
 
+        public List<string> GetAllGenres()
+        {
+            List<string> genre_list = new List<string>();
+            genre_list = hyDB.sp_Genre_GetAllGenres().ToList();
+            return genre_list;
+        }
 
+        public void DeletePostGenre(int post_id, int genre_id)
+        {
+            hyDB.sp_Post_Genre_DeletePostGenre(post_id, genre_id);
+        }
+
+        public List<int?> GetAsociatGenreIds(int post_id)
+        {
+            List<int?> genre_list = new List<int?>();
+            genre_list = hyDB.sp_Post_Genre_GetAsociatGenreIds(post_id).ToList();
+            return genre_list;
+        }
+        
     }
 }

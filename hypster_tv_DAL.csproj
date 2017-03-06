@@ -50,7 +50,7 @@
     <Compile Include="common\ErrorManager.cs" />
     <Compile Include="common\Image_Resize_Manager.cs" />
     <Compile Include="common\Mobile_Device_Recognition.cs" />
-    <Compile Include="hypster_tv_MODEL.Designer.cs">
+    <Compile Include="hypster_tv_MODEL5.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>hypster_tv_MODEL.edmx</DependentUpon>
@@ -145,7 +145,7 @@
   <ItemGroup>
     <EntityDeploy Include="hypster_tv_MODEL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>hypster_tv_MODEL.Designer.cs</LastGenOutput>
+      <LastGenOutput>hypster_tv_MODEL5.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
