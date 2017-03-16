@@ -1098,6 +1098,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
         <Function Name="sp_newsPost_GetLatestNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_newsPost_GetLatestNewsOnGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
+          <Parameter Name="p_genre" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_newsPost_GetPostByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_post_guid" Type="nvarchar" Mode="In" />
         </Function>
@@ -2264,10 +2268,14 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
             <Parameter Name="genre_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Genre_GetGenreIdByLabel" ReturnType="Collection(Int32)">
-          <Parameter Name="p_label" Mode="In" Type="String" />
-            </FunctionImport>
+            <Parameter Name="p_label" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_Post_Genre_GetAsociatGenreIds" ReturnType="Collection(Int32)">
-            <Parameter Name="post_id" Mode="In" Type="Int32" />
+          <Parameter Name="post_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_newsPost_GetLatestNewsOnGenre" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)">
+            <Parameter Name="p_numOfPosts" Mode="In" Type="Int32" />
+            <Parameter Name="p_genre" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="SessionCrossover">
@@ -3127,6 +3135,23 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <Property Name="post_id" Type="Int32" />
           <Property Name="genre_id" Type="Int32" />
         </EntityType>
+        <ComplexType Name="sp_newsPost_GetLatestNewsOnGenre_Result">
+          <Property Type="Int32" Name="post_id" Nullable="false" />
+          <Property Type="Int32" Name="post_author" Nullable="true" />
+          <Property Type="DateTime" Name="post_date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="post_content" Nullable="true" />
+          <Property Type="String" Name="post_title" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="post_status" Nullable="true" />
+          <Property Type="String" Name="post_guid" Nullable="true" MaxLength="400" />
+          <Property Type="Int32" Name="post_type" Nullable="true" />
+          <Property Type="Int32" Name="comment_count" Nullable="true" />
+          <Property Type="Int32" Name="post_voteUp" Nullable="true" />
+          <Property Type="Int32" Name="post_voteDown" Nullable="true" />
+          <Property Type="String" Name="post_image" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="post_short_content" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="MusicPlayer" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="ad_id" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4381,6 +4406,7 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_Post_Genre_DeletePostGenre" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_DeletePostGenre" />
           <FunctionImportMapping FunctionImportName="sp_Genre_GetGenreIdByLabel" FunctionName="hypster_tv_Model.Store.sp_Genre_GetGenreIdByLabel" />
           <FunctionImportMapping FunctionImportName="sp_Post_Genre_GetAsociatGenreIds" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_GetAsociatGenreIds" />
+          <FunctionImportMapping FunctionImportName="sp_newsPost_GetLatestNewsOnGenre" FunctionName="hypster_tv_Model.Store.sp_newsPost_GetLatestNewsOnGenre" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -3,3 +3,4 @@ C:\Users\richard\Desktop\projects\class.hypster.com\bin\Release\hypster_tv_DAL.d
 C:\Users\richard\Desktop\projects\class.hypster.com\bin\Release\hypster_tv_DAL.pdb
 C:\Users\richard\Desktop\projects\class.hypster.com\obj\Release\hypster_tv_DAL.dll
 C:\Users\richard\Desktop\projects\class.hypster.com\obj\Release\hypster_tv_DAL.pdb
+C:\Users\richard\Desktop\projects\class.hypster.com\obj\Release\hypster_tv_DAL.csprojResolveAssemblyReference.cache

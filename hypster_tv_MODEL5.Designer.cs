@@ -8371,6 +8371,36 @@ namespace hypster_tv_DAL
     
             return base.ExecuteFunction<Nullable<global::System.Int32>>("sp_Post_Genre_GetAsociatGenreIds", post_idParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_numOfPosts">No Metadata Documentation available.</param>
+        /// <param name="p_genre">No Metadata Documentation available.</param>
+        public ObjectResult<newsPost> sp_newsPost_GetLatestNewsOnGenre(Nullable<global::System.Int32> p_numOfPosts, global::System.String p_genre)
+        {
+            ObjectParameter p_numOfPostsParameter;
+            if (p_numOfPosts.HasValue)
+            {
+                p_numOfPostsParameter = new ObjectParameter("p_numOfPosts", p_numOfPosts);
+            }
+            else
+            {
+                p_numOfPostsParameter = new ObjectParameter("p_numOfPosts", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter p_genreParameter;
+            if (p_genre != null)
+            {
+                p_genreParameter = new ObjectParameter("p_genre", p_genre);
+            }
+            else
+            {
+                p_genreParameter = new ObjectParameter("p_genre", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<newsPost>("sp_newsPost_GetLatestNewsOnGenre", p_numOfPostsParameter, p_genreParameter);
+        }
 
         #endregion
 
@@ -21068,6 +21098,7 @@ namespace hypster_tv_DAL
         #endregion
 
     }
+    
     
     /// <summary>
     /// No Metadata Documentation available.

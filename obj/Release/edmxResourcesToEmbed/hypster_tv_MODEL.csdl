@@ -787,6 +787,10 @@
     <FunctionImport Name="sp_Post_Genre_GetAsociatGenreIds" ReturnType="Collection(Int32)">
       <Parameter Name="post_id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_newsPost_GetLatestNewsOnGenre" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)">
+      <Parameter Name="p_numOfPosts" Mode="In" Type="Int32" />
+      <Parameter Name="p_genre" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="SessionCrossover">
     <Key>
@@ -1645,4 +1649,21 @@
     <Property Name="post_id" Type="Int32" />
     <Property Name="genre_id" Type="Int32" />
   </EntityType>
+  <ComplexType Name="sp_newsPost_GetLatestNewsOnGenre_Result">
+    <Property Type="Int32" Name="post_id" Nullable="false" />
+    <Property Type="Int32" Name="post_author" Nullable="true" />
+    <Property Type="DateTime" Name="post_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="post_content" Nullable="true" />
+    <Property Type="String" Name="post_title" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="post_status" Nullable="true" />
+    <Property Type="String" Name="post_guid" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="post_type" Nullable="true" />
+    <Property Type="Int32" Name="comment_count" Nullable="true" />
+    <Property Type="Int32" Name="post_voteUp" Nullable="true" />
+    <Property Type="Int32" Name="post_voteDown" Nullable="true" />
+    <Property Type="String" Name="post_image" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="post_short_content" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="MusicPlayer" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="ad_id" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

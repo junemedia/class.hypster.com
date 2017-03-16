@@ -1093,6 +1093,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   <Function Name="sp_newsPost_GetLatestNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_newsPost_GetLatestNewsOnGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
+    <Parameter Name="p_genre" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_newsPost_GetPostByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_post_guid" Type="nvarchar" Mode="In" />
   </Function>

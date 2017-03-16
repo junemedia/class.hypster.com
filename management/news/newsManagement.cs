@@ -95,6 +95,36 @@ namespace hypster_tv_DAL
 
         //----------------------------------------------------------------------------------------------------------
         /// <summary>
+        /// returns latest 256 posts (results are cahched for 2 min)
+        /// </summary>
+        /// <returns></returns>
+        public List<newsPost> GetLatestNewsOnGenre_cache(string genre)
+        {
+            List<newsPost> posts_list = new List<newsPost>();
+            int p_postsNum = 256;
+
+            System.Runtime.Caching.ObjectCache i_chache = System.Runtime.Caching.MemoryCache.Default;
+            if (i_chache["News_For_Genre_" + p_postsNum + " on " + genre] != null)
+            {
+                posts_list = (List<newsPost>)i_chache["News_For_Genre_" + p_postsNum + " on " + genre];
+            }
+            else
+            {
+                posts_list = hyDB.sp_newsPost_GetLatestNewsOnGenre(p_postsNum, genre).ToList();
+                i_chache.Add("News_For_Genre_" + p_postsNum + " on " + genre, posts_list, DateTime.Now.AddSeconds(120));
+            }
+
+            return posts_list;
+        }
+        //--------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+        //----------------------------------------------------------------------------------------------------------
+        /// <summary>
         /// returns related posts (results are cahched for 2 min)
         /// </summary>
         /// <returns></returns>
@@ -226,5 +256,11 @@ namespace hypster_tv_DAL
             return genre_list;
         }
         
+        public List<int?> GetGenreIdByLabel(string label)
+        {
+            List<int?> id;
+            id = hyDB.sp_Genre_GetGenreIdByLabel(label).ToList();
+            return id;
+        }
     }
 }

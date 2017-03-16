@@ -1253,5 +1253,6 @@
     <FunctionImportMapping FunctionImportName="sp_Post_Genre_DeletePostGenre" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_DeletePostGenre" />
     <FunctionImportMapping FunctionImportName="sp_Genre_GetGenreIdByLabel" FunctionName="hypster_tv_Model.Store.sp_Genre_GetGenreIdByLabel" />
     <FunctionImportMapping FunctionImportName="sp_Post_Genre_GetAsociatGenreIds" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_GetAsociatGenreIds" />
+    <FunctionImportMapping FunctionImportName="sp_newsPost_GetLatestNewsOnGenre" FunctionName="hypster_tv_Model.Store.sp_newsPost_GetLatestNewsOnGenre" />
   </EntityContainerMapping>
 </Mapping>
