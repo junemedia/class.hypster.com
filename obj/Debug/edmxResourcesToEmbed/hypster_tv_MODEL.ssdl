@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="hypster_tv_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="ArtistAZ">
+    <Key>
+      <PropertyRef Name="ArtistAZ_ID" />
+    </Key>
+    <Property Name="ArtistAZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtistAZ_Name" Type="nvarchar" MaxLength="80" />
+  </EntityType>
   <EntityType Name="ArtistCategories">
     <Key>
       <PropertyRef Name="Id" />
@@ -69,7 +76,7 @@
     <Property Name="CoverContestVote_Cover_ID" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'HypsterNew.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="DeActivated">
     <Key>
       <PropertyRef Name="UserId" />
@@ -144,6 +151,13 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <Property Name="UsFol_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="User_ID" Type="int" />
     <Property Name="Follower_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="homeSlideshow">
     <Key>
@@ -271,6 +285,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <Property Name="user_interest" Type="int" />
     <Property Name="eCampD" Type="int" />
     <Property Name="adminLevel" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="255" />
+    <Property Name="last_name" Type="varchar" MaxLength="255" />
+    <Property Name="address" Type="varchar" MaxLength="255" />
+    <Property Name="state" Type="char" MaxLength="2" />
   </EntityType>
   <EntityType Name="MemberSongSkip">
     <Key>
@@ -411,6 +429,22 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <Property Name="username" Type="nvarchar" MaxLength="20" />
     <Property Name="description" Type="nvarchar" MaxLength="100" />
     <Property Name="Shares" Type="int" />
+  </EntityType>
+  <EntityType Name="Post_Genre">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="post_id" Type="int" />
+    <Property Name="genre_id" Type="int" />
+  </EntityType>
+  <EntityType Name="postNewsletter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="post_id" Type="int" />
+    <Property Name="attribute" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Radio_Usage">
     <Key>
@@ -657,6 +691,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   <Function Name="sp_artist_SearchForArtist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_ss" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="sp_artistaz_GetArtistsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_Charts_DeleteChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_chart_id" Type="int" Mode="In" />
   </Function>
@@ -779,6 +814,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   <Function Name="sp_Followers_GetNumberOfMyFollowers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_user_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_Genre_GetAllGenres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Genre_GetGenreIdByLabel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_label" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_homeSlideshow_ActivateHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
   </Function>
@@ -806,6 +845,11 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   </Function>
   <Function Name="sp_homeSlideshow_MoveSlideUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_homeSlideshow_UpdateHomeSlideshow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_homeSlideshow_ID" Type="int" Mode="In" />
+    <Parameter Name="href" Type="varchar" Mode="In" />
+    <Parameter Name="ImageSrc" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_homeSlideshow_UpdateSortOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_slide_id" Type="int" Mode="In" />
@@ -932,6 +976,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <Parameter Name="p_LastActivityDate" Type="datetime" Mode="In" />
     <Parameter Name="p_LastActivityIp" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="sp_Members_UpdateMemberData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_update_stream" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_Members_UpdateMemberEmailConfirmed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_id" Type="int" Mode="In" />
     <Parameter Name="p_user_name" Type="nvarchar" Mode="In" />
@@ -968,6 +1016,14 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <Parameter Name="p_sex" Type="tinyint" Mode="In" />
     <Parameter Name="p_user_interest" Type="int" Mode="In" />
     <Parameter Name="p_email_optout" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_UpdateMemberProfileDetails4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_firstname" Type="varchar" Mode="In" />
+    <Parameter Name="p_lastname" Type="varchar" Mode="In" />
+    <Parameter Name="p_address" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_state" Type="char" Mode="In" />
+    <Parameter Name="p_intro" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="sp_Members_UpdateMemberProfilePicture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_user_id" Type="int" Mode="In" />
@@ -1036,6 +1092,10 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   <Function Name="sp_newsPost_GetAllNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_newsPost_GetLatestNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_newsPost_GetLatestNewsOnGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_numOfPosts" Type="int" Mode="In" />
+    <Parameter Name="p_genre" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_newsPost_GetPostByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_post_guid" Type="nvarchar" Mode="In" />
@@ -1178,6 +1238,24 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   <Function Name="sp_playlistLike_DeletePlaylistLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_playlist_id" Type="int" Mode="In" />
     <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Post_Genre_DeletePostGenre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post_id" Type="int" Mode="In" />
+    <Parameter Name="genre_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Post_Genre_GetAsociatGenreIds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_postNewsletter_DeletePostAttribute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_id" Type="int" Mode="In" />
+    <Parameter Name="p_attribute" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_postNewsletter_GetPostAttributes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_postNewsletter_GetPostsByAttribute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_post_id" Type="int" Mode="In" />
+    <Parameter Name="p_attribute" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_RadioStation_DeleteUserRadioStation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_user_id" Type="int" Mode="In" />
@@ -1326,6 +1404,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
   </Function>
   <Function Name="sp_VoteForSong_GetActiveVoteForSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="hypster_tv_ModelStoreContainer">
+    <EntitySet Name="ArtistAZ" EntityType="Self.ArtistAZ" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArtistCategories" EntityType="Self.ArtistCategories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BlockedTerms" EntityType="Self.BlockedTerms" Schema="dbo" store:Type="Tables" />
@@ -1339,6 +1418,7 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <EntitySet Name="FeaturedPlaylists" EntityType="Self.FeaturedPlaylists" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Festivals" EntityType="Self.Festivals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Followers" EntityType="Self.Followers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="homeSlideshow" EntityType="Self.homeSlideshow" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HypException" EntityType="Self.HypException" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ListenHistory" EntityType="Self.ListenHistory" Schema="dbo" store:Type="Tables" />
@@ -1358,6 +1438,8 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <EntitySet Name="PlaylistData" EntityType="Self.PlaylistData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlaylistLikes" EntityType="Self.PlaylistLikes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Playlists" EntityType="Self.Playlists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post_Genre" EntityType="Self.Post_Genre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="postNewsletter" EntityType="Self.postNewsletter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Radio_Usage" EntityType="Self.Radio_Usage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RadioStation" EntityType="Self.RadioStation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ScheduledPost" EntityType="Self.ScheduledPost" Schema="dbo" store:Type="Tables" />

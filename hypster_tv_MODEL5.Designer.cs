@@ -8401,6 +8401,36 @@ namespace hypster_tv_DAL
     
             return base.ExecuteFunction<newsPost>("sp_newsPost_GetLatestNewsOnGenre", p_numOfPostsParameter, p_genreParameter);
         }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="mergeOption"></param>
+        /// <param name="p_numOfPosts">No Metadata Documentation available.</param>
+        /// <param name="p_genre">No Metadata Documentation available.</param>
+        public ObjectResult<newsPost> sp_newsPost_GetLatestNewsOnGenre(Nullable<global::System.Int32> p_numOfPosts, global::System.String p_genre, MergeOption mergeOption)
+        {
+            ObjectParameter p_numOfPostsParameter;
+            if (p_numOfPosts.HasValue)
+            {
+                p_numOfPostsParameter = new ObjectParameter("p_numOfPosts", p_numOfPosts);
+            }
+            else
+            {
+                p_numOfPostsParameter = new ObjectParameter("p_numOfPosts", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter p_genreParameter;
+            if (p_genre != null)
+            {
+                p_genreParameter = new ObjectParameter("p_genre", p_genre);
+            }
+            else
+            {
+                p_genreParameter = new ObjectParameter("p_genre", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<newsPost>("sp_newsPost_GetLatestNewsOnGenre", mergeOption, p_numOfPostsParameter, p_genreParameter);
+        }
 
         #endregion
 
@@ -21099,6 +21129,394 @@ namespace hypster_tv_DAL
 
     }
     
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="hypster_tv_Model", Name="sp_newsPost_GetLatestNewsOnGenre_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_newsPost_GetLatestNewsOnGenre_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sp_newsPost_GetLatestNewsOnGenre_Result object.
+        /// </summary>
+        /// <param name="post_id">Initial value of the post_id property.</param>
+        public static sp_newsPost_GetLatestNewsOnGenre_Result Createsp_newsPost_GetLatestNewsOnGenre_Result(global::System.Int32 post_id)
+        {
+            sp_newsPost_GetLatestNewsOnGenre_Result sp_newsPost_GetLatestNewsOnGenre_Result = new sp_newsPost_GetLatestNewsOnGenre_Result();
+            sp_newsPost_GetLatestNewsOnGenre_Result.post_id = post_id;
+            return sp_newsPost_GetLatestNewsOnGenre_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 post_id
+        {
+            get
+            {
+                return _post_id;
+            }
+            set
+            {
+                Onpost_idChanging(value);
+                ReportPropertyChanging("post_id");
+                _post_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_id");
+                Onpost_idChanged();
+            }
+        }
+        private global::System.Int32 _post_id;
+        partial void Onpost_idChanging(global::System.Int32 value);
+        partial void Onpost_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_author
+        {
+            get
+            {
+                return _post_author;
+            }
+            set
+            {
+                Onpost_authorChanging(value);
+                ReportPropertyChanging("post_author");
+                _post_author = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_author");
+                Onpost_authorChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_author;
+        partial void Onpost_authorChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_authorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> post_date
+        {
+            get
+            {
+                return _post_date;
+            }
+            set
+            {
+                Onpost_dateChanging(value);
+                ReportPropertyChanging("post_date");
+                _post_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_date");
+                Onpost_dateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _post_date;
+        partial void Onpost_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onpost_dateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String post_content
+        {
+            get
+            {
+                return _post_content;
+            }
+            set
+            {
+                Onpost_contentChanging(value);
+                ReportPropertyChanging("post_content");
+                _post_content = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("post_content");
+                Onpost_contentChanged();
+            }
+        }
+        private global::System.String _post_content;
+        partial void Onpost_contentChanging(global::System.String value);
+        partial void Onpost_contentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String post_title
+        {
+            get
+            {
+                return _post_title;
+            }
+            set
+            {
+                Onpost_titleChanging(value);
+                ReportPropertyChanging("post_title");
+                _post_title = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("post_title");
+                Onpost_titleChanged();
+            }
+        }
+        private global::System.String _post_title;
+        partial void Onpost_titleChanging(global::System.String value);
+        partial void Onpost_titleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_status
+        {
+            get
+            {
+                return _post_status;
+            }
+            set
+            {
+                Onpost_statusChanging(value);
+                ReportPropertyChanging("post_status");
+                _post_status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_status");
+                Onpost_statusChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_status;
+        partial void Onpost_statusChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_statusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String post_guid
+        {
+            get
+            {
+                return _post_guid;
+            }
+            set
+            {
+                Onpost_guidChanging(value);
+                ReportPropertyChanging("post_guid");
+                _post_guid = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("post_guid");
+                Onpost_guidChanged();
+            }
+        }
+        private global::System.String _post_guid;
+        partial void Onpost_guidChanging(global::System.String value);
+        partial void Onpost_guidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_type
+        {
+            get
+            {
+                return _post_type;
+            }
+            set
+            {
+                Onpost_typeChanging(value);
+                ReportPropertyChanging("post_type");
+                _post_type = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_type");
+                Onpost_typeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_type;
+        partial void Onpost_typeChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_typeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> comment_count
+        {
+            get
+            {
+                return _comment_count;
+            }
+            set
+            {
+                Oncomment_countChanging(value);
+                ReportPropertyChanging("comment_count");
+                _comment_count = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("comment_count");
+                Oncomment_countChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _comment_count;
+        partial void Oncomment_countChanging(Nullable<global::System.Int32> value);
+        partial void Oncomment_countChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_voteUp
+        {
+            get
+            {
+                return _post_voteUp;
+            }
+            set
+            {
+                Onpost_voteUpChanging(value);
+                ReportPropertyChanging("post_voteUp");
+                _post_voteUp = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_voteUp");
+                Onpost_voteUpChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_voteUp;
+        partial void Onpost_voteUpChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_voteUpChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> post_voteDown
+        {
+            get
+            {
+                return _post_voteDown;
+            }
+            set
+            {
+                Onpost_voteDownChanging(value);
+                ReportPropertyChanging("post_voteDown");
+                _post_voteDown = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("post_voteDown");
+                Onpost_voteDownChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _post_voteDown;
+        partial void Onpost_voteDownChanging(Nullable<global::System.Int32> value);
+        partial void Onpost_voteDownChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String post_image
+        {
+            get
+            {
+                return _post_image;
+            }
+            set
+            {
+                Onpost_imageChanging(value);
+                ReportPropertyChanging("post_image");
+                _post_image = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("post_image");
+                Onpost_imageChanged();
+            }
+        }
+        private global::System.String _post_image;
+        partial void Onpost_imageChanging(global::System.String value);
+        partial void Onpost_imageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String post_short_content
+        {
+            get
+            {
+                return _post_short_content;
+            }
+            set
+            {
+                Onpost_short_contentChanging(value);
+                ReportPropertyChanging("post_short_content");
+                _post_short_content = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("post_short_content");
+                Onpost_short_contentChanged();
+            }
+        }
+        private global::System.String _post_short_content;
+        partial void Onpost_short_contentChanging(global::System.String value);
+        partial void Onpost_short_contentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MusicPlayer
+        {
+            get
+            {
+                return _MusicPlayer;
+            }
+            set
+            {
+                OnMusicPlayerChanging(value);
+                ReportPropertyChanging("MusicPlayer");
+                _MusicPlayer = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MusicPlayer");
+                OnMusicPlayerChanged();
+            }
+        }
+        private global::System.String _MusicPlayer;
+        partial void OnMusicPlayerChanging(global::System.String value);
+        partial void OnMusicPlayerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ad_id
+        {
+            get
+            {
+                return _ad_id;
+            }
+            set
+            {
+                Onad_idChanging(value);
+                ReportPropertyChanging("ad_id");
+                _ad_id = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ad_id");
+                Onad_idChanged();
+            }
+        }
+        private global::System.String _ad_id;
+        partial void Onad_idChanging(global::System.String value);
+        partial void Onad_idChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.

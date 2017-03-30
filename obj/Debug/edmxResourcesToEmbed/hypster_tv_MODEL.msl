@@ -963,6 +963,10 @@
     <EntitySetMapping Name="Members">
       <EntityTypeMapping TypeName="hypster_tv_Model.Member">
         <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="adminLevel" ColumnName="adminLevel" />
           <ScalarProperty Name="eCampD" ColumnName="eCampD" />
           <ScalarProperty Name="user_interest" ColumnName="user_interest" />
@@ -1164,5 +1168,91 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_ScheduledPost_EditSPost" FunctionName="hypster_tv_Model.Store.sp_ScheduledPost_EditSPost" />
+    <FunctionImportMapping FunctionImportName="sp_homeSlideshow_UpdateHomeSlideshow" FunctionName="hypster_tv_Model.Store.sp_homeSlideshow_UpdateHomeSlideshow" />
+    <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberData" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberData" />
+    <FunctionImportMapping FunctionImportName="sp_Members_UpdateMemberProfileDetails4" FunctionName="hypster_tv_Model.Store.sp_Members_UpdateMemberProfileDetails4" />
+    <EntitySetMapping Name="ArtistAZs">
+      <EntityTypeMapping TypeName="hypster_tv_Model.ArtistAZ">
+        <MappingFragment StoreEntitySet="ArtistAZ">
+          <ScalarProperty Name="ArtistAZ_Name" ColumnName="ArtistAZ_Name" />
+          <ScalarProperty Name="ArtistAZ_ID" ColumnName="ArtistAZ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="hypster_tv_Model.ArtistAZ">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="hypster_tv_Model.Store.sp_artistaz_GetArtistsList" />
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_artistaz_GetArtistsList" FunctionName="hypster_tv_Model.Store.sp_artistaz_GetArtistsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_artistaz_GetArtistsList_Result">
+          <ScalarProperty Name="ArtistAZ_ID" ColumnName="ArtistAZ_ID" />
+          <ScalarProperty Name="ArtistAZ_Name" ColumnName="ArtistAZ_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="postNewsletters">
+      <EntityTypeMapping TypeName="hypster_tv_Model.postNewsletter">
+        <MappingFragment StoreEntitySet="postNewsletter">
+          <ScalarProperty Name="attribute" ColumnName="attribute" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_postNewsletter_DeletePostAttribute" FunctionName="hypster_tv_Model.Store.sp_postNewsletter_DeletePostAttribute" />
+    <FunctionImportMapping FunctionImportName="sp_postNewsletter_GetPostAttributes" FunctionName="hypster_tv_Model.Store.sp_postNewsletter_GetPostAttributes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_postNewsletter_GetPostAttributes_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="attribute" ColumnName="attribute" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_postNewsletter_GetPostsByAttribute" FunctionName="hypster_tv_Model.Store.sp_postNewsletter_GetPostsByAttribute">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hypster_tv_Model.sp_postNewsletter_GetPostsByAttribute_Result">
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="post_author" ColumnName="post_author" />
+          <ScalarProperty Name="post_date" ColumnName="post_date" />
+          <ScalarProperty Name="post_content" ColumnName="post_content" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_status" ColumnName="post_status" />
+          <ScalarProperty Name="post_guid" ColumnName="post_guid" />
+          <ScalarProperty Name="post_type" ColumnName="post_type" />
+          <ScalarProperty Name="comment_count" ColumnName="comment_count" />
+          <ScalarProperty Name="post_voteUp" ColumnName="post_voteUp" />
+          <ScalarProperty Name="post_voteDown" ColumnName="post_voteDown" />
+          <ScalarProperty Name="post_image" ColumnName="post_image" />
+          <ScalarProperty Name="post_short_content" ColumnName="post_short_content" />
+          <ScalarProperty Name="MusicPlayer" ColumnName="MusicPlayer" />
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Genres">
+      <EntityTypeMapping TypeName="hypster_tv_Model.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post_Genre">
+      <EntityTypeMapping TypeName="hypster_tv_Model.Post_Genre">
+        <MappingFragment StoreEntitySet="Post_Genre">
+          <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Genre_GetAllGenres" FunctionName="hypster_tv_Model.Store.sp_Genre_GetAllGenres" />
+    <FunctionImportMapping FunctionImportName="sp_Post_Genre_DeletePostGenre" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_DeletePostGenre" />
+    <FunctionImportMapping FunctionImportName="sp_Genre_GetGenreIdByLabel" FunctionName="hypster_tv_Model.Store.sp_Genre_GetGenreIdByLabel" />
+    <FunctionImportMapping FunctionImportName="sp_Post_Genre_GetAsociatGenreIds" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_GetAsociatGenreIds" />
+    <FunctionImportMapping FunctionImportName="sp_newsPost_GetLatestNewsOnGenre" FunctionName="hypster_tv_Model.Store.sp_newsPost_GetLatestNewsOnGenre" />
   </EntityContainerMapping>
 </Mapping>

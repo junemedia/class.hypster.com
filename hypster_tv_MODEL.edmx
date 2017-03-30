@@ -81,7 +81,7 @@
           <Property Name="CoverContestVote_Cover_ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'HypsterNew.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DeActivated">
           <Key>
             <PropertyRef Name="UserId" />
@@ -2268,7 +2268,7 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
             <Parameter Name="genre_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Genre_GetGenreIdByLabel" ReturnType="Collection(Int32)">
-            <Parameter Name="p_label" Mode="In" Type="String" />
+          <Parameter Name="p_label" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Post_Genre_GetAsociatGenreIds" ReturnType="Collection(Int32)">
           <Parameter Name="post_id" Mode="In" Type="Int32" />

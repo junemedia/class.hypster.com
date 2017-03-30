@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>database.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -141,7 +144,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="objects\ScheduledPost.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="database.ico" />
+  </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="hypster_tv_MODEL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
