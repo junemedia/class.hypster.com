@@ -8431,6 +8431,25 @@ namespace hypster_tv_DAL
     
             return base.ExecuteFunction<newsPost>("sp_newsPost_GetLatestNewsOnGenre", mergeOption, p_numOfPostsParameter, p_genreParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_user_id">No Metadata Documentation available.</param>
+        public int sp_Members_DeleteMemberAccount(Nullable<global::System.Int32> p_user_id)
+        {
+            ObjectParameter p_user_idParameter;
+            if (p_user_id.HasValue)
+            {
+                p_user_idParameter = new ObjectParameter("p_user_id", p_user_id);
+            }
+            else
+            {
+                p_user_idParameter = new ObjectParameter("p_user_id", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction("sp_Members_DeleteMemberAccount", p_user_idParameter);
+        }
 
         #endregion
 

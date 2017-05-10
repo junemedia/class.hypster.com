@@ -903,6 +903,9 @@ warning 6002: The table/view 'HypsterNew.dbo.DeActivated' does not have a primar
   <Function Name="sp_Members_DeleteDeactivatedUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_user_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_Members_DeleteMemberAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_Members_EditMemberPublicPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_PublicPage_ID" Type="int" Mode="In" />
     <Parameter Name="p_showHeader" Type="bit" Mode="In" />

@@ -908,6 +908,9 @@ warning 6002: The table/view 'HypsterNew.dbo.DeActivated' does not have a primar
         <Function Name="sp_Members_DeleteDeactivatedUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_Members_DeleteMemberAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_user_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_Members_EditMemberPublicPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="p_PublicPage_ID" Type="int" Mode="In" />
           <Parameter Name="p_showHeader" Type="bit" Mode="In" />
@@ -2276,6 +2279,9 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <FunctionImport Name="sp_newsPost_GetLatestNewsOnGenre" EntitySet="newsPosts" ReturnType="Collection(hypster_tv_Model.newsPost)">
             <Parameter Name="p_numOfPosts" Mode="In" Type="Int32" />
             <Parameter Name="p_genre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Members_DeleteMemberAccount">
+            <Parameter Name="p_user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="SessionCrossover">
@@ -4407,6 +4413,7 @@ FROM [dbo].[DeActivated] AS [DeActivated]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_Genre_GetGenreIdByLabel" FunctionName="hypster_tv_Model.Store.sp_Genre_GetGenreIdByLabel" />
           <FunctionImportMapping FunctionImportName="sp_Post_Genre_GetAsociatGenreIds" FunctionName="hypster_tv_Model.Store.sp_Post_Genre_GetAsociatGenreIds" />
           <FunctionImportMapping FunctionImportName="sp_newsPost_GetLatestNewsOnGenre" FunctionName="hypster_tv_Model.Store.sp_newsPost_GetLatestNewsOnGenre" />
+          <FunctionImportMapping FunctionImportName="sp_Members_DeleteMemberAccount" FunctionName="hypster_tv_Model.Store.sp_Members_DeleteMemberAccount" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

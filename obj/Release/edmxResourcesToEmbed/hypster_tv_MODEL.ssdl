@@ -76,7 +76,7 @@
     <Property Name="CoverContestVote_Cover_ID" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'HypsterNew.dbo.DeActivated' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="DeActivated">
     <Key>
       <PropertyRef Name="UserId" />
@@ -901,6 +901,9 @@ warning 6002: The table/view 'HypsterStage.dbo.DeActivated' does not have a prim
     <Parameter Name="p_user_id" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_Members_DeleteDeactivatedUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Members_DeleteMemberAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_user_id" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_Members_EditMemberPublicPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

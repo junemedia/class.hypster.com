@@ -791,6 +791,9 @@
       <Parameter Name="p_numOfPosts" Mode="In" Type="Int32" />
       <Parameter Name="p_genre" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_Members_DeleteMemberAccount">
+      <Parameter Name="p_user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="SessionCrossover">
     <Key>
